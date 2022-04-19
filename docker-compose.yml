@@ -19,7 +19,7 @@ services:
    # ./src は docker-composer.yml のディレクトリ直下にある src を設定している
    # コンテナが作成されると src ディレクトリからコンテナの /var/www/html にアクセスすることができる
    volumes:
-     - ./src:/var/www/html
+     - ./:/var/www/html
 
 # ----------------------------------
 # MySQLを動かすコンテナ
