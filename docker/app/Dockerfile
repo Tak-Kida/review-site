@@ -25,3 +25,6 @@ RUN apt-get update \
 # Laravelで必要になるmodRewriteを有効化する
 RUN mv /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled
 RUN /bin/sh -c a2enmod rewrite
+
+# 作業ディレクトリをlaravelへ移動
+WORKDIR /var/www/html/laravel
