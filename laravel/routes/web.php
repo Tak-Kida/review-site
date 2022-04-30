@@ -22,3 +22,4 @@ Route::get('/', function () {
 // Book
 Route::get('/book/index', 'App\Http\Controllers\BookController@index');
 Route::get('/book/register', 'App\Http\Controllers\BookController@register');
+Route::post('/book/register', 'App\Http\Controllers\BookController@create');

@@ -25,8 +25,12 @@ class BookController extends Controller
     // 新規登録を行う
     public function create(Request $request)
     {
-        $data = [];
-        return view('books.register', $data);
+        $this->validate($request, Book::$rules);
+        $book = new Book;
+        $form = $request->all();
+        unset($form['_token']);
+        $book->fill($form)->save();
+        return redirect('/book/index');
     }
 
     // 編集画面
