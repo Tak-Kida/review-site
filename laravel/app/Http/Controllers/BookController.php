@@ -56,7 +56,6 @@ class BookController extends Controller
     public function delete(Request $request)
     {
         $book = Book::where('id', $request->id)->first();
-        dd($book);
         $book->deleted_flg= 1;
         $book->deleted_at = date("Y-m-d H:i:s");
         $book->save();
