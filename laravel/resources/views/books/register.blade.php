@@ -23,7 +23,6 @@
     <ul>
         <li><a href="index">index</a></li>
         <li><a href="register">register</a></li>
-        <li><a href="edit">edit※ToDo</a></li>
     </ul>
 
 </body>
