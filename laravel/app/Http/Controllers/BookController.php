@@ -15,6 +15,14 @@ class BookController extends Controller
         return view('books.index', $data);
     }
 
+    // 詳細画面
+    public function detail(Request $request)
+    {
+        $book = Book::where('id', $request->id)->first();
+        $data = ['book' => $book];
+        return view('books.detail', $data);
+    }
+
     // 新規登録画面の表示
     public function register()
     {

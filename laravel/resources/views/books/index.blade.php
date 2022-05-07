@@ -7,6 +7,7 @@
     <p>登録済み書籍タイトル一覧</p>
     @foreach ($books as $book)
         <p>{{ $book->name }}</p>
+        <a href="/book/detail/{{ $book->id }}">詳細</a></br>
         <a href="/book/edit/{{ $book->id }}">編集・削除</a></br>
     @endforeach
 
