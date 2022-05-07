@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Chapter;
 
 class BookController extends Controller
 {
@@ -19,7 +20,12 @@ class BookController extends Controller
     public function detail(Request $request)
     {
         $book = Book::where('id', $request->id)->first();
-        $data = ['book' => $book];
+        $chapters = Chapter::where('book_id', $request->id)->get();
+        dd($chapters);
+        $data = [
+            'book' => $book,
+            'capters' => $chapters
+        ];
         return view('books.detail', $data);
     }
 
