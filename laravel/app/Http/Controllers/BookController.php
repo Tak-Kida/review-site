@@ -21,10 +21,9 @@ class BookController extends Controller
     {
         $book = Book::where('id', $request->id)->first();
         $chapters = Chapter::where('book_id', $request->id)->get();
-        dd($chapters);
         $data = [
             'book' => $book,
-            'capters' => $chapters
+            'chapters' => $chapters
         ];
         return view('books.detail', $data);
     }

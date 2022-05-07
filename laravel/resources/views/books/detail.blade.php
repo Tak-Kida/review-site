@@ -19,9 +19,16 @@
 
     <p>--------------</p>
     <p>もくじ</p>
-    <p>※ここにチャプターが入ります</p>
+    <ul>
+        @foreach ($chapters as $chapter)
+            <li>
+                {{ $chapter->title }}<br>
+                {{ $chapter->summary }}
+            </li>
+        @endforeach
+    </ul>
 
-
+    <p>----------------</p>
     <p>リンク一覧</p>
     <ul>
         <li><a href="/book/index">index</a></li>
