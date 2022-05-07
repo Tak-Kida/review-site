@@ -4,7 +4,6 @@
 <head></head>
 
 <body>
-    {{-- {{ dd(var_dump($book)) }} --}}
     <p>書籍情報</p>
     <label>書籍名</label>
     <p>{{ $book->name }}</p></br>
@@ -24,9 +23,24 @@
             <li>
                 {{ $chapter->title }}<br>
                 {{ $chapter->summary }}
+                <a href="/chapter/edit/{{ $chapter->id }}">編集・削除</a>
             </li>
         @endforeach
     </ul>
+
+    <p>--------------</p>
+
+    <p>もくじと要約追加フォーム</p>
+    <form method="POST" action="/chapter/register/{{ $book->id }}">
+        @csrf
+        <input type="hidden" name="book_id" value="{{ $book->id }}"></br>
+        <label>タイトル</label>
+        <input type="text" name="title"></br>
+        <label>要約内容</label>
+        <input type="text" name="summary"></br>
+
+        <input type="submit">
+    </form>
 
     <p>----------------</p>
     <p>リンク一覧</p>

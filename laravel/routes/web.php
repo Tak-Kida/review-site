@@ -27,3 +27,9 @@ Route::post('/book/register', 'App\Http\Controllers\BookController@create');
 Route::get('/book/edit/{id}', 'App\Http\Controllers\BookController@edit');
 Route::post('/book/edit/{id}', 'App\Http\Controllers\BookController@update');
 Route::post('/book/delete/{id}', 'App\Http\Controllers\BookController@delete');
+
+// Chapter
+Route::post('/chapter/register/{id}', 'App\Http\Controllers\ChapterController@create');
+Route::get('/chapter/edit/{id}', 'App\Http\Controllers\ChapterController@edit');
+Route::post('/chapter/edit/{id}', 'App\Http\Controllers\ChapterController@update');
+Route::post('/chapter/delete/{id}', 'App\Http\Controllers\ChapterController@delete');
