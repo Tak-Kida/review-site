@@ -16,6 +16,7 @@ class BookTableSeeder extends Seeder
     public function run()
     {
         $param = [
+            'id' => 1,
             'name' => 'イシューからはじめよ 知的生産の「シンプルな本質」',
             'author_id' => '1', // 安宅和人
             'publisher_id' => '1', // 英治出版

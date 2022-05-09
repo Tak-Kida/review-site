@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Chapter;
 
 class BookController extends Controller
 {
@@ -13,6 +14,18 @@ class BookController extends Controller
         $books = Book::all();
         $data = ['books' => $books];
         return view('books.index', $data);
+    }
+
+    // 詳細画面
+    public function detail(Request $request)
+    {
+        $book = Book::where('id', $request->id)->first();
+        $chapters = Chapter::where('book_id', $request->id)->get();
+        $data = [
+            'book' => $book,
+            'chapters' => $chapters
+        ];
+        return view('books.detail', $data);
     }
 
     // 新規登録画面の表示
