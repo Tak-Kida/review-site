@@ -33,3 +33,12 @@ Route::post('/chapter/register/{id}', 'App\Http\Controllers\ChapterController@cr
 Route::get('/chapter/edit/{id}', 'App\Http\Controllers\ChapterController@edit');
 Route::post('/chapter/edit/{id}', 'App\Http\Controllers\ChapterController@update');
 Route::post('/chapter/delete/{id}', 'App\Http\Controllers\ChapterController@delete');
+
+// Author
+Route::get('/author/index', 'App\Http\Controllers\AuthorController@index');
+// Route::get('/author/detail/{id}', 'App\Http\Controllers\AuthorController@detail');
+Route::get('/author/register', 'App\Http\Controllers\AuthorController@register');
+Route::post('/author/register', 'App\Http\Controllers\AuthorController@create');
+Route::get('/author/edit/{id}', 'App\Http\Controllers\AuthorController@edit');
+Route::post('/author/edit/{id}', 'App\Http\Controllers\AuthorController@update');
+Route::post('/author/delete/{id}', 'App\Http\Controllers\AuthorController@delete');
