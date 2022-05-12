@@ -15,9 +15,8 @@ use App\Http\Controllers\BookController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Root
+Route::get('/', 'App\Http\Controllers\HomeController@index');
 
 // Book
 Route::get('/book/index', 'App\Http\Controllers\BookController@index');

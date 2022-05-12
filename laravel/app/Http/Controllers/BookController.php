@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Chapter;
+use App\Models\Author;
 
 class BookController extends Controller
 {
@@ -21,9 +22,11 @@ class BookController extends Controller
     {
         $book = Book::where('id', $request->id)->first();
         $chapters = Chapter::where('book_id', $request->id)->get();
+        $author = Author::where('id', $book->author_id)->first();
         $data = [
             'book' => $book,
-            'chapters' => $chapters
+            'chapters' => $chapters,
+            'author' => $author
         ];
         return view('books.detail', $data);
     }
