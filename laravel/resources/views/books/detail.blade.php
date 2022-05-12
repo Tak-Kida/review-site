@@ -10,7 +10,7 @@
     <label>著者名</label>
     <p>{{ $author->name }}（{{ $author->name_furigana }}）</p></br>
     <label>出版社名</label>
-    <p>{{ $book->publisher_id }}</p></br>
+    <p>{{ $publisher->name }}（{{ $publisher->name_furigana }}）</p></br>
     <label>初版発行</label>
     <p>{{ $book->first_published }}</p></br>
 

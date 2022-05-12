@@ -41,3 +41,12 @@ Route::post('/author/register', 'App\Http\Controllers\AuthorController@create');
 Route::get('/author/edit/{id}', 'App\Http\Controllers\AuthorController@edit');
 Route::post('/author/edit/{id}', 'App\Http\Controllers\AuthorController@update');
 Route::post('/author/delete/{id}', 'App\Http\Controllers\AuthorController@delete');
+
+// Publisher
+Route::get('/publisher/index', 'App\Http\Controllers\PublisherController@index');
+// Route::get('/publisher/detail/{id}', 'App\Http\Controllers\PublisherController@detail');
+Route::get('/publisher/register', 'App\Http\Controllers\PublisherController@register');
+Route::post('/publisher/register', 'App\Http\Controllers\PublisherController@create');
+Route::get('/publisher/edit/{id}', 'App\Http\Controllers\PublisherController@edit');
+Route::post('/publisher/edit/{id}', 'App\Http\Controllers\PublisherController@update');
+Route::post('/publisher/delete/{id}', 'App\Http\Controllers\PublisherController@delete');
