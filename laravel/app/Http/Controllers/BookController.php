@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Chapter;
 use App\Models\Author;
+use App\Models\Publisher;
 
 class BookController extends Controller
 {
@@ -23,10 +24,12 @@ class BookController extends Controller
         $book = Book::where('id', $request->id)->first();
         $chapters = Chapter::where('book_id', $request->id)->get();
         $author = Author::where('id', $book->author_id)->first();
+        $publisher = Publisher::where('id', $book->publisher_id)->first();
         $data = [
             'book' => $book,
             'chapters' => $chapters,
-            'author' => $author
+            'author' => $author,
+            'publisher' => $publisher,
         ];
         return view('books.detail', $data);
     }
