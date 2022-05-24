@@ -20,6 +20,7 @@ RUN apt-get update \
     vim \
     libpng-dev \
     libpq-dev \
+    nodejs npm \
     && docker-php-ext-install pdo_mysql
 
 # Laravelで必要になるmodRewriteを有効化する
