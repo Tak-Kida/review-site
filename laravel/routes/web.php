@@ -18,7 +18,8 @@ use App\Http\Controllers\BookController;
 // Root
 // Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/{any?}', function () {
-    return view('welcome');
+    // return view('home.index');
+    return view('app');
 })->where('any', '^(?!api\/)[\/\w\.-]*');
 
 

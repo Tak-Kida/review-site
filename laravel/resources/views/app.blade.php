@@ -9,9 +9,7 @@
         <li><a href="book/index">books</a></li>
         <li><a href="author/index">authors</a></li>
     </ul> --}}
-    <div class="wrap">
-        <div id="app"></div>
-    </div>
+    <div id="app"></div>
 
     <script src="{{ asset('js/app.js') }}" defer="defer"></script>
 </body>
