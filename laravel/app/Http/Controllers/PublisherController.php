@@ -7,19 +7,33 @@ use App\Models\Publisher;
 
 class PublisherController extends Controller
 {
+    // 一覧をJSONで取得する
+    public function getIndex()
+    {
+        $publishers = Publisher::all();
+        return $publishers->toJson();
+    }
+
+    // 詳細をJSONで取得する
+    public function getDetail(Request $request)
+    {
+        $publisher = Publisher::where('id', $request->id)->first();
+        return $publisher->toJson();
+    }
+
     // 一覧画面
     public function index()
     {
-        $publishers = Publisher::all();
-        $data = ['publishers' => $publishers];
-        return view('publishers.index', $data);
+        return view('app');
+        // $publishers = Publisher::all();
+        // $data = ['publishers' => $publishers];
+        // return view('publishers.index', $data);
     }
 
     // 新規登録画面の表示
     public function register()
     {
-        $data = [];
-        return view('publishers.register', $data);
+        return view('app');
     }
 
     // 新規登録を行う
@@ -30,15 +44,16 @@ class PublisherController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $publisher->fill($form)->save();
-        return redirect('/publisher/index');
+        return redirect('/publisher');
     }
 
     // 編集画面
     public function edit(Request $request)
     {
-        $publisher = Publisher::where('id', $request->id)->first();
-        $data = ['publisher' => $publisher];
-        return view('publishers.edit', $data);
+        return view('app');
+        // $publisher = Publisher::where('id', $request->id)->first();
+        // $data = ['publisher' => $publisher];
+        // return view('publishers.edit', $data);
     }
 
     // 更新を行う
@@ -49,7 +64,7 @@ class PublisherController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $publisher->fill($form)->save();
-        return redirect('/publisher/index');
+        return redirect('/publisher');
     }
 
     // 削除を行う
@@ -59,6 +74,6 @@ class PublisherController extends Controller
         $publisher->deleted_flg= 1;
         $publisher->deleted_at = date("Y-m-d H:i:s");
         $publisher->save();
-        return redirect('/publisher/index');
+        return redirect('/publisher');
     }
 }

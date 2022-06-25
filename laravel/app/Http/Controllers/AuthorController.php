@@ -7,6 +7,20 @@ use App\Models\Author;
 
 class AuthorController extends Controller
 {
+    // 著者一覧をJSONで取得する
+    public function getIndex()
+    {
+        $authors = Author::all();
+        return $authors->toJson();
+    }
+
+    // 詳細をJSONで取得する
+    public function getDetail(Request $request)
+    {
+        $author = Author::where('id', $request->id)->first();
+        return $author->toJson();
+    }
+
     // 一覧画面
     public function index()
     {
@@ -18,8 +32,9 @@ class AuthorController extends Controller
     // 新規登録画面の表示
     public function register()
     {
-        $data = [];
-        return view('authors.register', $data);
+        return view('app');
+        // $data = [];
+        // return view('authors.register', $data);
     }
 
     // 新規登録を行う
@@ -30,15 +45,16 @@ class AuthorController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $book->fill($form)->save();
-        return redirect('/author/index');
+        return redirect('/author');
     }
 
     // 編集画面
     public function edit(Request $request)
     {
-        $author = Author::where('id', $request->id)->first();
-        $data = ['author' => $author];
-        return view('authors.edit', $data);
+        return view('app');
+        // $author = Author::where('id', $request->id)->first();
+        // $data = ['author' => $author];
+        // return view('authors.edit', $data);
     }
 
     // 更新を行う
@@ -49,7 +65,7 @@ class AuthorController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $author->fill($form)->save();
-        return redirect('/author/index');
+        return redirect('/author');
     }
 
     // 削除を行う
@@ -59,6 +75,6 @@ class AuthorController extends Controller
         $author->deleted_flg= 1;
         $author->deleted_at = date("Y-m-d H:i:s");
         $author->save();
-        return redirect('/author/index');
+        return redirect('/author');
     }
 }

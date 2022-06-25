@@ -4,27 +4,23 @@
 
         <router-view></router-view>
 
-        <footer class="footer">
-            <p>footer</p>
-        </footer>
+        <FooterComponent></FooterComponent>
     </div>
 </template>
 
 <script>
 import Sample from './components/Sample.vue'
-import TestPage01 from './components/TestPage01.vue'
-import TestPage02 from './components/TestPage02.vue'
 import HeaderComponent from './components/HeaderComponent.vue'
-import BookIndex from './pages/books/BookIndex.vue'
+import FooterComponent from './components/FooterComponent.vue'
+import BookIndex from './pages/books/index.vue'
 
 export default {
   name: 'app',
   components: {
-    TestPage01,
-    TestPage02,
     BookIndex,
     Sample,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
 },
   data() {
     return {

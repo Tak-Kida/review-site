@@ -10,12 +10,54 @@ use App\Models\Publisher;
 
 class BookController extends Controller
 {
+    // json出力
+    public function json($id = -1)
+    {
+        if ($id == -1)
+        {
+            return Book::get()->toJson();
+        }
+        else
+        {
+            return Book::find($id)->toJson();
+        }
+
+        // $books = Book::all();
+        // $data = ['books' => $books];
+        // return $data->toJson();
+    }
+
+    // 一覧をJSONで取得する
+    public function getIndex()
+    {
+        $books = Book::all();
+        return $books->toJson();
+    }
+
+    // 詳細をJSONで取得する
+    public function getDetail(Request $request)
+    {
+        $book = Book::where('id', $request->id)->first();
+        return $book->toJson();
+        // $chapters = Chapter::where('book_id', $request->id)->get();
+        // $author = Author::where('id', $book->author_id)->first();
+        // $publisher = Publisher::where('id', $book->publisher_id)->first();
+        // $data = [
+        //     'book' => $book,
+        //     'chapters' => $chapters,
+        //     'author' => $author,
+        //     'publisher' => $publisher,
+        // ];
+        // return view('app', $data);
+    }
+
     // 一覧画面
     public function index()
     {
         $books = Book::all();
         $data = ['books' => $books];
-        return view('books.index', $data);
+        // return view('books.index', $data);
+        return view('app', $data);
     }
 
     // 詳細画面
@@ -31,7 +73,8 @@ class BookController extends Controller
             'author' => $author,
             'publisher' => $publisher,
         ];
-        return view('books.detail', $data);
+        // return view('books.detail', $data);
+        return view('app', $data);
     }
 
     // 新規登録画面の表示
@@ -49,7 +92,7 @@ class BookController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $book->fill($form)->save();
-        return redirect('/book/index');
+        return redirect('/book');
     }
 
     // 編集画面
@@ -57,7 +100,8 @@ class BookController extends Controller
     {
         $book = Book::where('id', $request->id)->first();
         $data = ['book' => $book];
-        return view('books.edit', $data);
+        // return view('books.edit', $data);
+        return view('app', $data);
     }
 
     // 更新を行う
@@ -68,7 +112,7 @@ class BookController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $book->fill($form)->save();
-        return redirect('/book/index');
+        return redirect('/book');
     }
 
     // 削除を行う
@@ -78,6 +122,6 @@ class BookController extends Controller
         $book->deleted_flg= 1;
         $book->deleted_at = date("Y-m-d H:i:s");
         $book->save();
-        return redirect('/book/index');
+        return redirect('/book');
     }
 }

@@ -16,15 +16,20 @@ use App\Http\Controllers\BookController;
 */
 
 // Root
-// Route::get('/', 'App\Http\Controllers\HomeController@index');
-Route::get('/{any?}', function () {
-    // return view('home.index');
+Route::get('/', function () {
     return view('app');
-})->where('any', '^(?!api\/)[\/\w\.-]*');
+});
+// Route::get('/{any}', function() {
+//     return view('app');
+// })->where('any', '.*');
 
+// BookJson
+Route::get('/book/index-json', 'App\Http\Controllers\BookController@getIndex');
+Route::get('/book/detail-json/{id}', 'App\Http\Controllers\BookController@getDetail');
 
 // Book
-Route::get('/book/index', 'App\Http\Controllers\BookController@index');
+Route::get('/book/json', 'App\Http\Controllers\BookController@json');
+Route::get('/book', 'App\Http\Controllers\BookController@index');
 Route::get('/book/detail/{id}', 'App\Http\Controllers\BookController@detail');
 Route::get('/book/register', 'App\Http\Controllers\BookController@register');
 Route::post('/book/register', 'App\Http\Controllers\BookController@create');
@@ -38,8 +43,15 @@ Route::get('/chapter/edit/{id}', 'App\Http\Controllers\ChapterController@edit');
 Route::post('/chapter/edit/{id}', 'App\Http\Controllers\ChapterController@update');
 Route::post('/chapter/delete/{id}', 'App\Http\Controllers\ChapterController@delete');
 
+// Author-json
+Route::get('/author/index-json', 'App\Http\Controllers\AuthorController@getIndex');
+Route::get('/author/detail-json/{id}', 'App\Http\Controllers\AuthorController@getDetail');
+
 // Author
-Route::get('/author/index', 'App\Http\Controllers\AuthorController@index');
+Route::get('/author', function () {
+    return view('app');
+});
+
 // Route::get('/author/detail/{id}', 'App\Http\Controllers\AuthorController@detail');
 Route::get('/author/register', 'App\Http\Controllers\AuthorController@register');
 Route::post('/author/register', 'App\Http\Controllers\AuthorController@create');
@@ -47,8 +59,12 @@ Route::get('/author/edit/{id}', 'App\Http\Controllers\AuthorController@edit');
 Route::post('/author/edit/{id}', 'App\Http\Controllers\AuthorController@update');
 Route::post('/author/delete/{id}', 'App\Http\Controllers\AuthorController@delete');
 
+// Publisher-json
+Route::get('/publisher/index-json', 'App\Http\Controllers\PublisherController@getIndex');
+Route::get('/publisher/detail-json/{id}', 'App\Http\Controllers\PublisherController@getDetail');
+
 // Publisher
-Route::get('/publisher/index', 'App\Http\Controllers\PublisherController@index');
+Route::get('/publisher', 'App\Http\Controllers\PublisherController@index');
 // Route::get('/publisher/detail/{id}', 'App\Http\Controllers\PublisherController@detail');
 Route::get('/publisher/register', 'App\Http\Controllers\PublisherController@register');
 Route::post('/publisher/register', 'App\Http\Controllers\PublisherController@create');
