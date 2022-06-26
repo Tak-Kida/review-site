@@ -19674,7 +19674,7 @@ __webpack_require__.r(__webpack_exports__);
     getAuthorDetail: function getAuthorDetail() {
       var _this = this;
 
-      axios.get('/author/detail-json/' + this.id).then(function (res) {
+      axios.get('/api/author/detail-json/' + this.id).then(function (res) {
         _this.author = res.data;
         _this.msg = 'get data!';
       });
@@ -19709,7 +19709,7 @@ __webpack_require__.r(__webpack_exports__);
     getAuthorIndex: function getAuthorIndex() {
       var _this = this;
 
-      axios.get('/author/index-json').then(function (res) {
+      axios.get('/api/author/index-json').then(function (res) {
         _this.authors = res.data;
         _this.msg = 'get data!';
       });
@@ -19770,7 +19770,7 @@ __webpack_require__.r(__webpack_exports__);
     getBookDetail: function getBookDetail() {
       var _this = this;
 
-      axios.get('/book/detail-json/' + this.id).then(function (res) {
+      axios.get('/api/book/detail-json/' + this.id).then(function (res) {
         _this.book = res.data;
         _this.msg = 'get data!';
       });
@@ -19811,7 +19811,7 @@ __webpack_require__.r(__webpack_exports__);
     getBookDetail: function getBookDetail() {
       var _this = this;
 
-      axios.get('/book/detail-json/' + this.id).then(function (res) {
+      axios.get('/api/book/detail-json/' + this.id).then(function (res) {
         _this.book = res.data;
         _this.msg = 'get data!';
       });
@@ -19846,7 +19846,7 @@ __webpack_require__.r(__webpack_exports__);
     getBookIndex: function getBookIndex() {
       var _this = this;
 
-      axios.get('/book/index-json').then(function (res) {
+      axios.get('/api/book/index-json').then(function (res) {
         _this.books = res.data;
         _this.msg = 'get data!';
       });
@@ -20288,7 +20288,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td><router-link to=\"'/author/detail/' + author.id\">詳細</router-link></td> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td><a v-bind:href=\"'/author/detail/' + author.id\">詳細</a></td> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <a href=\"/author/edit/{{ $author->id }}\">編集・削除</a></br> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     method: "POST",
-    action: '/author/edit/' + _ctx.author.id
+    action: '/api/author/edit/' + _ctx.author.id
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
     name: "_token",
@@ -20311,7 +20311,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , _hoisted_3), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     method: "POST",
-    action: '/author/delete/' + _ctx.author.id
+    action: '/api/author/delete/' + _ctx.author.id
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
     name: "_token",
@@ -20375,14 +20375,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     ), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(author.name), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td><router-link to=\"'/book/detail/' + book.id\">詳細</router-link></td> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       href: '/author/edit/' + author.id
     }, "編集・削除", 8
     /* PROPS */
     , _hoisted_5)])]);
   }), 128
   /* KEYED_FRAGMENT */
-  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <ul>\n            <li v-for=\"(book,key) in books\">\n                {{book.id}}: {{book.name}}\n            </li>\n        </ul> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" @foreach ($books as $book)\n            <p>{{ $book->name }}</p>\n            <a href=\"/book/detail/{{ $book->id }}\">詳細</a></br>\n            <a href=\"/book/edit/{{ $book->id }}\">編集・削除</a></br>\n        @endforeach "), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  )), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/author"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -20425,7 +20425,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 
 var _hoisted_2 = {
   method: "POST",
-  action: "/author/register"
+  action: "/api/author/register"
 };
 var _hoisted_3 = ["value"];
 
@@ -20601,7 +20601,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td><router-link to=\"'/book/detail/' + book.id\">詳細</router-link></td> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td><a v-bind:href=\"'/book/detail/' + book.id\">詳細</a></td> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <a href=\"/book/edit/{{ $book->id }}\">編集・削除</a></br> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     method: "POST",
-    action: '/book/edit/' + _ctx.book.id
+    action: '/api/book/edit/' + _ctx.book.id
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
     name: "_token",
@@ -20636,7 +20636,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , _hoisted_3), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     method: "POST",
-    action: '/book/delete/' + _ctx.book.id
+    action: '/api/book/delete/' + _ctx.book.id
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
     name: "_token",
@@ -20755,7 +20755,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 
 var _hoisted_2 = {
   method: "POST",
-  action: "/book/register"
+  action: "/api/book/register"
 };
 var _hoisted_3 = ["value"];
 

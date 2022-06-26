@@ -62,7 +62,7 @@ export default {
     },
     methods:{
         getBookDetail() {
-            axios.get('/book/detail-json/' + this.id)
+            axios.get('/api/book/detail-json/' + this.id)
                 .then((res) =>{
                     this.book = res.data;
                     this.msg = 'get data!';

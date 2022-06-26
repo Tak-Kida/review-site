@@ -9,7 +9,7 @@
             <!-- <a href="/book/edit/{{ $book->id }}">編集・削除</a></br> -->
         </tr>
 
-        <form method="POST" v-bind:action="'/book/edit/' + book.id">
+        <form method="POST" v-bind:action="'/api/book/edit/' + book.id">
             <input type="hidden" name="_token" :value="csrf">
             <label>書籍名</label>
             <input type="text" name="name" v-bind:value="book.name ">
@@ -27,7 +27,7 @@
             <input type="submit">
         </form>
 
-        <form method="POST" v-bind:action="'/book/delete/' + book.id">
+        <form method="POST" v-bind:action="'/api/book/delete/' + book.id">
             <input type="hidden" name="_token" :value="csrf">
             <label>削除：</label>
             <input type="submit" value="実行">
@@ -49,7 +49,7 @@ export default {
     },
     methods:{
         getBookDetail() {
-            axios.get('/book/detail-json/' + this.id)
+            axios.get('/api/book/detail-json/' + this.id)
                 .then((res) =>{
                     this.book = res.data;
                     this.msg = 'get data!';

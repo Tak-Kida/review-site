@@ -9,7 +9,7 @@
             <!-- <a href="/author/edit/{{ $author->id }}">編集・削除</a></br> -->
         </tr>
 
-        <form method="POST" v-bind:action="'/author/edit/' + author.id">
+        <form method="POST" v-bind:action="'/api/author/edit/' + author.id">
             <input type="hidden" name="_token" :value="csrf">
             <label>著者名</label>
             <input type="text" name="name" v-bind:value="author.name ">
@@ -21,7 +21,7 @@
             <input type="submit">
         </form>
 
-        <form method="POST" v-bind:action="'/author/delete/' + author.id">
+        <form method="POST" v-bind:action="'/api/author/delete/' + author.id">
             <input type="hidden" name="_token" :value="csrf">
             <label>削除：</label>
             <input type="submit" value="実行">
@@ -43,7 +43,7 @@ export default {
     },
     methods:{
         getAuthorDetail() {
-            axios.get('/author/detail-json/' + this.id)
+            axios.get('/api/author/detail-json/' + this.id)
                 .then((res) =>{
                     this.author = res.data;
                     this.msg = 'get data!';

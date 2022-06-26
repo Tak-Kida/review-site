@@ -41,7 +41,7 @@ export default {
     },
     methods:{
         getBookIndex() {
-            axios.get('/book/index-json')
+            axios.get('/api/book/index-json')
                 .then((res) =>{
                     this.books = res.data;
                     this.msg = 'get data!';

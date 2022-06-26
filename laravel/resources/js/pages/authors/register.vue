@@ -1,7 +1,7 @@
 <template>
     <div>
         <p>著者登録フォーム</p>
-        <form method="POST" action="/author/register">
+        <form method="POST" action="/api/author/register">
             <input type="hidden" name="_token" :value="csrf">
             <label>著者名</label>
             <input type="text" name="name" value="安宅 一夫">

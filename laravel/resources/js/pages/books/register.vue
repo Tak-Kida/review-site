@@ -1,7 +1,7 @@
 <template>
     <div>
         <p>書籍登録フォーム</p>
-        <form method="POST" action="/book/register">
+        <form method="POST" action="/api/book/register">
             <input type="hidden" name="_token" :value="csrf">
             <label>書籍名</label>
             <input type="text" name="name" value="イシューからはじめよ 知的生産の「シンプルな本質」">
