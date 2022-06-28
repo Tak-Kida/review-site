@@ -14,4 +14,8 @@ class Author extends Model
     public static $rules = array(
         // バリデーション
     );
+
+    public function Book() {
+        return $this->belongsTo('App/Author');
+    }
 }

@@ -15,7 +15,7 @@ class PublishersTableSeeder extends Seeder
     public function run()
     {
         $param = [
-            'id' => 1,
+            // 'id' => 1,
             'name' => '英治出版',
             'name_furigana' => 'えいじしゅっぱん',
             'created_at' => '2022-05-01', // 2022-05-01

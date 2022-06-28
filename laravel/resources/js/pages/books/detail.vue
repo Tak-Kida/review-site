@@ -1,26 +1,36 @@
 <template>
     <div>
         <p>detail</p>
-        <tr>
-            <th scope="row">{{ book.id }}</th>
-            <td>{{ book.name }}</td>
-            <!-- <td><router-link to="'/book/detail/' + book.id">詳細</router-link></td> -->
-            <!-- <td><a v-bind:href="'/book/detail/' + book.id">詳細</a></td> -->
-            <!-- <a href="/book/edit/{{ $book->id }}">編集・削除</a></br> -->
-        </tr>
-        <!-- <p>{{ book }}</p> -->
-        <!-- <p>書籍情報</p>
-        <label>書籍名</label>
-        <p>{{ $book->name }}</p></br>
-        <label>著者名</label>
-        <p>{{ $author->name }}（{{ $author->name_furigana }}）</p></br>
-        <label>出版社名</label>
-        <p>{{ $publisher->name }}（{{ $publisher->name_furigana }}）</p></br>
-        <label>初版発行</label>
-        <p>{{ $book->first_published }}</p></br>
+        <table>
+            <tr>
+                <th>ID</th>
+                <td scope="row">{{ book.id }}</td>
+            </tr>
+            <tr>
+                <th>書籍名</th>
+                <td>{{ book.name }}</td>
+            </tr>
+            <tr>
+                <th>著者名</th>
+                <td>
+                    <div v-for="author_info in book.book_authors" :key="author_info.id">
+                            {{ author_info.author.name }} （{{ author_info.author.name_furigana }}）
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>出版社名</th>
+                <td v-if="book.publisher && book.publisher['name']">
+                    {{ book.publisher['name'] }}
+                </td>
+            </tr>
+            <tr>
+                <th>初版発行</th>
+                <td>{{ book.first_published }}</td>
+            </tr>
+        </table>
 
-        <a href="/book/edit/{{ $book->id }}">書籍情報編集</a>
-
+        <!--
         <p>--------------</p>
         <p>もくじ</p>
         <ul>
@@ -58,6 +68,7 @@ export default {
         return {
             msg:'wait...',
             book:[],
+
         };
     },
     methods:{

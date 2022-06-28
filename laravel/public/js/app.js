@@ -20497,15 +20497,52 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_2 = {
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "ID", -1
+/* HOISTED */
+);
+
+var _hoisted_3 = {
   scope: "row"
 };
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "書籍名", -1
+/* HOISTED */
+);
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "著者名", -1
+/* HOISTED */
+);
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "出版社名", -1
+/* HOISTED */
+);
+
+var _hoisted_7 = {
+  key: 0
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "初版発行", -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.book.id), 1
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.book.id), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.book.name), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.book.name), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td><router-link to=\"'/book/detail/' + book.id\">詳細</router-link></td> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td><a v-bind:href=\"'/book/detail/' + book.id\">詳細</a></td> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <a href=\"/book/edit/{{ $book->id }}\">編集・削除</a></br> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p>{{ book }}</p> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p>書籍情報</p>\n        <label>書籍名</label>\n        <p>{{ $book->name }}</p></br>\n        <label>著者名</label>\n        <p>{{ $author->name }}（{{ $author->name_furigana }}）</p></br>\n        <label>出版社名</label>\n        <p>{{ $publisher->name }}（{{ $publisher->name_furigana }}）</p></br>\n        <label>初版発行</label>\n        <p>{{ $book->first_published }}</p></br>\n\n        <a href=\"/book/edit/{{ $book->id }}\">書籍情報編集</a>\n\n        <p>--------------</p>\n        <p>もくじ</p>\n        <ul>\n            @foreach ($chapters as $chapter)\n                <li>\n                    {{ $chapter->title }}<br>\n                    {{ $chapter->summary }}\n                    <a href=\"/chapter/edit/{{ $chapter->id }}\">編集・削除</a>\n                </li>\n            @endforeach\n        </ul>\n\n        <p>--------------</p>\n\n        <p>もくじと要約追加フォーム</p>\n        <form method=\"POST\" action=\"/chapter/register/{{ $book->id }}\">\n            @csrf\n            <input type=\"hidden\" name=\"book_id\" value=\"{{ $book->id }}\"></br>\n            <label>タイトル</label>\n            <input type=\"text\" name=\"title\"></br>\n            <label>要約内容</label>\n            <input type=\"text\" name=\"summary\"></br>\n\n            <input type=\"submit\">\n        </form> ")]);
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.book.book_authors, function (author_info) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      key: author_info.id
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(author_info.author.name) + " （" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(author_info.author.name_furigana) + "） ", 1
+    /* TEXT */
+    );
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_6, _ctx.book.publisher && _ctx.book.publisher['name'] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.book.publisher['name']), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.book.first_published), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n        <p>--------------</p>\n        <p>もくじ</p>\n        <ul>\n            @foreach ($chapters as $chapter)\n                <li>\n                    {{ $chapter->title }}<br>\n                    {{ $chapter->summary }}\n                    <a href=\"/chapter/edit/{{ $chapter->id }}\">編集・削除</a>\n                </li>\n            @endforeach\n        </ul>\n\n        <p>--------------</p>\n\n        <p>もくじと要約追加フォーム</p>\n        <form method=\"POST\" action=\"/chapter/register/{{ $book->id }}\">\n            @csrf\n            <input type=\"hidden\" name=\"book_id\" value=\"{{ $book->id }}\"></br>\n            <label>タイトル</label>\n            <input type=\"text\" name=\"title\"></br>\n            <label>要約内容</label>\n            <input type=\"text\" name=\"summary\"></br>\n\n            <input type=\"submit\">\n        </form> ")]);
 }
 
 /***/ }),

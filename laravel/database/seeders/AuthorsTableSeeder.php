@@ -15,7 +15,7 @@ class AuthorsTableSeeder extends Seeder
     public function run()
     {
         $param = [
-            'id' => 1,
+            // 'id' => 1,
             'name' => '安宅 一夫',
             'name_furigana' => 'アタカ カズオ',
             'created_at' => '2022-05-01', // 2022-05-01

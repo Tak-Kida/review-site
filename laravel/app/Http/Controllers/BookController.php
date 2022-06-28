@@ -6,27 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Chapter;
 use App\Models\Author;
-use App\Models\Publisher;
+use App\Models\BookAuthor;
 
 class BookController extends Controller
 {
-    // json出力
-    public function json($id = -1)
-    {
-        if ($id == -1)
-        {
-            return Book::get()->toJson();
-        }
-        else
-        {
-            return Book::find($id)->toJson();
-        }
-
-        // $books = Book::all();
-        // $data = ['books' => $books];
-        // return $data->toJson();
-    }
-
     // 一覧をJSONで取得する
     public function getIndex()
     {
@@ -37,52 +20,42 @@ class BookController extends Controller
     // 詳細をJSONで取得する
     public function getDetail(Request $request)
     {
-        $book = Book::where('id', $request->id)->first();
+        $book = Book::where('id', $request->id)
+            ->with('publisher', 'book_authors.author')->first();
         return $book->toJson();
-        // $chapters = Chapter::where('book_id', $request->id)->get();
-        // $author = Author::where('id', $book->author_id)->first();
-        // $publisher = Publisher::where('id', $book->publisher_id)->first();
-        // $data = [
-        //     'book' => $book,
-        //     'chapters' => $chapters,
-        //     'author' => $author,
-        //     'publisher' => $publisher,
-        // ];
-        // return view('app', $data);
     }
 
     // 一覧画面
-    public function index()
-    {
-        $books = Book::all();
-        $data = ['books' => $books];
-        // return view('books.index', $data);
-        return view('app', $data);
-    }
+    // public function index()
+    // {
+    //     $books = Book::all();
+    //     $data = ['books' => $books];
+    //     // return view('books.index', $data);
+    //     return view('app', $data);
+    // }
 
     // 詳細画面
-    public function detail(Request $request)
-    {
-        $book = Book::where('id', $request->id)->first();
-        $chapters = Chapter::where('book_id', $request->id)->get();
-        $author = Author::where('id', $book->author_id)->first();
-        $publisher = Publisher::where('id', $book->publisher_id)->first();
-        $data = [
-            'book' => $book,
-            'chapters' => $chapters,
-            'author' => $author,
-            'publisher' => $publisher,
-        ];
-        // return view('books.detail', $data);
-        return view('app', $data);
-    }
+    // public function detail(Request $request)
+    // {
+    //     $book = Book::where('id', $request->id)->first();
+    //     $chapters = Chapter::where('book_id', $request->id)->get();
+    //     $author = Author::where('id', $book->author_id)->first();
+    //     $data = [
+    //         'book' => $book,
+    //         'chapters' => $chapters,
+    //         'author' => $author,
+    //         'publisher' => $publisher,
+    //     ];
+    //     // return view('books.detail', $data);
+    //     return view('app', $data);
+    // }
 
     // 新規登録画面の表示
-    public function register()
-    {
-        $data = [];
-        return view('books.register', $data);
-    }
+    // public function register()
+    // {
+    //     $data = [];
+    //     return view('books.register', $data);
+    // }
 
     // 新規登録を行う
     public function create(Request $request)

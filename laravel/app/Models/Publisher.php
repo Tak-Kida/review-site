@@ -14,4 +14,5 @@ class Publisher extends Model
     public static $rules = array(
         // バリデーション
     );
+
 }
