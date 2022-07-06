@@ -1,7 +1,7 @@
 <template>
     <div>
         <p>出版社登録フォーム</p>
-        <form method="POST" action="/publisher/register">
+        <form method="POST" action="/api/publisher/register">
             <input type="hidden" name="_token" :value="csrf">
             <label>出版社名</label>
             <input type="text" name="name" value="英治出版">

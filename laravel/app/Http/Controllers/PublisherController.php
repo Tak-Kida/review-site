@@ -30,20 +30,24 @@ class PublisherController extends Controller
         // return view('publishers.index', $data);
     }
 
-    // 新規登録画面の表示
-    public function register()
+    // 新規登録の実行
+    public function register($name, $name_furigana)
     {
-        return view('app');
+        $publisher = new Publisher;
+        $publisher->fill([
+            'name' => $name,
+            'name_furigana' => $name_furigana,
+        ])->save();
+        return($publisher->id);
     }
 
     // 新規登録を行う
     public function create(Request $request)
     {
         $this->validate($request, Publisher::$rules);
-        $publisher = new Publisher;
         $form = $request->all();
+        $this->register($form['name'], $form['name_furigana']);
         unset($form['_token']);
-        $publisher->fill($form)->save();
         return redirect('/publisher');
     }
 

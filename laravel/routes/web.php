@@ -36,11 +36,11 @@ Route::post('/api/author/edit/{id}', 'App\Http\Controllers\AuthorController@upda
 Route::post('/api/author/delete/{id}', 'App\Http\Controllers\AuthorController@delete');
 
 // Publisher
-Route::get('/publisher/index-json', 'App\Http\Controllers\PublisherController@getIndex');
-Route::get('/publisher/detail-json/{id}', 'App\Http\Controllers\PublisherController@getDetail');
-Route::post('/publisher/register', 'App\Http\Controllers\PublisherController@create');
-Route::post('/publisher/edit/{id}', 'App\Http\Controllers\PublisherController@update');
-Route::post('/publisher/delete/{id}', 'App\Http\Controllers\PublisherController@delete');
+Route::get('api/publisher/index-json', 'App\Http\Controllers\PublisherController@getIndex');
+Route::get('api/publisher/detail-json/{id}', 'App\Http\Controllers\PublisherController@getDetail');
+Route::post('api/publisher/register', 'App\Http\Controllers\PublisherController@create');
+Route::post('api/publisher/edit/{id}', 'App\Http\Controllers\PublisherController@update');
+Route::post('api/publisher/delete/{id}', 'App\Http\Controllers\PublisherController@delete');
 
 // Root
 Route::get('/{any}', function() {

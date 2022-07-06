@@ -11,6 +11,8 @@ class BookAuthor extends Model
 
     protected $table = 'book_author';
 
+    protected $guarded = array('id');
+
     public function author() {
         return $this->hasOne('App\Models\Author', 'id', 'author_id');
     }

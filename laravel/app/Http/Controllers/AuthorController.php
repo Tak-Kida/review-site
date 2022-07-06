@@ -30,21 +30,24 @@ class AuthorController extends Controller
     }
 
     // 新規登録画面の表示
-    public function register()
+    public function register($author_name, $author_name_furigana)
     {
-        return view('app');
-        // $data = [];
-        // return view('authors.register', $data);
+        $author = new Author;
+        $author->fill([
+            'name' => $author_name,
+            'name_furigana' => $author_name_furigana,
+        ])->save();
+        return($author->id);
     }
 
     // 新規登録を行う
     public function create(Request $request)
     {
         $this->validate($request, Author::$rules);
-        $book = new Author;
+        $author = new Author;
         $form = $request->all();
         unset($form['_token']);
-        $book->fill($form)->save();
+        $author->fill($form)->save();
         return redirect('/author');
     }
 

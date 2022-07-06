@@ -19873,8 +19873,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      msg: 'wait...',
+      publishers: [],
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };
+  },
+  methods: {
+    getPublisherIndex: function getPublisherIndex() {
+      var _this = this;
+
+      axios.get('/api/publisher/index-json').then(function (res) {
+        _this.publishers = res.data;
+        _this.msg = 'get data!';
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getPublisherIndex();
   }
 });
 
@@ -19908,7 +19923,7 @@ __webpack_require__.r(__webpack_exports__);
     getPublisherDetail: function getPublisherDetail() {
       var _this = this;
 
-      axios.get('/publisher/detail-json/' + this.id).then(function (res) {
+      axios.get('/api/publisher/detail-json/' + this.id).then(function (res) {
         _this.publisher = res.data;
         _this.msg = 'get data!';
       });
@@ -19943,7 +19958,7 @@ __webpack_require__.r(__webpack_exports__);
     getPublisherIndex: function getPublisherIndex() {
       var _this = this;
 
-      axios.get('/publisher/index-json').then(function (res) {
+      axios.get('api/publisher/index-json').then(function (res) {
         _this.publishers = res.data;
         _this.msg = 'get data!';
       });
@@ -20796,16 +20811,88 @@ var _hoisted_2 = {
 };
 var _hoisted_3 = ["value"];
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<label>書籍名</label><input type=\"text\" name=\"name\" value=\"イシューからはじめよ 知的生産の「シンプルな本質」\"><br><label>著者名</label><input type=\"text\" name=\"author_id\" value=\"1\"><br><label>出版社名</label><input type=\"text\" name=\"publisher_id\" value=\"1\"><br><label>初版発行</label><input type=\"text\" name=\"first_published\" value=\"2010-11-01\"><br><input type=\"submit\">", 13);
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "book_block"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "書籍名"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "name",
+  value: "イシューからはじめよ 知的生産の「シンプルな本質」"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"author_block\"><label>著者名</label><input type=\"text\" name=\"authors[0]\" value=\"1\"><input type=\"text\" name=\"authors[1]\" value=\"2\"><input type=\"text\" name=\"authors[2]\" value=\"3\"><input type=\"text\" name=\"author_new_name[0]\" value=\"養老孟司\"><input type=\"text\" name=\"author_new_name_furigana[0]\" value=\"ようろうたけし\"><input type=\"text\" name=\"author_new_name[1]\" value=\"森永卓郎\"><input type=\"text\" name=\"author_new_name_furigana[1]\" value=\"もりながたくろう\"></div>", 1);
+
+var _hoisted_6 = {
+  "class": "publisher_block"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "出版社名", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  name: "publisher_id"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  disabled: "",
+  value: ""
+}, "選択してください", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = ["value"];
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "publisher_name",
+  value: ""
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "publisher_name_furigana",
+  value: ""
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "初版発行"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "first_published",
+  value: "2010-11-01"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "submit"
+}, null, -1
+/* HOISTED */
+);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
     name: "_token",
-    value: $data.csrf
+    value: _ctx.csrf
   }, null, 8
   /* PROPS */
-  , _hoisted_3), _hoisted_4])]);
+  , _hoisted_3), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 書籍名欄 "), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者情報欄 "), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 出版社情報欄 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", _hoisted_8, [_hoisted_9, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.publishers, function (publisher) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+      value: publisher.id,
+      key: publisher.id
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(publisher.name), 9
+    /* TEXT, PROPS */
+    , _hoisted_10);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))]), _hoisted_11, _hoisted_12]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 初版発行欄 "), _hoisted_13, _hoisted_14]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.msg), 1
+  /* TEXT */
+  )]);
 }
 
 /***/ }),
@@ -21018,7 +21105,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 
 var _hoisted_2 = {
   method: "POST",
-  action: "/publisher/register"
+  action: "/api/publisher/register"
 };
 var _hoisted_3 = ["value"];
 

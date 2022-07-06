@@ -43,7 +43,7 @@ export default {
     },
     methods:{
         getPublisherDetail() {
-            axios.get('/publisher/detail-json/' + this.id)
+            axios.get('/api/publisher/detail-json/' + this.id)
                 .then((res) =>{
                     this.publisher = res.data;
                     this.msg = 'get data!';

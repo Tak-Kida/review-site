@@ -60,11 +60,35 @@ class BookController extends Controller
     // 新規登録を行う
     public function create(Request $request)
     {
+        $form = $request->all();
+        // 新規の出版社が入力されていたら登録する
+        if ($form['publisher_name'] && $form['publisher_name_furigana']) {
+            $validated = $request->validate([
+                // 'publisher_name'          => 'required|unique:posts|max:255',
+                // 'publisher_name_furigana' => 'required',
+            ]);
+            $publisher = app()->make('App\Http\Controllers\PublisherController');
+            $publisher_id = $publisher->register($form['publisher_name'], $form['publisher_name_furigana']);
+            $form['publisher_id'] = $publisher_id;
+        }
+        // 新規の著者が入力されていたら登録する
+        if ($form['author_new_name'] && $form['author_new_name_furigana']) {
+            foreach($form['author_new_name'] as $key => $author_new_name_one) {
+                $validated = $request->validate([
+                    // 'publisher_name'          => 'required|unique:posts|max:255',
+                    // 'publisher_name_furigana' => 'required',
+                ]);
+                $author = app()->make('App\Http\Controllers\AuthorController');
+                $author_id = $author->register($author_new_name_one, $form['author_new_name_furigana'][$key]);
+                array_push($form['authors'], $author_id);
+            }
+        }
         $this->validate($request, Book::$rules);
         $book = new Book;
-        $form = $request->all();
         unset($form['_token']);
         $book->fill($form)->save();
+        $book_author = app()->make('App\Http\Controllers\BookAuthorController');
+        $book_author->create($book->id, $form['authors']);
         return redirect('/book');
     }
 

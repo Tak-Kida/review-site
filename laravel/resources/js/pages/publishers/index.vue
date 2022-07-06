@@ -40,7 +40,7 @@ export default {
     },
     methods:{
         getPublisherIndex() {
-            axios.get('/publisher/index-json')
+            axios.get('api/publisher/index-json')
                 .then((res) =>{
                     this.publishers = res.data;
                     this.msg = 'get data!';
