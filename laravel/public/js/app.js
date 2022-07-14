@@ -19815,10 +19815,26 @@ __webpack_require__.r(__webpack_exports__);
         _this.book = res.data;
         _this.msg = 'get data!';
       });
+    },
+    getAuthorIndex: function getAuthorIndex() {
+      var _this2 = this;
+
+      axios.get('/api/author/index-json').then(function (res) {
+        _this2.authors = res.data;
+      });
+    },
+    getPublisherIndex: function getPublisherIndex() {
+      var _this3 = this;
+
+      axios.get('/api/publisher/index-json').then(function (res) {
+        _this3.publishers = res.data;
+      });
     }
   },
   mounted: function mounted() {
     this.getBookDetail();
+    this.getAuthorIndex();
+    this.getPublisherIndex();
   }
 });
 
@@ -19884,7 +19900,13 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/publisher/index-json').then(function (res) {
         _this.publishers = res.data;
-        _this.msg = 'get data!';
+      });
+    },
+    getAuthorIndex: function getAuthorIndex() {
+      var _this2 = this;
+
+      axios.get('/api/author/index-json').then(function (res) {
+        _this2.authors = res.data;
       });
     }
   },
@@ -20592,54 +20614,66 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 
 var _hoisted_6 = ["value"];
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "著者名", -1
 /* HOISTED */
 );
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "著者名", -1
-/* HOISTED */
-);
-
+var _hoisted_8 = ["name", "onUpdate:modelValue"];
 var _hoisted_9 = ["value"];
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "出版社名", -1
 /* HOISTED */
 );
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "出版社名", -1
+var _hoisted_11 = {
+  name: "publisher_id"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  disabled: "",
+  value: ""
+}, "選択してください", -1
 /* HOISTED */
 );
 
-var _hoisted_12 = ["value"];
+var _hoisted_13 = ["value"];
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "publisher_name",
+  value: ""
+}, null, -1
 /* HOISTED */
 );
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "初版発行", -1
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "publisher_name_furigana",
+  value: ""
+}, null, -1
 /* HOISTED */
 );
 
-var _hoisted_15 = ["value"];
-
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "初版発行", -1
 /* HOISTED */
 );
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+var _hoisted_17 = ["value"];
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
   type: "submit"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_18 = ["action"];
-var _hoisted_19 = ["value"];
+var _hoisted_19 = ["action"];
+var _hoisted_20 = ["value"];
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "削除：", -1
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "削除：", -1
 /* HOISTED */
 );
 
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
   type: "submit",
   value: "実行"
 }, null, -1
@@ -20651,7 +20685,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.book.name), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td><router-link to=\"'/book/detail/' + book.id\">詳細</router-link></td> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td><a v-bind:href=\"'/book/detail/' + book.id\">詳細</a></td> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <a href=\"/book/edit/{{ $book->id }}\">編集・削除</a></br> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     method: "POST",
     action: '/api/book/edit/' + _ctx.book.id
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -20660,31 +20694,49 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     value: _ctx.csrf
   }, null, 8
   /* PROPS */
-  , _hoisted_4), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  , _hoisted_4), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     name: "name",
     value: _ctx.book.name
   }, null, 8
   /* PROPS */
-  , _hoisted_6), _hoisted_7, _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    name: "author_id",
-    value: _ctx.book.author_id
-  }, null, 8
-  /* PROPS */
-  , _hoisted_9), _hoisted_10, _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    name: "publisher_id",
-    value: _ctx.book.publisher_id
-  }, null, 8
-  /* PROPS */
-  , _hoisted_12), _hoisted_13, _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  , _hoisted_6)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_7, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.book.book_authors, function (author_info, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("select", {
+      key: author_info.id,
+      name: 'authors[' + index + ']',
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return author_info.author.id = $event;
+      }
+    }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.authors, function (author) {
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+        key: author.id,
+        value: author.id
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(author.name + '（' + author.name_furigana + '）'), 9
+      /* TEXT, PROPS */
+      , _hoisted_9);
+    }), 128
+    /* KEYED_FRAGMENT */
+    ))], 8
+    /* PROPS */
+    , _hoisted_8)), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, author_info.author.id]]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"text\" name=\"author_new_name[0]\" />\n                <input type=\"text\" name=\"author_new_name_furigana[0]\" />\n                <input type=\"text\" name=\"author_new_name[1]\" />\n                <input type=\"text\" name=\"author_new_name_furigana[1]\" /> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", _hoisted_11, [_hoisted_12, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.publishers, function (publisher) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+      value: publisher.id,
+      key: publisher.id
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(publisher.name), 9
+    /* TEXT, PROPS */
+    , _hoisted_13);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))]), _hoisted_14, _hoisted_15]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     name: "first_published",
     value: _ctx.book.first_published
   }, null, 8
   /* PROPS */
-  , _hoisted_15), _hoisted_16, _hoisted_17], 8
+  , _hoisted_17)]), _hoisted_18], 8
   /* PROPS */
   , _hoisted_3), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     method: "POST",
@@ -20695,9 +20747,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     value: _ctx.csrf
   }, null, 8
   /* PROPS */
-  , _hoisted_19), _hoisted_20, _hoisted_21], 8
+  , _hoisted_20), _hoisted_21, _hoisted_22], 8
   /* PROPS */
-  , _hoisted_18)]);
+  , _hoisted_19)]);
 }
 
 /***/ }),
@@ -20821,7 +20873,23 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"author_block\"><label>著者名</label><input type=\"text\" name=\"authors[0]\" value=\"1\"><input type=\"text\" name=\"authors[1]\" value=\"2\"><input type=\"text\" name=\"authors[2]\" value=\"3\"><input type=\"text\" name=\"author_new_name[0]\" value=\"養老孟司\"><input type=\"text\" name=\"author_new_name_furigana[0]\" value=\"ようろうたけし\"><input type=\"text\" name=\"author_new_name[1]\" value=\"森永卓郎\"><input type=\"text\" name=\"author_new_name_furigana[1]\" value=\"もりながたくろう\"></div>", 1);
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "author_block"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "著者名"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "authors[0]",
+  value: "1"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "authors[1]",
+  value: "2"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "authors[2]",
+  value: "3"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"text\" name=\"author_new_name[0]\" value=\"\" />\n                <input type=\"text\" name=\"author_new_name_furigana[0]\" value=\"\" />\n                <input type=\"text\" name=\"author_new_name[1]\" value=\"\" />\n                <input type=\"text\" name=\"author_new_name_furigana[1]\" value=\"\" /> ")], -1
+/* HOISTED */
+);
 
 var _hoisted_6 = {
   "class": "publisher_block"

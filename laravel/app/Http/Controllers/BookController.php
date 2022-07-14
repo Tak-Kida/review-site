@@ -95,20 +95,51 @@ class BookController extends Controller
     // 編集画面
     public function edit(Request $request)
     {
-        $book = Book::where('id', $request->id)->first();
-        $data = ['book' => $book];
-        // return view('books.edit', $data);
-        return view('app', $data);
+        // $book = Book::where('id', $request->id)->first();
+        // $data = ['book' => $book];
+        // // return view('books.edit', $data);
+        // return view('app', $data);
     }
 
     // 更新を行う
     public function update(Request $request)
     {
+        $form = $request->all();
+
+        // 新規の出版社が入力されていたら登録する
+        if ($form['publisher_name'] && $form['publisher_name_furigana']) {
+            $validated = $request->validate([
+                // 'publisher_name'          => 'required|unique:posts|max:255',
+                // 'publisher_name_furigana' => 'required',
+            ]);
+            $publisher = app()->make('App\Http\Controllers\PublisherController');
+            $publisher_id = $publisher->register($form['publisher_name'], $form['publisher_name_furigana']);
+            $form['publisher_id'] = $publisher_id;
+        }
+
+        // ToDo
+        // 新規著者情報の空欄チェック
+        // 新規の著者が入力されていたら登録する
+        // if ($form['author_new_name'] && $form['author_new_name_furigana']) {
+        //     foreach($form['author_new_name'] as $key => $author_new_name_one) {
+        //         $validated = $request->validate([
+        //             // 'publisher_name'          => 'required|unique:posts|max:255',
+        //             // 'publisher_name_furigana' => 'required',
+        //         ]);
+        //         $author = app()->make('App\Http\Controllers\AuthorController');
+        //         $author_id = $author->register($author_new_name_one, $form['author_new_name_furigana'][$key]);
+        //         array_push($form['authors'], $author_id);
+        //     }
+        // }
+
+        // 書籍をまず更新する
         $this->validate($request, Book::$rules);
         $book = Book::where('id', $request->id)->first();
-        $form = $request->all();
         unset($form['_token']);
         $book->fill($form)->save();
+        // 書籍の著者情報を更新する
+        $book_author = app()->make('App\Http\Controllers\BookAuthorController');
+        $book_author->update($book->id, $form['authors']);
         return redirect('/book');
     }
 

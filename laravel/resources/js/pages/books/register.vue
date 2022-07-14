@@ -14,10 +14,10 @@
                 <input type="text" name="authors[0]" value="1" />
                 <input type="text" name="authors[1]" value="2" />
                 <input type="text" name="authors[2]" value="3" />
-                <input type="text" name="author_new_name[0]" value="養老孟司" />
-                <input type="text" name="author_new_name_furigana[0]" value="ようろうたけし" />
-                <input type="text" name="author_new_name[1]" value="森永卓郎" />
-                <input type="text" name="author_new_name_furigana[1]" value="もりながたくろう" />
+                <!-- <input type="text" name="author_new_name[0]" value="" />
+                <input type="text" name="author_new_name_furigana[0]" value="" />
+                <input type="text" name="author_new_name[1]" value="" />
+                <input type="text" name="author_new_name_furigana[1]" value="" /> -->
             </div>
             <!-- 出版社情報欄 -->
             <div class="publisher_block">
@@ -59,8 +59,12 @@ export default {
             axios.get('/api/publisher/index-json')
                 .then((res) =>{
                     this.publishers = res.data;
-
-                    this.msg = 'get data!';
+                });
+        },
+        getAuthorIndex() {
+            axios.get('/api/author/index-json')
+                .then((res) =>{
+                    this.authors = res.data;
                 });
         }
     },
