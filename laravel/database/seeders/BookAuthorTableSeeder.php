@@ -18,6 +18,8 @@ class BookAuthorTableSeeder extends Seeder
             // 'id' => 1,
             'book_id' => 1,
             'author_id' => 1,
+            'created_at' => '2022-05-01', // 2022-05-01
+            'updated_at' => '2022-05-01', // 2022-05-01
         ];
         DB::table('book_author')->insert($param);
     }
