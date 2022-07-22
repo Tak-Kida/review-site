@@ -19774,10 +19774,19 @@ __webpack_require__.r(__webpack_exports__);
         _this.book = res.data;
         _this.msg = 'get data!';
       });
+    },
+    getChapterIndex: function getChapterIndex() {
+      var _this2 = this;
+
+      axios.get('/api/chapter/index-json').then(function (res) {
+        _this2.chapters = res.data;
+        _this2.msg = 'get chapters!';
+      });
     }
   },
   mounted: function mounted() {
     this.getBookDetail();
+    this.getChapterIndex();
   }
 });
 
@@ -19829,12 +19838,21 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/publisher/index-json').then(function (res) {
         _this3.publishers = res.data;
       });
+    },
+    getChapterIndex: function getChapterIndex() {
+      var _this4 = this;
+
+      axios.get('/api/chapter/index-json').then(function (res) {
+        _this4.chapters = res.data;
+        _this4.msg = 'get chapters!';
+      });
     }
   },
   mounted: function mounted() {
     this.getBookDetail();
     this.getAuthorIndex();
     this.getPublisherIndex();
+    this.getChapterIndex();
   }
 });
 
@@ -20530,7 +20548,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "detail", -1
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "書籍情報詳細", -1
 /* HOISTED */
 );
 
@@ -20562,6 +20580,21 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
+var _hoisted_9 = ["href"];
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, "---------------------", -1
+/* HOISTED */
+);
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "チャプター", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_13 = ["href"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.book.id), 1
   /* TEXT */
@@ -20579,7 +20612,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.book.first_published), 1
   /* TEXT */
-  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n        <p>--------------</p>\n        <p>もくじ</p>\n        <ul>\n            @foreach ($chapters as $chapter)\n                <li>\n                    {{ $chapter->title }}<br>\n                    {{ $chapter->summary }}\n                    <a href=\"/chapter/edit/{{ $chapter->id }}\">編集・削除</a>\n                </li>\n            @endforeach\n        </ul>\n\n        <p>--------------</p>\n\n        <p>もくじと要約追加フォーム</p>\n        <form method=\"POST\" action=\"/chapter/register/{{ $book->id }}\">\n            @csrf\n            <input type=\"hidden\" name=\"book_id\" value=\"{{ $book->id }}\"></br>\n            <label>タイトル</label>\n            <input type=\"text\" name=\"title\"></br>\n            <label>要約内容</label>\n            <input type=\"text\" name=\"summary\"></br>\n\n            <input type=\"submit\">\n        </form> ")]);
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    href: '/book/edit/' + _ctx.book.id
+  }, "編集・削除", 8
+  /* PROPS */
+  , _hoisted_9), _hoisted_10, _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.chapters, function (chapter) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+      key: chapter.id
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(chapter.id) + "：", 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(chapter.title), 1
+    /* TEXT */
+    ), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(chapter.summary), 1
+    /* TEXT */
+    )])]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    href: '/book/edit/' + _ctx.book.id
+  }, "編集・削除", 8
+  /* PROPS */
+  , _hoisted_13)]);
 }
 
 /***/ }),
@@ -20598,7 +20651,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "書籍情報更新フォーム", -1
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "書籍情報更新フォーム", -1
 /* HOISTED */
 );
 
@@ -20680,6 +20733,74 @@ var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, "---------------------", -1
+/* HOISTED */
+);
+
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "チャプター", -1
+/* HOISTED */
+);
+
+var _hoisted_25 = ["action"];
+var _hoisted_26 = ["value"];
+var _hoisted_27 = ["value"];
+
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "チャプタータイトル", -1
+/* HOISTED */
+);
+
+var _hoisted_29 = ["value"];
+
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "チャプター内容", -1
+/* HOISTED */
+);
+
+var _hoisted_31 = ["value"];
+
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "submit"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_33 = ["action"];
+var _hoisted_34 = ["value"];
+var _hoisted_35 = ["value"];
+
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "submit",
+  value: "削除"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_37 = {
+  method: "POST",
+  action: '/api/chapter/register'
+};
+var _hoisted_38 = ["value"];
+var _hoisted_39 = ["value"];
+
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "チャプタータイトル"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "new_chapter_title"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "チャプター内容"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "new_chapter_summary"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "submit"
+}, null, -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.book.id), 1
   /* TEXT */
@@ -20749,7 +20870,73 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , _hoisted_20), _hoisted_21, _hoisted_22], 8
   /* PROPS */
-  , _hoisted_19)]);
+  , _hoisted_19), _hoisted_23, _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <table>\n            <tr v-for=\"chapter in chapters\" :key=\"chapter.id\">\n                <th>{{ chapter.id }}：</th>\n                <td>\n                    {{ chapter.title }}<br/>\n                    {{ chapter.summary }}\n                </td>\n            </tr>\n        </table> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 既存チャプター "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.chapters, function (chapter) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+      key: chapter.id
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(chapter.id) + "：", 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+      method: "POST",
+      action: '/api/chapter/edit/' + _ctx.book.id
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "hidden",
+      name: "_token",
+      value: _ctx.csrf
+    }, null, 8
+    /* PROPS */
+    , _hoisted_26), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "hidden",
+      name: "id",
+      value: chapter.id
+    }, null, 8
+    /* PROPS */
+    , _hoisted_27), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "text",
+      name: "chapter_title",
+      value: chapter.title
+    }, null, 8
+    /* PROPS */
+    , _hoisted_29)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "text",
+      name: "chapter_summary",
+      value: chapter.summary
+    }, null, 8
+    /* PROPS */
+    , _hoisted_31)])]), _hoisted_32], 8
+    /* PROPS */
+    , _hoisted_25), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+      method: "POST",
+      action: '/api/chapter/delete/' + chapter.id
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "hidden",
+      name: "_token",
+      value: _ctx.csrf
+    }, null, 8
+    /* PROPS */
+    , _hoisted_34), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "hidden",
+      name: "id",
+      value: chapter.id
+    }, null, 8
+    /* PROPS */
+    , _hoisted_35), _hoisted_36], 8
+    /* PROPS */
+    , _hoisted_33)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <form method=\"POST\" v-bind:action=\"'/api/chapter/edit/' + book.id\">\n                    <input type=\"hidden\" name=\"_token\" :value=\"csrf\">\n                    <input type=\"hidden\" name=\"book_id\" v-bind:value=\"book.id\" />\n                    <div>\n                        <label>チャプタータイトル</label>\n                        <div>\n                            <input type=\"text\" name=\"chapter_title\" v-bind:value=\"chapter.title\">\n                        </div>\n                    </div>\n                    <div>\n                        <label>チャプター内容</label>\n                        <div>\n                            <input type=\"text\" name=\"chapter_summary\" v-bind:value=\"chapter.summary\">\n                        </div>\n                    </div>\n\n                    <input type=\"submit\">\n                </form> ")]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 既存チャプター "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <form method=\"POST\" v-bind:action=\"'/api/chapter/edit/' + book.id\">\n            <input type=\"hidden\" name=\"_token\" :value=\"csrf\">\n            <input type=\"hidden\" name=\"book_id\" v-bind:value=\"book.id\" />\n            <div>\n                <label>チャプタータイトル</label>\n                <div>\n                    <input type=\"text\" name=\"new_chapter_title\" v-bind:value=\"chapter.title\">\n                </div>\n            </div>\n            <div>\n                <label>チャプター内容</label>\n                <div>\n                    <input type=\"text\" name=\"new_chapter_summary\" v-bind:value=\"chapter.summary\">\n                </div>\n            </div>\n\n            <input type=\"submit\">\n        </form> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規チャプター "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "hidden",
+    name: "_token",
+    value: _ctx.csrf
+  }, null, 8
+  /* PROPS */
+  , _hoisted_38), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "hidden",
+    name: "book_id",
+    value: _ctx.book.id
+  }, null, 8
+  /* PROPS */
+  , _hoisted_39), _hoisted_40, _hoisted_41, _hoisted_42])]);
 }
 
 /***/ }),

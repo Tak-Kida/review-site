@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>detail</p>
+        <h1>書籍情報詳細</h1>
         <table>
             <tr>
                 <th>ID</th>
@@ -30,32 +30,20 @@
             </tr>
         </table>
 
-        <!--
-        <p>--------------</p>
-        <p>もくじ</p>
-        <ul>
-            @foreach ($chapters as $chapter)
-                <li>
-                    {{ $chapter->title }}<br>
-                    {{ $chapter->summary }}
-                    <a href="/chapter/edit/{{ $chapter->id }}">編集・削除</a>
-                </li>
-            @endforeach
-        </ul>
+        <a v-bind:href="'/book/edit/' + book.id ">編集・削除</a>
+        <div>---------------------</div>
 
-        <p>--------------</p>
-
-        <p>もくじと要約追加フォーム</p>
-        <form method="POST" action="/chapter/register/{{ $book->id }}">
-            @csrf
-            <input type="hidden" name="book_id" value="{{ $book->id }}"></br>
-            <label>タイトル</label>
-            <input type="text" name="title"></br>
-            <label>要約内容</label>
-            <input type="text" name="summary"></br>
-
-            <input type="submit">
-        </form> -->
+        <h3>チャプター</h3>
+        <table>
+            <tr v-for="chapter in chapters" :key="chapter.id">
+                <th>{{ chapter.id }}：</th>
+                <td>
+                    {{ chapter.title }}<br/>
+                    {{ chapter.summary }}
+                </td>
+            </tr>
+        </table>
+        <a v-bind:href="'/book/edit/' + book.id ">編集・削除</a>
     </div>
 </template>
 
@@ -78,10 +66,18 @@ export default {
                     this.book = res.data;
                     this.msg = 'get data!';
                 });
+        },
+        getChapterIndex() {
+            axios.get('/api/chapter/index-json')
+                .then((res) =>{
+                    this.chapters = res.data;
+                    this.msg = 'get chapters!';
+                });
         }
     },
     mounted () {
         this.getBookDetail();
+        this.getChapterIndex();
     },
 }
 </script>

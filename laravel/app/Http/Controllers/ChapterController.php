@@ -8,6 +8,13 @@ use App\Models\Chapter;
 
 class ChapterController extends Controller
 {
+    // 一覧をJSONで取得する
+    public function getIndex()
+    {
+        $chapters = Chapter::all();
+        return $chapters->toJson();
+    }
+
     // 新規登録を行う
     public function create(Request $request)
     {
@@ -15,17 +22,21 @@ class ChapterController extends Controller
         $chapter = new Chapter;
         $form = $request->all();
         unset($form['_token']);
-        $chapter->fill($form)->save();
-        return redirect('/book/detail/' . $request->book_id);
+        $chapter->fill([
+            'book_id' => $form['book_id'],
+            'title' => $form['new_chapter_title'],
+            'summary' => $form['new_chapter_summary'],
+        ])->save();
+        return redirect('/book/edit/' . $request->book_id);
     }
 
     // 編集画面
-    public function edit(Request $request)
-    {
-        $chapter = Chapter::where('id', $request->id)->first();
-        $data = ['chapter' => $chapter];
-        return view('chapters.edit', $data);
-    }
+    // public function edit(Request $request)
+    // {
+    //     $chapter = Chapter::where('id', $request->id)->first();
+    //     $data = ['chapter' => $chapter];
+    //     return view('chapters.edit', $data);
+    // }
 
     // 更新を行う
     public function update(Request $request)
@@ -34,7 +45,10 @@ class ChapterController extends Controller
         $chapter = Chapter::where('id', $request->id)->first();
         $form = $request->all();
         unset($form['_token']);
-        $chapter->fill($form)->save();
+        $chapter->fill([
+            'title' => $form['chapter_title'],
+            'summary' => $form['chapter_summary'],
+        ])->save();
         return redirect('/book/detail/' . $chapter->book_id );
     }
 

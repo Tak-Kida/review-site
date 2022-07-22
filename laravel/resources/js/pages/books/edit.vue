@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>書籍情報更新フォーム</p>
+        <h1>書籍情報更新フォーム</h1>
         <tr>
             <th scope="row">{{ book.id }}</th>
             <td>{{ book.name }}</td>
@@ -56,6 +56,111 @@
             <label>削除：</label>
             <input type="submit" value="実行">
         </form>
+
+        <div>---------------------</div>
+
+        <h3>チャプター</h3>
+        <!-- <table>
+            <tr v-for="chapter in chapters" :key="chapter.id">
+                <th>{{ chapter.id }}：</th>
+                <td>
+                    {{ chapter.title }}<br/>
+                    {{ chapter.summary }}
+                </td>
+            </tr>
+        </table> -->
+
+        <!-- 既存チャプター -->
+        <table>
+            <tr v-for="chapter in chapters" :key="chapter.id">
+                <th>{{ chapter.id }}：</th>
+                <td>
+                    <form method="POST" v-bind:action="'/api/chapter/edit/' + book.id">
+                        <input type="hidden" name="_token" :value="csrf">
+                        <input type="hidden" name="id" v-bind:value="chapter.id" />
+
+                        <div>
+                            <label>チャプタータイトル</label>
+                            <div>
+                                <input type="text" name="chapter_title" v-bind:value="chapter.title">
+                            </div>
+                        </div>
+                        <div>
+                            <label>チャプター内容</label>
+                            <div>
+                                <input type="text" name="chapter_summary" v-bind:value="chapter.summary">
+                            </div>
+                        </div>
+
+                        <input type="submit" />
+                    </form>
+                    <form method="POST" v-bind:action="'/api/chapter/delete/' + chapter.id">
+                        <input type="hidden" name="_token" :value="csrf">
+                        <input type="hidden" name="id" v-bind:value="chapter.id" />
+                        <input type="submit" value="削除" />
+                    </form>
+                </td>
+                <!-- <form method="POST" v-bind:action="'/api/chapter/edit/' + book.id">
+                    <input type="hidden" name="_token" :value="csrf">
+                    <input type="hidden" name="book_id" v-bind:value="book.id" />
+                    <div>
+                        <label>チャプタータイトル</label>
+                        <div>
+                            <input type="text" name="chapter_title" v-bind:value="chapter.title">
+                        </div>
+                    </div>
+                    <div>
+                        <label>チャプター内容</label>
+                        <div>
+                            <input type="text" name="chapter_summary" v-bind:value="chapter.summary">
+                        </div>
+                    </div>
+
+                    <input type="submit">
+                </form> -->
+            </tr>
+        </table>
+
+
+        <!-- 既存チャプター -->
+        <!-- <form method="POST" v-bind:action="'/api/chapter/edit/' + book.id">
+            <input type="hidden" name="_token" :value="csrf">
+            <input type="hidden" name="book_id" v-bind:value="book.id" />
+            <div>
+                <label>チャプタータイトル</label>
+                <div>
+                    <input type="text" name="new_chapter_title" v-bind:value="chapter.title">
+                </div>
+            </div>
+            <div>
+                <label>チャプター内容</label>
+                <div>
+                    <input type="text" name="new_chapter_summary" v-bind:value="chapter.summary">
+                </div>
+            </div>
+
+            <input type="submit">
+        </form> -->
+
+        <!-- 新規チャプター -->
+        <form method="POST" v-bind:action="'/api/chapter/register'">
+            <input type="hidden" name="_token" :value="csrf">
+            <input type="hidden" name="book_id" v-bind:value="book.id" />
+            <div>
+                <label>チャプタータイトル</label>
+                <div>
+                    <input type="text" name="new_chapter_title">
+                </div>
+            </div>
+            <div>
+                <label>チャプター内容</label>
+                <div>
+                    <input type="text" name="new_chapter_summary">
+                </div>
+            </div>
+
+            <input type="submit">
+        </form>
     </div>
 </template>
 
@@ -91,11 +196,19 @@ export default {
                     this.publishers = res.data;
                 });
         },
+        getChapterIndex() {
+            axios.get('/api/chapter/index-json')
+                .then((res) =>{
+                    this.chapters = res.data;
+                    this.msg = 'get chapters!';
+                });
+        }
     },
     mounted () {
         this.getBookDetail();
         this.getAuthorIndex();
         this.getPublisherIndex();
+        this.getChapterIndex();
     },
 }
 </script>
