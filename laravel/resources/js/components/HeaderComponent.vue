@@ -4,10 +4,14 @@
             <div class="header-logo">
                 <small>logo</small>
             </div>
+            <!-- サービス名 -->
+            <h2 class="service-title">Book-reviews</h2>
         </div>
         <div class="header-right">
-            <div class="header-link">
-                <small>link</small>
+            <ul class="header-link-list">
+                <li class="header-link">ログイン</li>
+                <!-- <li class="header-link">USER</li>
+                <li class="header-link">ログアウト</li> -->
                 <!-- <ul>
                     <li><router-link to="/">Top</router-link></li>
                     <li><router-link to="/test-page01">Test Page01</router-link></li>
@@ -15,7 +19,7 @@
                     <li><router-link to="/book">Book</router-link></li>
                     <li><router-link to="/author">Author</router-link></li>
                 </ul> -->
-            </div>
+            </ul>
         </div>
     </header>
 </template>
@@ -25,33 +29,48 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 100px;
-    background-color: #f6f6f6;
+    height: 50px;
+    background-color: #0c2e8f;
 }
 
 .header-left {
-    width: 50%;
-    height: 50px;
-    background-color: red
+    display: flex;
+    /* width: 50px;
+    height: 50px; */
+    /* background-color: red */
+}
+
+.service-title {
+    font-size: 40px;
+    margin: 5px 10px;
+    color:#fafafa;
 }
 
 .header-right {
     display: flex;
     justify-content: flex-end;
     width: 50%;
-    height: 50px;
-    background-color: blue
+    /* background-color: blue */
 }
 
 .header-logo {
+    margin-left: 10px;
     width: 50px;
-    height: 100%;
-    background-color: green
+    background-color: darkred
+}
+
+.header-link-list {
+    display: flex;
+    margin: auto 0;
+    /* color:#fafafa; */
+    /* background-color: yellow */
 }
 
 .header-link {
-    width: 50px;
-    height: 100%;
-    background-color: yellow
+    color:#fafafa;
+    list-style: none;
+    margin-right: 10px;
+    /* background-color: yellow */
 }
+
 </style>
