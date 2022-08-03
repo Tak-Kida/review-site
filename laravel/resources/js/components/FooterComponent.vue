@@ -1,19 +1,28 @@
 <template>
     <footer class="footer">
-        <p>footer</p>
-        <ul>
+        <p class="copy-right">Copyright © T.K.</p>
+        <!-- <ul>
             <li><router-link to="/">top</router-link></li>
             <li><router-link to="/book">book</router-link></li>
             <li><router-link to="/author">author</router-link></li>
             <li><router-link to="/publisher">publisher</router-link></li>
-        </ul>
+        </ul> -->
     </footer>
 </template>
 
 <style>
 .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width:100%;
-    /* height: 50px; */
-    background-color: aquamarine;
+    height: 60px;
+    background-color: #0c2e8f;
 }
+
+.copy-right {
+    display: block;
+    color:#fafafa;
+}
+
 </style>
