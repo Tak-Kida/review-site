@@ -3,7 +3,7 @@
         <div class="header-container">
             <div class="header-left">
                 <div class="header-logo">
-                    <small>logo</small>
+                    <small></small>
                 </div>
                 <!-- サービス名 -->
                 <h2 class="service-title">Book-reviews</h2>
