@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import Sample from './components/Sample.vue'
 import HeaderComponent from './components/HeaderComponent.vue'
 import FooterComponent from './components/FooterComponent.vue'
 import BookIndex from './pages/books/index.vue'
@@ -18,7 +17,6 @@ export default {
   name: 'app',
   components: {
     BookIndex,
-    Sample,
     HeaderComponent,
     FooterComponent
 },
@@ -86,5 +84,37 @@ table {
 	border-spacing: 0;
 }
 
+/* 共通CSS */
+.main {
+    background-color: #fafafa;
+}
+
+.content-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 0;
+    /* max-width: none;
+    min-width: none; */
+}
+
+.container-box {
+    width: 100%;
+}
+
+.title {
+    position: relative;
+    top: 0;
+    left: 0;
+    font-size: 24px;
+    border-bottom: 3px solid #0c2e8f;
+    margin-bottom: 10px;
+}
+
+.title::before {
+    position: absolute;
+    bottom: 0;
+    content: '';
+    width: auto;
+}
 
 </style>

@@ -1,32 +1,41 @@
 <template>
-    <div>
-        <h3>登録済み出版社名一覧</h3>
-        <p>{{ msg }}</p>
-        <hr>
-        <tr v-for="(publisher, index) in publishers" :key="index">
-            <th scope="row">{{ publisher.id }}</th>
-    +       <td>{{ publisher.name }}</td>
-            <!-- <td><router-link to="'/book/detail/' + book.id">詳細</router-link></td> -->
-            <td><a v-bind:href="'/publisher/edit/' + publisher.id ">編集・削除</a></td>
-        </tr>
-        <!-- <ul>
-            <li v-for="(book,key) in books">
-                {{book.id}}: {{book.name}}
-            </li>
-        </ul> -->
-
-        <!-- @foreach ($books as $book)
-            <p>{{ $book->name }}</p>
-            <a href="/book/detail/{{ $book->id }}">詳細</a></br>
-            <a href="/book/edit/{{ $book->id }}">編集・削除</a></br>
-        @endforeach -->
-
-        <p>リンク一覧</p>
-        <ul>
-            <li><router-link to="/publisher">index</router-link></li>
-            <li><router-link to="/publisher/register">register</router-link></li>
-        </ul>
-    </div>
+    <main class="main">
+        <div class="content-wrapper">
+            <div class="top-container">
+                <h3 class ="title">登録済み出版社名一覧</h3>
+                <div class="search-container">
+                    <p class="loading-message">{{ msg }}</p>
+                    <router-link class="link-box-end" to="/publisher/register">新規登録</router-link>
+                </div>
+            </div>
+            <hr />
+            <div class="publisher-container">
+                <table class="publisher-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>id</th>
+                            <th>出版社名</th>
+                            <th>出版社名(ふりがな)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(publisher, index) in publishers" :key="index">
+                            <td scope="row">{{ publisher.id }}</td>
+                            <td class="publisher-name">{{ publisher.name }}</td>
+                            <td class="publisher-name-furigana">{{ publisher.name_furigana }}</td>
+                            <td><a v-bind:href="'/publisher/edit/' + publisher.id ">編集・削除</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr />
+            <div class="bottom-container">
+                <div></div>
+                <router-link class="link-box-end" to="/publisher/register">新規登録</router-link>
+            </div>
+        </div>
+    </main>
 </template>
 
 <script>
@@ -34,7 +43,7 @@
 export default {
     data:function(){
         return {
-            msg:'wait...',
+            msg:'データ取得中...',
             publishers:[],
         };
     },
@@ -43,7 +52,7 @@ export default {
             axios.get('api/publisher/index-json')
                 .then((res) =>{
                     this.publishers = res.data;
-                    this.msg = 'get data!';
+                    this.msg = '登録されている出版社は以下のとおりです';
                 });
         }
     },
@@ -52,3 +61,61 @@ export default {
     },
 }
 </script>
+
+<style>
+.search-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottom-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.loading-message {
+    margin-bottom: 10px;
+}
+
+.link-box, .link-box-end {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:144px;
+    height:40px;
+    border-radius: 5%;
+    background-color: #0c2e8f;
+    color: #fafafa;
+    text-decoration:none;
+    font-weight: 800;
+}
+
+.link-box {
+    margin: 0 auto;
+}
+
+.publisher-container {
+    display: flex;
+    width: 100%;
+}
+
+.publisher-table {
+    margin: 0 auto;
+    width: 80%;
+}
+
+th {
+    padding: 10px;
+    background-color: #0c2e8f;
+    font-size: 24px;
+    color: #fafafa;
+}
+
+td{
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 20px;
+}
+
+</style>

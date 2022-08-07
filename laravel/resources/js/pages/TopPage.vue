@@ -39,20 +39,5 @@ export default {
 
 
 <style>
-.main {
-    background-color: #fafafa;
-}
-
-.content-wrapper {
-    width: 90%;
-    margin: 0 auto;
-    padding: 10px 0;
-    /* max-width: none;
-    min-width: none; */
-}
-
-.container-box {
-    width: 100%;
-}
 
 </style>

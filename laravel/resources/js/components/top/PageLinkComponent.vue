@@ -32,6 +32,7 @@
 .title-box {
     display: flex;
 }
+
 .title {
     position: relative;
     top: 0;
@@ -44,10 +45,8 @@
 .title::before {
     position: absolute;
     bottom: 0;
-
     content: '';
     width: auto;
-    border-bottom: 3px solid aqua;
 }
 
 .page-link-container {
