@@ -24,7 +24,8 @@
                             <td scope="row">{{ publisher.id }}</td>
                             <td class="publisher-name">{{ publisher.name }}</td>
                             <td class="publisher-name-furigana">{{ publisher.name_furigana }}</td>
-                            <td><a v-bind:href="'/publisher/edit/' + publisher.id ">編集・削除</a></td>
+                            <!-- <td><a v-bind:href="'/publisher/edit/' + publisher.id ">編集・削除</a></td> -->
+                            <td><PublisherEditModal /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -40,10 +41,12 @@
 
 <script>
 import PublisherRegisterModal from "../../components/publisher/PublisherRegisterModal";
+import PublisherEditModal from "../../components/publisher/PublisherEditModal";
 
 export default {
     components: {
-        PublisherRegisterModal
+        PublisherRegisterModal,
+        PublisherEditModal
     },
     data:function(){
         return {
