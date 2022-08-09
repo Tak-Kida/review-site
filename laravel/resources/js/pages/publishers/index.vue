@@ -5,7 +5,7 @@
                 <h3 class ="title">登録済み出版社名一覧</h3>
                 <div class="search-container">
                     <p class="loading-message">{{ msg }}</p>
-                    <router-link class="link-box-end" to="/publisher/register">新規登録</router-link>
+                    <PublisherRegisterModal class="link-box-end" />
                 </div>
             </div>
             <hr />
@@ -32,15 +32,19 @@
             <hr />
             <div class="bottom-container">
                 <div></div>
-                <router-link class="link-box-end" to="/publisher/register">新規登録</router-link>
+                <PublisherRegisterModal class="link-box-end" />
             </div>
         </div>
     </main>
 </template>
 
 <script>
+import PublisherRegisterModal from "../../components/publisher/PublisherRegisterModal";
 
 export default {
+    components: {
+        PublisherRegisterModal
+    },
     data:function(){
         return {
             msg:'データ取得中...',
