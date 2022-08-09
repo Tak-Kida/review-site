@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="register-button-text" @click="modalOpen = true">
+        <button class="register-button" @click="modalOpen = true">
             新規登録
         </button>
 
@@ -8,7 +8,7 @@
             <div v-if="modalOpen" class="modal">
                 <div class="modal-wrapper">
                     <h3 class="title">出版社登録フォーム</h3>
-                    <div class="form-container" style="padding-top:0;">
+                    <div class="form-container" style="padding-top:0; padding-bottom:0;">
                         <form method="POST" action="/api/publisher/register" >
                             <input type="hidden" name="_token" :value="csrf" />
                             <label class="label">出版社名</label><br />
@@ -20,6 +20,7 @@
                             <input type="submit" class="submit-button">
                         </form>
                     </div>
+                    <p class="close-text" @click="modalOpen = false">閉じる</p>
                 </div>
             </div>
         </teleport>
@@ -62,6 +63,7 @@
         width: 480px;
         height: 275px;
         padding: 15px;
+        padding-bottom: 25px;
     }
 
     .form-container {
@@ -98,6 +100,13 @@
         text-decoration:none;
         font-weight: 800;
         font-size: 16px;
+        cursor:pointer
+    }
+
+    .close-text {
+        color:#0c2e8f;
+        text-decoration: underline;
+        cursor:pointer
     }
 
     /* モーダル表示ボタン */
@@ -110,7 +119,9 @@
         appearance: none;
     }
 
-    .register-button-text {
+    .register-button {
+        width: 100%;
+        height: 100%;
         color: #fafafa;
         text-decoration:none;
         font-weight: 800;

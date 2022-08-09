@@ -20287,7 +20287,8 @@ var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
 var _hoisted_4 = {
   "class": "form-container",
   style: {
-    "padding-top": "0"
+    "padding-top": "0",
+    "padding-bottom": "0"
   }
 };
 var _hoisted_5 = {
@@ -20367,7 +20368,7 @@ var _hoisted_15 = /*#__PURE__*/_withScopeId(function () {
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "register-button-text",
+    "class": "register-button",
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $data.modalOpen = true;
     })
@@ -20379,7 +20380,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     value: $data.csrf
   }, null, 8
   /* PROPS */
-  , _hoisted_6), _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13, _hoisted_14, _hoisted_15])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]))]);
+  , _hoisted_6), _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13, _hoisted_14, _hoisted_15])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+    "class": "close-text",
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $data.modalOpen = false;
+    })
+  }, "閉じる")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]))]);
 }
 
 /***/ }),
@@ -22103,7 +22109,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n    /* モーダル */\n.modal[data-v-6489328c] {\n        position: absolute;\n        top: 0; right: 0; bottom: 0; left: 0;\n        background-color: rgba(0,0,0,.5);\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n}\n.modal div[data-v-6489328c] {\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        background-color: white;\n        width: 480px;\n        height: 275px;\n        padding: 15px;\n}\n.form-container[data-v-6489328c] {\n        padding-top: 0;\n        width: 80%;\n}\n.title[data-v-6489328c] {\n        margin-top: 10px;\n        margin-bottom: 0;\n}\n.label[data-v-6489328c] {\n        font-size: 24px;\n        margin-bottom: 10px;\n}\n.name-input[data-v-6489328c], .name-furigana-input[data-v-6489328c] {\n        width: 250px;\n        font-size: 16px;\n        margin-bottom: 20px;\n}\n.submit-button[data-v-6489328c] {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        margin: 0 auto;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n}\n\n    /* モーダル表示ボタン */\nbutton[data-v-6489328c]{\n        background-color: transparent;\n        border: none;\n        cursor: pointer;\n        outline: none;\n        padding: 0;\n        -webkit-appearance: none;\n           -moz-appearance: none;\n                appearance: none;\n}\n.register-button-text[data-v-6489328c] {\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n    /* モーダル */\n.modal[data-v-6489328c] {\n        position: absolute;\n        top: 0; right: 0; bottom: 0; left: 0;\n        background-color: rgba(0,0,0,.5);\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n}\n.modal div[data-v-6489328c] {\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        background-color: white;\n        width: 480px;\n        height: 275px;\n        padding: 15px;\n        padding-bottom: 25px;\n}\n.form-container[data-v-6489328c] {\n        padding-top: 0;\n        width: 80%;\n}\n.title[data-v-6489328c] {\n        margin-top: 10px;\n        margin-bottom: 0;\n}\n.label[data-v-6489328c] {\n        font-size: 24px;\n        margin-bottom: 10px;\n}\n.name-input[data-v-6489328c], .name-furigana-input[data-v-6489328c] {\n        width: 250px;\n        font-size: 16px;\n        margin-bottom: 20px;\n}\n.submit-button[data-v-6489328c] {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        margin: 0 auto;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer\n}\n.close-text[data-v-6489328c] {\n        color:#0c2e8f;\n        text-decoration: underline;\n        cursor:pointer\n}\n\n    /* モーダル表示ボタン */\nbutton[data-v-6489328c]{\n        background-color: transparent;\n        border: none;\n        cursor: pointer;\n        outline: none;\n        padding: 0;\n        -webkit-appearance: none;\n           -moz-appearance: none;\n                appearance: none;\n}\n.register-button[data-v-6489328c] {\n        width: 100%;\n        height: 100%;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
