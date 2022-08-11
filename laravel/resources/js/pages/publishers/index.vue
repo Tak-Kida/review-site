@@ -25,7 +25,7 @@
                             <td class="publisher-name">{{ publisher.name }}</td>
                             <td class="publisher-name-furigana">{{ publisher.name_furigana }}</td>
                             <!-- <td><a v-bind:href="'/publisher/edit/' + publisher.id ">編集・削除</a></td> -->
-                            <td><PublisherEditModal /></td>
+                            <td><PublisherEditModal :publisher_id="publisher.id" /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -91,6 +91,7 @@ export default {
     width:144px;
     height:40px;
     border-radius: 5%;
+    border: none;
     background-color: #0c2e8f;
     color: #fafafa;
     text-decoration:none;

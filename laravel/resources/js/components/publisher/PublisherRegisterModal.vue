@@ -95,6 +95,7 @@
         width:144px;
         height:40px;
         border-radius: 5%;
+        border: none;
         background-color: #0c2e8f;
         color: #fafafa;
         text-decoration:none;
