@@ -1,27 +1,27 @@
 <template>
     <div>
-        <button class="edit-button" @click="modalOpen = true; getPublisherDetail(publisher_id);">
+        <button class="edit-button" @click="modalOpen = true; getAuthorDetail(author_id);">
             編集・削除
         </button>
 
         <teleport to="body">
             <div v-if="modalOpen" class="modal">
                 <div class="modal-wrapper">
-                    <h3 class="title">出版社編集フォーム</h3>
+                    <h3 class="title">著者編集フォーム</h3>
                     <div class="form-container" style="padding-top:0; padding-bottom:0;">
                         <!-- 編集フォーム -->
-                        <form method="POST" v-bind:action="'api/publisher/edit/' + publisher.id" >
+                        <form method="POST" v-bind:action="'api/author/edit/' + author.id" >
                             <input type="hidden" name="_token" :value="csrf" />
-                            <label class="label">出版社名</label><br />
-                            <input type="text" name="name" class="name-input" v-model="publisher.name" /><br />
-                            <label class="label">出版社名（ふりがな）</label><br />
-                            <input type="text" name="name_furigana" class="name-furigana-input" v-model="publisher.name_furigana" />
+                            <label class="label">著者名</label><br />
+                            <input type="text" name="name" class="name-input" v-model="author.name" /><br />
+                            <label class="label">著者名（ふりがな）</label><br />
+                            <input type="text" name="name_furigana" class="name-furigana-input" v-model="author.name_furigana" />
                             <br />
 
-                            <input type="submit" class="submit-button">
+                            <input type="submit" class="submit-button" />
                         </form>
                         <!-- 削除ボタン -->
-                        <button class="delete-button" @click="deletePublisher(publisher.id, csrf)">
+                        <button class="delete-button" @click="deleteAuthor(author.id, csrf)">
                             削除
                         </button>
                     </div>
@@ -36,7 +36,7 @@
     export default {
         props: {
             msg: String,
-            'publisher_id': {
+            'author_id': {
                 type: Number,
                 default: null
             },
@@ -44,29 +44,29 @@
         data() {
             return {
                 modalOpen: false,
-                publisher:[],
+                author:[],
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             }
         },
         methods:{
-            getPublisherDetail(publisher_id) {
-                axios.get('/api/publisher/detail-json/' + publisher_id)
+            getAuthorDetail(author_id) {
+                axios.get('/api/author/detail-json/' + author_id)
                     .then((res) =>{
-                        this.publisher = res.data;
+                        this.author = res.data;
                     });
             },
-            deletePublisher(publisher_id, csrf) {
-                if (window.confirm("この出版社情報を削除しますか？")) {
+            deleteAuthor(author_id, csrf) {
+                if (window.confirm("この著者情報を削除しますか？")) {
                     var send_data = new XMLHttpRequest();
-                    send_data.open('POST', 'api/publisher/delete/' + publisher_id);
+                    send_data.open('POST', 'api/author/delete/' + author_id);
                     send_data.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
                     send_data.send('_token=' + csrf);
-                    window.alert('出版社情報を削除しました');
+                    window.alert('著者情報を削除しました');
                     window.location.reload();
                 }
             },
         mounted () {
-            this.getPublisherDetail();
+            this.getAuthorDetail();
         }
     },
     }
