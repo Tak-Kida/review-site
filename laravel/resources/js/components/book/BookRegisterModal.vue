@@ -9,7 +9,7 @@
                 <div class="modal-wrapper">
                     <h3 class="title">出版社登録フォーム</h3>
                     <div class="form-container" style="padding-top:0; padding-bottom:0;">
-                        <form method="POST" action="/api/book/register" >
+                        <form method="POST" action="/api/book/register" enctype="multipart/form-data">
                             <input type="hidden" name="_token" :value="csrf" />
                             <label class="label">書籍タイトル</label><br />
                             <input type="text" name="name" class="input_text" value="イシューからはじめよ 知的生産の「シンプルな本質」"/><br />
@@ -27,8 +27,7 @@
                             <label class="label">初出版</label><br />
                             <input type="text" name="first_published" class="input_text" value="2010-11-01" /><br />
 
-                            <input type="file" name="image_path" /><br />
-                            <button >アップロード</button>
+                            <input type="file" name="book_image" /><br />
                             <br />
 
                             <input type="submit" class="submit-button">
@@ -49,7 +48,7 @@
         },
         data() {
             return {
-                modalOpen: true,
+                modalOpen: false,
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             }
         }
@@ -106,6 +105,7 @@
         justify-content: center;
         align-items: center;
         margin: 0 auto;
+        margin-bottom: 10px;
         width:144px;
         height:40px;
         border-radius: 5%;

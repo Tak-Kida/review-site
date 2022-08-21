@@ -22,6 +22,7 @@ class BookTableSeeder extends Seeder
             'first_published' => '2010-11-01', // 2010-11-01
             'created_at' => '2022-05-01', // 2022-05-01
             'updated_at' => '2022-05-01', // 2022-05-01
+            'image_name' => 'no_image.png', // no_image.png
         ];
         DB::table('books')->insert($param);
     }

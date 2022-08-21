@@ -17,7 +17,8 @@
                         <div class="book-box">
                             <div class="book-image-area">
                                 <!-- 書籍のサムネイル -->
-                                <div class="book-image"></div>
+                                <!-- 書籍の画像を表示する -->
+                                <img :src="'/storage/book_image/' + book.image_name" :alt= "book.name" class="book-image" />
                             </div>
                             <div class="book-detail-area">
                                 <h5 class="book-name">
@@ -153,6 +154,7 @@ export default {
     }
 
     .book-image-area {
+        display: flex;
         margin-bottom: 10px;
     }
 
@@ -172,13 +174,12 @@ export default {
         margin: auto;
         width: 200px;
         height: 256px;
-        background-color: green;
     }
+
 
     .book-detail-area {
         display: flex;
         flex-wrap: wrap;
-
     }
 
     .book-detail {

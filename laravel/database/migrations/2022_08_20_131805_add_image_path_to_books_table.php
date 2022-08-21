@@ -14,7 +14,7 @@ class AddImagePathToBooksTable extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->string('image_path');  // 画像パス
+            $table->string('image_name')->default('no_image.png');  // 画像パス
         });
     }
 

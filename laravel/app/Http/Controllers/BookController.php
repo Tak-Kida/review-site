@@ -60,6 +60,7 @@ class BookController extends Controller
     // 新規登録を行う
     public function create(Request $request)
     {
+        // 書籍情報の保存
         $form = $request->all();
         // 新規の出版社が入力されていたら登録する
         if ($form['publisher_name'] && $form['publisher_name_furigana']) {
@@ -85,8 +86,20 @@ class BookController extends Controller
         }
         $this->validate($request, Book::$rules);
         $book = new Book;
+        $image_name =  time() . (string)mt_rand(0, 99999) . '.png';
         unset($form['_token']);
+        $form['image_name'] = $image_name;
         $book->fill($form)->save();
+
+        // 書籍画像の保存
+        $dir = 'book_image'; // ディレクトリ名
+        // 画像を保存する
+        if($request->file('book_image')) {
+            $image_file = $request->file('book_image');
+            $image_file->storeAs('public/' . $dir, $image_name);
+        }
+
+        // 書籍と著者の紐付けレコードの保存
         $book_author = app()->make('App\Http\Controllers\BookAuthorController');
         $book_author->create($book->id, $form['authors']);
         return redirect('/book');

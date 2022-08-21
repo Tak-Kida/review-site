@@ -19735,7 +19735,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      modalOpen: true,
+      modalOpen: false,
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };
   }
@@ -20747,7 +20747,8 @@ var _hoisted_4 = {
 };
 var _hoisted_5 = {
   method: "POST",
-  action: "/api/book/register"
+  action: "/api/book/register",
+  enctype: "multipart/form-data"
 };
 var _hoisted_6 = ["value"];
 
@@ -20940,7 +20941,7 @@ var _hoisted_30 = /*#__PURE__*/_withScopeId(function () {
 var _hoisted_31 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "file",
-    name: "image_path"
+    name: "book_image"
   }, null, -1
   /* HOISTED */
   );
@@ -20953,18 +20954,12 @@ var _hoisted_32 = /*#__PURE__*/_withScopeId(function () {
 });
 
 var _hoisted_33 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, "アップロード", -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_34 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
   /* HOISTED */
   );
 });
 
-var _hoisted_35 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_34 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "submit",
     "class": "submit-button"
@@ -20987,7 +20982,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     value: $data.csrf
   }, null, 8
   /* PROPS */
-  , _hoisted_6), _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者 "), _hoisted_11, _hoisted_12, _hoisted_13, _hoisted_14, _hoisted_15, _hoisted_16, _hoisted_17, _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 出版社 "), _hoisted_19, _hoisted_20, _hoisted_21, _hoisted_22, _hoisted_23, _hoisted_24, _hoisted_25, _hoisted_26, _hoisted_27, _hoisted_28, _hoisted_29, _hoisted_30, _hoisted_31, _hoisted_32, _hoisted_33, _hoisted_34, _hoisted_35])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  , _hoisted_6), _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者 "), _hoisted_11, _hoisted_12, _hoisted_13, _hoisted_14, _hoisted_15, _hoisted_16, _hoisted_17, _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 出版社 "), _hoisted_19, _hoisted_20, _hoisted_21, _hoisted_22, _hoisted_23, _hoisted_24, _hoisted_25, _hoisted_26, _hoisted_27, _hoisted_28, _hoisted_29, _hoisted_30, _hoisted_31, _hoisted_32, _hoisted_33, _hoisted_34])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     "class": "close-text",
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $data.modalOpen = false;
@@ -22310,56 +22305,51 @@ var _hoisted_9 = {
 var _hoisted_10 = {
   "class": "book-box"
 };
-
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_11 = {
   "class": "book-image-area"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 書籍のサムネイル "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "book-image"
-})], -1
-/* HOISTED */
-);
-
-var _hoisted_12 = {
+};
+var _hoisted_12 = ["src", "alt"];
+var _hoisted_13 = {
   "class": "book-detail-area"
 };
-var _hoisted_13 = {
+var _hoisted_14 = {
   "class": "book-name"
 };
-var _hoisted_14 = {
+var _hoisted_15 = {
   "class": "book-detail"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "book-detail-header"
 }, "出版社", -1
 /* HOISTED */
 );
 
-var _hoisted_16 = {
+var _hoisted_17 = {
   "class": "book-detail-body"
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "book-detail-header"
 }, "著者", -1
 /* HOISTED */
 );
 
-var _hoisted_19 = {
+var _hoisted_20 = {
   "class": "book-detail-body"
 };
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "book-detail-header"
 }, "初版", -1
 /* HOISTED */
 );
 
-var _hoisted_21 = {
+var _hoisted_22 = {
   "class": "book-detail-body"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -22373,13 +22363,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       "class": "book-area",
       key: index
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.name), 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 書籍のサムネイル "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 書籍の画像を表示する "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+      src: '/storage/book_image/' + book.image_name,
+      alt: book.name,
+      "class": "book-image"
+    }, null, 8
+    /* PROPS */
+    , _hoisted_12), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"book-image\"></div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.name), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 書籍説明文 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <tr>\n                                        <th class=\"book-detail-header\">id</th>\n                                        <td class=\"book-detail-body\">{{ book.publisher.id }}</td>\n                                    </tr> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.publisher.name), 1
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 書籍説明文 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <tr>\n                                        <th class=\"book-detail-header\">id</th>\n                                        <td class=\"book-detail-body\">{{ book.publisher.id }}</td>\n                                    </tr> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.publisher.name), 1
     /* TEXT */
-    ), _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" (" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.publisher.name_furigana) + ") ", 1
+    ), _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" (" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.publisher.name_furigana) + ") ", 1
     /* TEXT */
-    )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(book.book_authors, function (book_author, index) {
+    )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(book.book_authors, function (book_author, index) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
         "class": "author",
         key: index
@@ -22388,7 +22384,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       );
     }), 128
     /* KEYED_FRAGMENT */
-    ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.first_published), 1
+    ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(book.first_published), 1
     /* TEXT */
     )])])])])]);
   }), 128
@@ -23130,7 +23126,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n    /* モーダル */\n.modal[data-v-39b1fe26] {\n        position: absolute;\n        top: 0; right: 0; bottom: 0; left: 0;\n        background-color: rgba(0,0,0,.5);\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n}\n.modal div[data-v-39b1fe26] {\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        background-color: white;\n        width: 480px;\n        /* height: 275px; */\n        padding: 15px;\n        padding-bottom: 25px;\n}\n.form-container[data-v-39b1fe26] {\n        padding-top: 0;\n        width: 80%;\n}\n.title[data-v-39b1fe26] {\n        margin-top: 10px;\n        margin-bottom: 0;\n}\n.label[data-v-39b1fe26] {\n        font-size: 24px;\n        margin-bottom: 10px;\n}\n.input_text[data-v-39b1fe26] {\n        width: 250px;\n        font-size: 16px;\n        margin-bottom: 20px;\n}\n.submit-button[data-v-39b1fe26] {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        margin: 0 auto;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        border: none;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer\n}\n.close-text[data-v-39b1fe26] {\n        color:#0c2e8f;\n        text-decoration: underline;\n        cursor:pointer\n}\n\n    /* モーダル表示ボタン */\nbutton[data-v-39b1fe26]{\n        background-color: transparent;\n        border: none;\n        cursor: pointer;\n        outline: none;\n        padding: 0;\n        -webkit-appearance: none;\n           -moz-appearance: none;\n                appearance: none;\n}\n.register-button[data-v-39b1fe26] {\n        width: 100%;\n        height: 100%;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n    /* モーダル */\n.modal[data-v-39b1fe26] {\n        position: absolute;\n        top: 0; right: 0; bottom: 0; left: 0;\n        background-color: rgba(0,0,0,.5);\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n}\n.modal div[data-v-39b1fe26] {\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        background-color: white;\n        width: 480px;\n        /* height: 275px; */\n        padding: 15px;\n        padding-bottom: 25px;\n}\n.form-container[data-v-39b1fe26] {\n        padding-top: 0;\n        width: 80%;\n}\n.title[data-v-39b1fe26] {\n        margin-top: 10px;\n        margin-bottom: 0;\n}\n.label[data-v-39b1fe26] {\n        font-size: 24px;\n        margin-bottom: 10px;\n}\n.input_text[data-v-39b1fe26] {\n        width: 250px;\n        font-size: 16px;\n        margin-bottom: 20px;\n}\n.submit-button[data-v-39b1fe26] {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        margin: 0 auto;\n        margin-bottom: 10px;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        border: none;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer\n}\n.close-text[data-v-39b1fe26] {\n        color:#0c2e8f;\n        text-decoration: underline;\n        cursor:pointer\n}\n\n    /* モーダル表示ボタン */\nbutton[data-v-39b1fe26]{\n        background-color: transparent;\n        border: none;\n        cursor: pointer;\n        outline: none;\n        padding: 0;\n        -webkit-appearance: none;\n           -moz-appearance: none;\n                appearance: none;\n}\n.register-button[data-v-39b1fe26] {\n        width: 100%;\n        height: 100%;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -23274,7 +23270,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.search-container {\n        display: flex;\n        justify-content: space-between;\n}\n.bottom-container {\n        display: flex;\n        justify-content: space-between;\n}\n.loading-message {\n        margin-bottom: 10px;\n}\n.link-box, .link-box-end {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        border: none;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n}\n.link-box {\n        margin: 0 auto;\n}\n.book-box-container {\n        display:flex;\n        flex-wrap:wrap;\n}\n.book-area {\n        display: flex;\n        width: 50%;\n        /* height: 400px; */\n}\n.book-image-area {\n        margin-bottom: 10px;\n}\n.book-box {\n        margin: auto;\n        margin-bottom: 10px;\n        width: 80%;\n        padding: 20px;\n        padding-bottom: 60px;\n        background-color: #fafafa;\n        border: 3px solid;\n        border-radius: 8px;\n        border-color: #0c2e8f;\n}\n.book-image {\n        margin: auto;\n        width: 200px;\n        height: 256px;\n        background-color: green;\n}\n.book-detail-area {\n        display: flex;\n        flex-wrap: wrap;\n}\n.book-detail {\n        display: table;\n        justify-content: center;\n        align-items: center;\n        flex-wrap: nowrap;\n        margin: auto;\n        width: 85%;\n}\n.book-name {\n        font-size: 18px;\n        font-weight: bold;\n        margin: auto;\n        margin-bottom: 10px;\n}\n.book-detail-header {\n        font-size: 18px;\n        text-align: center;\n        vertical-align: middle;\n}\n.book-detail-body {\n        font-size: 16px;\n        text-align: center;\n        vertical-align: middle;\n}\nth {\n        padding: 10px;\n        background-color: red;\n        color: #fafafa;\n}\ntd{\n        text-align: center;\n        vertical-align: middle;\n        padding: 10px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.search-container {\n        display: flex;\n        justify-content: space-between;\n}\n.bottom-container {\n        display: flex;\n        justify-content: space-between;\n}\n.loading-message {\n        margin-bottom: 10px;\n}\n.link-box, .link-box-end {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        border: none;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n}\n.link-box {\n        margin: 0 auto;\n}\n.book-box-container {\n        display:flex;\n        flex-wrap:wrap;\n}\n.book-area {\n        display: flex;\n        width: 50%;\n        /* height: 400px; */\n}\n.book-image-area {\n        display: flex;\n        margin-bottom: 10px;\n}\n.book-box {\n        margin: auto;\n        margin-bottom: 10px;\n        width: 80%;\n        padding: 20px;\n        padding-bottom: 60px;\n        background-color: #fafafa;\n        border: 3px solid;\n        border-radius: 8px;\n        border-color: #0c2e8f;\n}\n.book-image {\n        margin: auto;\n        width: 200px;\n        height: 256px;\n}\n.book-detail-area {\n        display: flex;\n        flex-wrap: wrap;\n}\n.book-detail {\n        display: table;\n        justify-content: center;\n        align-items: center;\n        flex-wrap: nowrap;\n        margin: auto;\n        width: 85%;\n}\n.book-name {\n        font-size: 18px;\n        font-weight: bold;\n        margin: auto;\n        margin-bottom: 10px;\n}\n.book-detail-header {\n        font-size: 18px;\n        text-align: center;\n        vertical-align: middle;\n}\n.book-detail-body {\n        font-size: 16px;\n        text-align: center;\n        vertical-align: middle;\n}\nth {\n        padding: 10px;\n        background-color: red;\n        color: #fafafa;\n}\ntd{\n        text-align: center;\n        vertical-align: middle;\n        padding: 10px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
