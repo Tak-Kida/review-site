@@ -6,7 +6,7 @@
                 <h3 class ="title">登録済み出版社名一覧</h3>
                 <div class="search-container">
                     <p class="loading-message">{{ msg }}</p>
-                    <PublisherRegisterModal class="link-box-end" />
+                    <BookRegisterModal class="link-box-end" />
                 </div>
             </div>
             <hr />
@@ -81,8 +81,12 @@
 </template>
 
 <script>
+import BookRegisterModal from "../../components/book/BookRegisterModal";
 
 export default {
+    components: {
+        BookRegisterModal,
+    },
     data:function(){
         return {
             msg:'データ取得中...',

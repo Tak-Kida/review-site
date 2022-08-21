@@ -13,10 +13,7 @@ class BookController extends Controller
     // 一覧をJSONで取得する
     public function getIndex()
     {
-        // $books = Book::all();
-        //      ->with('publisher', 'books.publisher_id')->get();
         $books = Book::with('publisher', 'book_authors.author')->get();
-        // dd($books);
         return $books->toJson();
     }
 
