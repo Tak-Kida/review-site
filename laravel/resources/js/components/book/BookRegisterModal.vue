@@ -15,12 +15,29 @@
                             <input type="text" name="name" class="input_text" value="イシューからはじめよ 知的生産の「シンプルな本質」"/><br />
                             <!-- 著者 -->
                             <label class="label">著者</label><br />
-                            <input type="text" name="authors[0]" class="input_text" value="1"/><br />
+                            <select name="authors[0]">
+                                <option disabled value="">選択してください</option>
+                                <option v-for="author in authors"
+                                    v-bind:value="author.id"
+                                    v-bind:key="author.id">
+                                    {{ author.name }}
+                                </option>
+                            </select>
+                            <br />
                             <label class="label">新規著者</label><br />
                             <input type="text" name="author_new_name" class="input_text" value=""/><br />
                             <!-- 出版社 -->
                             <label class="label">出版社</label><br />
-                            <input type="text" name="publisher_id" class="input_text" value=1 /><br />
+                            <!-- <input type="text" name="publisher_id" class="input_text" value=1 /><br /> -->
+                            <select name="publisher_id">
+                                <option disabled value="">選択してください</option>
+                                <option v-for="publisher in publishers"
+                                    v-bind:value="publisher.id"
+                                    v-bind:key="publisher.id">
+                                    {{ publisher.name }}
+                                </option>
+                            </select>
+                            <br />
                             <label class="label">新規出版社</label><br />
                             <input type="text" name="publisher_name" class="input_text" value=""/><br />
 
@@ -49,9 +66,29 @@
         data() {
             return {
                 modalOpen: false,
+                publishers: [],
+                authors: [],
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             }
-        }
+        },
+        methods:{
+            getPublisherIndex() {
+                axios.get('/api/publisher/index-json')
+                    .then((res) =>{
+                        this.publishers = res.data;
+                    });
+            },
+            getAuthorIndex() {
+                axios.get('/api/author/index-json')
+                    .then((res) =>{
+                        this.authors = res.data;
+                    });
+            }
+        },
+        mounted () {
+            this.getPublisherIndex();
+            this.getAuthorIndex();
+        },
     }
 </script>
 
