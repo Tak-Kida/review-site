@@ -86,9 +86,11 @@ class BookController extends Controller
         }
         $this->validate($request, Book::$rules);
         $book = new Book;
-        $image_name =  time() . (string)mt_rand(0, 99999) . '.png';
+        if($request->file('book_image')) {
+            $image_name =  time() . (string)mt_rand(0, 99999) . '.png';
+            $form['image_name'] = $image_name;
+        }
         unset($form['_token']);
-        $form['image_name'] = $image_name;
         $book->fill($form)->save();
 
         // 書籍画像の保存
