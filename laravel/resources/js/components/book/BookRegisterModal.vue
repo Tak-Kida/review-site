@@ -27,20 +27,27 @@
                             <label class="label">新規著者</label><br />
                             <input type="text" name="author_new_name" class="input_text" value=""/><br />
                             <!-- 出版社 -->
-                            <label class="label">出版社</label><br />
-                            <!-- <input type="text" name="publisher_id" class="input_text" value=1 /><br /> -->
-                            <select name="publisher_id">
-                                <option disabled value="">選択してください</option>
-                                <option v-for="publisher in publishers"
-                                    v-bind:value="publisher.id"
-                                    v-bind:key="publisher.id">
-                                    {{ publisher.name }}
-                                </option>
-                            </select>
-                            <br />
-                            <label class="label">新規出版社</label><br />
-                            <input type="text" name="publisher_name" class="input_text" value=""/><br />
-
+                            <label class="label">出版社</label>
+                            <div class="publusher_input_area" v-if="!publisherNewOpen">
+                                <select name="publisher_id" >
+                                    <option disabled value="">選択してください</option>
+                                    <option v-for="publisher in publishers"
+                                        v-bind:value="publisher.id"
+                                        v-bind:key="publisher.id">
+                                        {{ publisher.name }}
+                                    </option>
+                                </select>
+                                <input type="hidden" name="publisher_name" class="input_text" />
+                                <input type="hidden" name="publisher_name_furigana" class="input_text" />
+                            </div>
+                            <!-- <label class="label" v-if="publisherNewOpen">新規出版社</label><br /> -->
+                            <div class="publusher_input_area" v-if="publisherNewOpen">
+                                <input type="text" name="publisher_name" class="input_text" placeholder="新規出版社名" />
+                                <input type="text" name="publisher_name_furigana" class="input_text" placeholder="新規出版社名（ふりがな）" />
+                            </div>
+                            <p v-if="!publisherNewOpen" @click="publisherNewOpen=true">または新規出版社を登録する</p>
+                            <p v-if="publisherNewOpen" @click="publisherNewOpen=false">登録済みの出版社を選択する</p>
+                            <!-- 初版発行時期 -->
                             <label class="label">初出版</label><br />
                             <input type="text" name="first_published" class="input_text" value="2010-11-01" /><br />
 
@@ -66,6 +73,7 @@
         data() {
             return {
                 modalOpen: false,
+                publisherNewOpen: false,
                 publishers: [],
                 authors: [],
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
@@ -116,6 +124,16 @@
         padding-bottom: 25px;
     }
 
+    .publusher_input_area {
+        /* display: flex;
+        flex-direction: column; */
+        align-items: start !important;
+        justify-content: start !important;
+        width: auto !important;
+        height: auto !important;
+        padding: 0 !important;
+    }
+
     .form-container {
         padding-top: 0;
         width: 80%;
@@ -134,7 +152,7 @@
     .input_text {
         width: 250px;
         font-size: 16px;
-        margin-bottom: 20px;
+        /* margin-bottom: 20px; */
     }
 
     .submit-button {
