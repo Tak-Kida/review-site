@@ -49,8 +49,10 @@
                             <p v-if="publisherNewOpen" @click="publisherNewOpen=false">登録済みの出版社を選択する</p>
                             <!-- 初版発行時期 -->
                             <label class="label">初出版</label><br />
-                            <input type="text" name="first_published" class="input_text" value="2010-11-01" /><br />
-
+                            <!-- <input type="text" name="first_published" class="input_text" value="2010-11-01" /><br /> -->
+                            <flat-pickr v-model="date" name="first_published" :config="flatOption"/><br />
+                            <!-- 表紙 -->
+                            <label class="label">表紙画像</label><br />
                             <input type="file" name="book_image" /><br />
                             <br />
 
@@ -65,39 +67,50 @@
 </template>
 
 <script>
-    export default {
-        name: "TeleportSample1",
-        props: {
-            msg: String
-        },
-        data() {
-            return {
-                modalOpen: false,
-                publisherNewOpen: false,
-                publishers: [],
-                authors: [],
-                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-            }
-        },
-        methods:{
-            getPublisherIndex() {
-                axios.get('/api/publisher/index-json')
-                    .then((res) =>{
-                        this.publishers = res.data;
-                    });
+import flatPickr from 'vue-flatpickr-component';
+import 'flatpickr/dist/flatpickr.css';
+import {Japanese} from 'flatpickr/dist/l10n/ja.js';
+
+export default {
+    name: "TeleportSample1",
+    props: {
+        msg: String
+    },
+    components: {
+        flatPickr
+    },
+    data() {
+        return {
+            modalOpen: false,
+            publisherNewOpen: false,
+            date: null,
+            publishers: [],
+            authors: [],
+            csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            flatOption:{
+                locale: Japanese,
             },
-            getAuthorIndex() {
-                axios.get('/api/author/index-json')
-                    .then((res) =>{
-                        this.authors = res.data;
-                    });
-            }
+        }
+    },
+    methods:{
+        getPublisherIndex() {
+            axios.get('/api/publisher/index-json')
+                .then((res) =>{
+                    this.publishers = res.data;
+                });
         },
-        mounted () {
-            this.getPublisherIndex();
-            this.getAuthorIndex();
-        },
-    }
+        getAuthorIndex() {
+            axios.get('/api/author/index-json')
+                .then((res) =>{
+                    this.authors = res.data;
+                });
+        }
+    },
+    mounted () {
+        this.getPublisherIndex();
+        this.getAuthorIndex();
+    },
+}
 </script>
 
 <style scoped>
