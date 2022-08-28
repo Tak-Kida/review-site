@@ -15,7 +15,11 @@
                             <input type="text" name="name" class="input_text" value="イシューからはじめよ 知的生産の「シンプルな本質」"/><br />
                             <!-- 著者 -->
                             <label class="label">著者</label><br />
-                            <select name="authors[0]">
+                            <!-- 各入力ボックス -->
+                            <select :name="'authors['+ index + ']'"
+                                v-for="(text,index) in texts" :key="index"
+                                v-model="texts[index]"
+                            >
                                 <option disabled value="">選択してください</option>
                                 <option v-for="author in authors"
                                     v-bind:value="author.id"
@@ -24,8 +28,46 @@
                                 </option>
                             </select>
                             <br />
+                            <!-- 入力ボックスを追加するボタン -->
+                            <button type="button" @click="addInput()">追加する</button>
+                            <br />
+                            <!-- 入力ボックスの削除ボタン -->
+                            <button type="button" @click="removeInput(index)">削除</button>
+                            <br />
+
+                            <!-- <select name="authors[0]">
+                                <option disabled value="">選択してください</option>
+                                <option v-for="author in authors"
+                                    v-bind:value="author.id"
+                                    v-bind:key="author.id">
+                                    {{ author.name }}
+                                </option>
+                            </select> -->
                             <label class="label">新規著者</label><br />
-                            <input type="text" name="author_new_name" class="input_text" value=""/><br />
+
+                            <!-- 新規著者名入力欄 -->
+                            <!-- <input type="text" name="author_new_name[0]" class="input_text" value=""/><br /> -->
+                            <input type="text" :name="'author_new_name['+ index + ']'"
+                                class="input_text"
+                                v-for="(text,index) in texts" :key="index"
+                                v-model="texts[index]"
+                            />
+                            <br />
+                            <!-- 新規著者名ふりがな入力欄 -->
+                            <!-- <input type="text" name="author_new_name_furigana[0]" class="input_text" value=""/><br /> -->
+                            <input type="text" :name="'author_new_name_furigana['+ index + ']'"
+                                class="input_text"
+                                v-for="(text,index) in texts" :key="index"
+                                v-model="texts[index]"
+                            />
+                            <br />
+                            <!-- 入力ボックスを追加するボタン -->
+                            <button type="button" @click="addInput()">追加する</button>
+                            <br />
+                            <!-- 入力ボックスの削除ボタン -->
+                            <button type="button" @click="removeInput(index)">削除</button>
+                            <br />
+
                             <!-- 出版社 -->
                             <label class="label">出版社</label>
                             <div class="publusher_input_area" v-if="!publisherNewOpen">
@@ -81,7 +123,9 @@ export default {
     },
     data() {
         return {
-            modalOpen: false,
+            texts: [''],
+
+            modalOpen: true,
             publisherNewOpen: false,
             date: null,
             publishers: [],
@@ -93,6 +137,28 @@ export default {
         }
     },
     methods:{
+        // ボタンをクリックしたときのイベント ③
+        removeInput(index) {
+
+            this.texts.splice(index, 1); // 👈 該当するデータを削除
+
+        },
+        // ボタンをクリックしたときのイベント ③
+        addInput() {
+
+            if(this.isTextMax) {
+                return;
+            }
+            this.texts.push(''); // 配列に１つ空データを追加する
+            Vue.nextTick(() => {
+                const maxIndex = this.texts.length - 1;
+                console.log(maxIndex)
+                this.$refs['texts'][maxIndex].focus(); // 追加された入力ボックスにフォーカスする
+
+            });
+        },
+
+
         getPublisherIndex() {
             axios.get('/api/publisher/index-json')
                 .then((res) =>{
