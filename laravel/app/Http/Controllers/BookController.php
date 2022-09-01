@@ -81,6 +81,10 @@ class BookController extends Controller
                 ]);
                 $author = app()->make('App\Http\Controllers\AuthorController');
                 $author_id = $author->register($author_new_name_one, $form['author_new_name_furigana'][$key]);
+                // 既存の登録者が選択されていない場合実行する
+                if(!isset($form['authors'])){
+                    $form = array_merge($form,array('authors'=>[]));
+                }
                 array_push($form['authors'], $author_id);
             }
         }

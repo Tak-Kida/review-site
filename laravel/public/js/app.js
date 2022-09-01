@@ -19746,7 +19746,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      texts: [''],
+      authors_select: [''],
+      authors_new: [],
       modalOpen: true,
       publisherNewOpen: false,
       date: null,
@@ -19759,40 +19760,54 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    // ボタンをクリックしたときのイベント ③
-    removeInput: function removeInput(index) {
-      this.texts.splice(index, 1); // 👈 該当するデータを削除
+    // 著者選択欄の削除
+    removeAuthorSelect: function removeAuthorSelect(index) {
+      this.authors_select.splice(index, 1); // 該当するデータを削除
     },
-    // ボタンをクリックしたときのイベント ③
-    addInput: function addInput() {
-      var _this = this;
-
+    // 著者選択欄の追加
+    addAuthorSelect: function addAuthorSelect() {
       if (this.isTextMax) {
         return;
       }
 
-      this.texts.push(''); // 配列に１つ空データを追加する
-
-      Vue.nextTick(function () {
-        var maxIndex = _this.texts.length - 1;
-        console.log(maxIndex);
-
-        _this.$refs['texts'][maxIndex].focus(); // 追加された入力ボックスにフォーカスする
-
-      });
+      this.authors_select.push(''); // 配列に１つ空データを追加する
+      // Vue.nextTick(() => {
+      //     const maxIndex = this.authors_select.length - 1;
+      //     console.log(maxIndex)
+      //     this.$refs['authors_select'][maxIndex].focus(); // 追加された入力ボックスにフォーカスする
+      // });
     },
+    // 新規著者入力欄の削除
+    removeAuthorsNew: function removeAuthorsNew(index) {
+      this.authors_new.splice(index, 1); // 該当するデータを削除
+    },
+    // 著者選択欄の追加
+    addAuthorsNew: function addAuthorsNew() {
+      if (this.isTextMax) {
+        return;
+      }
+
+      this.authors_new.push(''); // 配列に１つ空データを追加する
+      // Vue.nextTick(() => {
+      //     const maxIndex = this.authors_select.length - 1;
+      //     console.log(maxIndex)
+      //     this.$refs['authors_select'][maxIndex].focus(); // 追加された入力ボックスにフォーカスする
+      // });
+    },
+    // 出版社一覧を取得する
     getPublisherIndex: function getPublisherIndex() {
-      var _this2 = this;
+      var _this = this;
 
       axios.get('/api/publisher/index-json').then(function (res) {
-        _this2.publishers = res.data;
+        _this.publishers = res.data;
       });
     },
+    // 著者一覧を取得する
     getAuthorIndex: function getAuthorIndex() {
-      var _this3 = this;
+      var _this2 = this;
 
       axios.get('/api/author/index-json').then(function (res) {
-        _this3.authors = res.data;
+        _this2.authors = res.data;
       });
     }
   },
@@ -20858,12 +20873,13 @@ var _hoisted_12 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_13 = ["name", "onUpdate:modelValue"];
+var _hoisted_13 = ["name"];
 
 var _hoisted_14 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
     disabled: "",
-    value: ""
+    value: "",
+    selected: ""
   }, "選択してください", -1
   /* HOISTED */
   );
@@ -21087,13 +21103,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     value: $data.csrf
   }, null, 8
   /* PROPS */
-  , _hoisted_6), _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者 "), _hoisted_11, _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 各入力ボックス "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.texts, function (text, index) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("select", {
+  , _hoisted_6), _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者 "), _hoisted_11, _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 各入力ボックス "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors_select, function (text, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("select", {
       name: 'authors[' + index + ']',
-      key: index,
-      "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return $data.texts[index] = $event;
-      }
+      key: index
     }, [_hoisted_14, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors, function (author) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
         value: author.id,
@@ -21105,56 +21118,56 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* KEYED_FRAGMENT */
     ))], 8
     /* PROPS */
-    , _hoisted_13)), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.texts[index]]]);
+    , _hoisted_13);
   }), 128
   /* KEYED_FRAGMENT */
-  )), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 入力ボックスを追加するボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  )), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者選択欄を追加するボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     onClick: _cache[1] || (_cache[1] = function ($event) {
-      return $options.addInput();
+      return $options.addAuthorSelect();
     })
-  }, "追加する"), _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 入力ボックスの削除ボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, "追加する"), _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者選択欄の削除ボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     onClick: _cache[2] || (_cache[2] = function ($event) {
-      return $options.removeInput(_ctx.index);
+      return $options.removeAuthorSelect(_ctx.index);
     })
-  }, "削除"), _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <select name=\"authors[0]\">\n                                <option disabled value=\"\">選択してください</option>\n                                <option v-for=\"author in authors\"\n                                    v-bind:value=\"author.id\"\n                                    v-bind:key=\"author.id\">\n                                    {{ author.name }}\n                                </option>\n                            </select> "), _hoisted_19, _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規著者名入力欄 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"text\" name=\"author_new_name[0]\" class=\"input_text\" value=\"\"/><br /> "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.texts, function (text, index) {
+  }, "削除"), _hoisted_18, _hoisted_19, _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規著者名入力欄 "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors_new, function (author_new, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("input", {
       type: "text",
       name: 'author_new_name[' + index + ']',
       "class": "input_text",
       key: index,
       "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return $data.texts[index] = $event;
+        return author_new[index] = $event;
       }
     }, null, 8
     /* PROPS */
-    , _hoisted_21)), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.texts[index]]]);
+    , _hoisted_21)), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, author_new[index]]]);
   }), 128
   /* KEYED_FRAGMENT */
-  )), _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規著者名ふりがな入力欄 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"text\" name=\"author_new_name_furigana[0]\" class=\"input_text\" value=\"\"/><br /> "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.texts, function (text, index) {
+  )), _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規著者名ふりがな入力欄 "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors_new, function (author_new, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("input", {
       type: "text",
       name: 'author_new_name_furigana[' + index + ']',
       "class": "input_text",
       key: index,
       "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return $data.texts[index] = $event;
+        return author_new[index] = $event;
       }
     }, null, 8
     /* PROPS */
-    , _hoisted_23)), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.texts[index]]]);
+    , _hoisted_23)), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, author_new[index]]]);
   }), 128
   /* KEYED_FRAGMENT */
   )), _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 入力ボックスを追加するボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     onClick: _cache[3] || (_cache[3] = function ($event) {
-      return $options.addInput();
+      return $options.addAuthorsNew();
     })
   }, "追加する"), _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 入力ボックスの削除ボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     onClick: _cache[4] || (_cache[4] = function ($event) {
-      return $options.removeInput(_ctx.index);
+      return $options.removeAuthorsNew(_ctx.index);
     })
   }, "削除"), _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 出版社 "), _hoisted_27, !$data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", _hoisted_29, [_hoisted_30, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.publishers, function (publisher) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
@@ -21165,7 +21178,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , _hoisted_31);
   }), 128
   /* KEYED_FRAGMENT */
-  ))]), _hoisted_32, _hoisted_33])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <label class=\"label\" v-if=\"publisherNewOpen\">新規出版社</label><br /> "), $data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_34, _hoisted_37)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", {
+  ))]), _hoisted_32, _hoisted_33])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_34, _hoisted_37)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", {
     key: 2,
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return $data.publisherNewOpen = true;
@@ -21175,7 +21188,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[6] || (_cache[6] = function ($event) {
       return $data.publisherNewOpen = false;
     })
-  }, "登録済みの出版社を選択する")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 初版発行時期 "), _hoisted_38, _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input type=\"text\" name=\"first_published\" class=\"input_text\" value=\"2010-11-01\" /><br /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_flat_pickr, {
+  }, "登録済みの出版社を選択する")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 初版発行時期 "), _hoisted_38, _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_flat_pickr, {
     modelValue: $data.date,
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return $data.date = $event;

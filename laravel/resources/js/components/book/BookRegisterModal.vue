@@ -17,10 +17,8 @@
                             <label class="label">著者</label><br />
                             <!-- 各入力ボックス -->
                             <select :name="'authors['+ index + ']'"
-                                v-for="(text,index) in texts" :key="index"
-                                v-model="texts[index]"
-                            >
-                                <option disabled value="">選択してください</option>
+                                v-for="(text,index) in authors_select" :key="index">
+                                <option disabled value="" selected>選択してください</option>
                                 <option v-for="author in authors"
                                     v-bind:value="author.id"
                                     v-bind:key="author.id">
@@ -28,44 +26,33 @@
                                 </option>
                             </select>
                             <br />
-                            <!-- 入力ボックスを追加するボタン -->
-                            <button type="button" @click="addInput()">追加する</button>
+                            <!-- 著者選択欄を追加するボタン -->
+                            <button type="button" @click="addAuthorSelect()">追加する</button>
                             <br />
-                            <!-- 入力ボックスの削除ボタン -->
-                            <button type="button" @click="removeInput(index)">削除</button>
+                            <!-- 著者選択欄の削除ボタン -->
+                            <button type="button" @click="removeAuthorSelect(index)">削除</button>
                             <br />
 
-                            <!-- <select name="authors[0]">
-                                <option disabled value="">選択してください</option>
-                                <option v-for="author in authors"
-                                    v-bind:value="author.id"
-                                    v-bind:key="author.id">
-                                    {{ author.name }}
-                                </option>
-                            </select> -->
                             <label class="label">新規著者</label><br />
-
                             <!-- 新規著者名入力欄 -->
-                            <!-- <input type="text" name="author_new_name[0]" class="input_text" value=""/><br /> -->
                             <input type="text" :name="'author_new_name['+ index + ']'"
                                 class="input_text"
-                                v-for="(text,index) in texts" :key="index"
-                                v-model="texts[index]"
+                                v-for="(author_new,index) in authors_new" :key="index"
+                                v-model="author_new[index]"
                             />
                             <br />
                             <!-- 新規著者名ふりがな入力欄 -->
-                            <!-- <input type="text" name="author_new_name_furigana[0]" class="input_text" value=""/><br /> -->
                             <input type="text" :name="'author_new_name_furigana['+ index + ']'"
                                 class="input_text"
-                                v-for="(text,index) in texts" :key="index"
-                                v-model="texts[index]"
+                                v-for="(author_new,index) in authors_new" :key="index"
+                                v-model="author_new[index]"
                             />
                             <br />
                             <!-- 入力ボックスを追加するボタン -->
-                            <button type="button" @click="addInput()">追加する</button>
+                            <button type="button" @click="addAuthorsNew()">追加する</button>
                             <br />
                             <!-- 入力ボックスの削除ボタン -->
-                            <button type="button" @click="removeInput(index)">削除</button>
+                            <button type="button" @click="removeAuthorsNew(index)">削除</button>
                             <br />
 
                             <!-- 出版社 -->
@@ -82,7 +69,6 @@
                                 <input type="hidden" name="publisher_name" class="input_text" />
                                 <input type="hidden" name="publisher_name_furigana" class="input_text" />
                             </div>
-                            <!-- <label class="label" v-if="publisherNewOpen">新規出版社</label><br /> -->
                             <div class="publusher_input_area" v-if="publisherNewOpen">
                                 <input type="text" name="publisher_name" class="input_text" placeholder="新規出版社名" />
                                 <input type="text" name="publisher_name_furigana" class="input_text" placeholder="新規出版社名（ふりがな）" />
@@ -91,7 +77,6 @@
                             <p v-if="publisherNewOpen" @click="publisherNewOpen=false">登録済みの出版社を選択する</p>
                             <!-- 初版発行時期 -->
                             <label class="label">初出版</label><br />
-                            <!-- <input type="text" name="first_published" class="input_text" value="2010-11-01" /><br /> -->
                             <flat-pickr v-model="date" name="first_published" :config="flatOption"/><br />
                             <!-- 表紙 -->
                             <label class="label">表紙画像</label><br />
@@ -123,7 +108,8 @@ export default {
     },
     data() {
         return {
-            texts: [''],
+            authors_select: [''],
+            authors_new: [],
 
             modalOpen: true,
             publisherNewOpen: false,
@@ -137,34 +123,50 @@ export default {
         }
     },
     methods:{
-        // ボタンをクリックしたときのイベント ③
-        removeInput(index) {
-
-            this.texts.splice(index, 1); // 👈 該当するデータを削除
+        // 著者選択欄の削除
+        removeAuthorSelect(index) {
+            this.authors_select.splice(index, 1); // 該当するデータを削除
 
         },
-        // ボタンをクリックしたときのイベント ③
-        addInput() {
-
+        // 著者選択欄の追加
+        addAuthorSelect() {
             if(this.isTextMax) {
                 return;
             }
-            this.texts.push(''); // 配列に１つ空データを追加する
-            Vue.nextTick(() => {
-                const maxIndex = this.texts.length - 1;
-                console.log(maxIndex)
-                this.$refs['texts'][maxIndex].focus(); // 追加された入力ボックスにフォーカスする
-
-            });
+            this.authors_select.push(''); // 配列に１つ空データを追加する
+            // Vue.nextTick(() => {
+            //     const maxIndex = this.authors_select.length - 1;
+            //     console.log(maxIndex)
+            //     this.$refs['authors_select'][maxIndex].focus(); // 追加された入力ボックスにフォーカスする
+            // });
         },
 
+        // 新規著者入力欄の削除
+        removeAuthorsNew(index) {
+            this.authors_new.splice(index, 1); // 該当するデータを削除
 
+        },
+        // 著者選択欄の追加
+        addAuthorsNew() {
+            if(this.isTextMax) {
+                return;
+            }
+            this.authors_new.push(''); // 配列に１つ空データを追加する
+            // Vue.nextTick(() => {
+            //     const maxIndex = this.authors_select.length - 1;
+            //     console.log(maxIndex)
+            //     this.$refs['authors_select'][maxIndex].focus(); // 追加された入力ボックスにフォーカスする
+            // });
+        },
+
+        // 出版社一覧を取得する
         getPublisherIndex() {
             axios.get('/api/publisher/index-json')
                 .then((res) =>{
                     this.publishers = res.data;
                 });
         },
+        // 著者一覧を取得する
         getAuthorIndex() {
             axios.get('/api/author/index-json')
                 .then((res) =>{
