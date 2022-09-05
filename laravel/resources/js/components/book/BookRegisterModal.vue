@@ -32,27 +32,42 @@
                             <!-- 著者選択欄の削除ボタン -->
                             <button type="button" @click="removeAuthorSelect(index)">削除</button>
                             <br />
+                            <button type="button"
+                                v-if="!authorsNewOpen"
+                                @click="addAuthorsNew(index),
+                                        authorsNewOpen=true">
+                            新規登録者を追加する
+                            </button>
 
-                            <label class="label">新規著者</label><br />
-                            <!-- 新規著者名入力欄 -->
-                            <input type="text" :name="'author_new_name['+ index + ']'"
-                                class="input_text"
-                                v-for="(author_new,index) in authors_new" :key="index"
-                                v-model="author_new[index]"
-                            />
-                            <br />
-                            <!-- 新規著者名ふりがな入力欄 -->
-                            <input type="text" :name="'author_new_name_furigana['+ index + ']'"
-                                class="input_text"
-                                v-for="(author_new,index) in authors_new" :key="index"
-                                v-model="author_new[index]"
-                            />
-                            <br />
-                            <!-- 入力ボックスを追加するボタン -->
-                            <button type="button" @click="addAuthorsNew()">追加する</button>
-                            <br />
-                            <!-- 入力ボックスの削除ボタン -->
-                            <button type="button" @click="removeAuthorsNew(index)">削除</button>
+                            <!-- divを使うとstyleが適用されるのでやむをえずtableを使用する -->
+                            <table v-if="authorsNewOpen">
+                                <label class="label">新規著者</label><br />
+                                <!-- 新規著者名入力欄 -->
+                                <table v-for="(author_new,index) in authors_new" :key="index">
+                                    <input type="text" :name="'author_new_name['+ index + ']'"
+                                        class="input_text"
+                                        placeholder="新規著者名"
+                                    />
+                                    <br />
+                                    <!-- 新規著者名ふりがな入力欄 -->
+                                    <input type="text" :name="'author_new_name_furigana['+ index + ']'"
+                                        class="input_text"
+                                        placeholder="新規著者名（ふりがな）"
+                                    />
+                                    <br />
+                                </table>
+                                <!-- 入力ボックスを追加するボタン -->
+                                <button type="button" @click="addAuthorsNew()">追加する</button>
+                                <br />
+                                <!-- 入力ボックスの削除ボタン -->
+                                <button type="button"
+                                    @click="removeAuthorsNew(index),
+                                    authorsNewOpen = checkAuthorsNew(authorsNewOpen)"
+                                >
+                                削除
+                                </button>
+                                <br />
+                            </table>
                             <br />
 
                             <!-- 出版社 -->
@@ -113,6 +128,7 @@ export default {
 
             modalOpen: true,
             publisherNewOpen: false,
+            authorsNewOpen: false,
             date: null,
             publishers: [],
             authors: [],
@@ -146,7 +162,7 @@ export default {
             this.authors_new.splice(index, 1); // 該当するデータを削除
 
         },
-        // 著者選択欄の追加
+        // 新規著者入力欄の追加
         addAuthorsNew() {
             if(this.isTextMax) {
                 return;
@@ -157,6 +173,14 @@ export default {
             //     console.log(maxIndex)
             //     this.$refs['authors_select'][maxIndex].focus(); // 追加された入力ボックスにフォーカスする
             // });
+        },
+        checkAuthorsNew(bool) {
+            // boolはtrueであることが前提
+            if(this.authors_new.length == 0) {
+                bool = !bool;
+                return bool;
+            };
+            return bool;
         },
 
         // 出版社一覧を取得する
