@@ -6,7 +6,7 @@
                 <h3 class ="title">登録済み出版社名一覧</h3>
                 <div class="search-container">
                     <p class="loading-message">{{ msg }}</p>
-                    <BookRegisterModal class="link-box-end" />
+                    <BookRegisterModal class="link-box-end" @click="changeUnscrollable()"/>
                 </div>
             </div>
             <hr />
@@ -101,6 +101,16 @@ export default {
                     this.books = res.data;
                     this.msg = '登録されている書籍は以下のとおりです';
                 });
+        },
+        changeUnscrollable() {
+            // 画面最上段にスクロールする
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+            let element = document.querySelector('body');
+            element.style.overflow = 'hidden';
         }
     },
     mounted () {

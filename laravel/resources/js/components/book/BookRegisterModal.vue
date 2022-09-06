@@ -6,7 +6,7 @@
 
         <teleport to="body">
             <div v-if="modalOpen" class="modal">
-                <div class="modal-wrapper">
+                <div class="modal-wrapper" style="margin-top:20px; margin-bottom:15px;">
                     <h3 class="title">出版社登録フォーム</h3>
                     <div class="form-container" style="padding-top:0; padding-bottom:0;">
                         <form method="POST" action="/api/book/register" enctype="multipart/form-data">
@@ -101,7 +101,7 @@
                             <input type="submit" class="submit-button">
                         </form>
                     </div>
-                    <p class="close-text" @click="modalOpen = false">閉じる</p>
+                    <p class="close-text" @click="modalOpen=false, changeScrollable()">閉じる</p>
                 </div>
             </div>
         </teleport>
@@ -126,7 +126,7 @@ export default {
             authors_select: [''],
             authors_new: [],
 
-            modalOpen: true,
+            modalOpen: false,
             publisherNewOpen: false,
             authorsNewOpen: false,
             date: null,
@@ -139,6 +139,16 @@ export default {
         }
     },
     methods:{
+        // スクロールができるようにもどす
+        changeScrollable() {
+            window.scrollTo({
+                top: 0,          //上からの位置
+                left: 0,         //左からの位置
+                behavior: 'smooth' //smoothでスクロールしながら移動
+            });
+            let element = document.querySelector('body');
+            element.style.overflow = 'scroll';
+        },
         // 著者選択欄の削除
         removeAuthorSelect(index) {
             this.authors_select.splice(index, 1); // 該当するデータを削除
@@ -215,6 +225,8 @@ export default {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        height: auto;
+        overflow: auto;
     }
 
     .modal div {
@@ -246,7 +258,6 @@ export default {
 
     .title {
         margin-top: 10px;
-        margin-bottom: 0;
     }
 
     .label {

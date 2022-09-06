@@ -19748,7 +19748,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       authors_select: [''],
       authors_new: [],
-      modalOpen: true,
+      modalOpen: false,
       publisherNewOpen: false,
       authorsNewOpen: false,
       date: null,
@@ -19761,6 +19761,19 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    // スクロールができるようにもどす
+    changeScrollable: function changeScrollable() {
+      window.scrollTo({
+        top: 0,
+        //上からの位置
+        left: 0,
+        //左からの位置
+        behavior: 'smooth' //smoothでスクロールしながら移動
+
+      });
+      var element = document.querySelector('body');
+      element.style.overflow = 'scroll';
+    },
     // 著者選択欄の削除
     removeAuthorSelect: function removeAuthorSelect(index) {
       this.authors_select.splice(index, 1); // 該当するデータを削除
@@ -19784,12 +19797,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     // 新規著者入力欄の追加
     addAuthorsNew: function addAuthorsNew() {
-      // if(this.isTextMax) {
-      //     return;
-      // }
-      this.authors_new.push(''); // 配列に１つ空データを追加する
+      if (this.isTextMax) {
+        return;
+      }
 
-      console.log(this.authors_new.length); // Vue.nextTick(() => {
+      this.authors_new.push(''); // 配列に１つ空データを追加する
+      // Vue.nextTick(() => {
       //     const maxIndex = this.authors_select.length - 1;
       //     console.log(maxIndex)
       //     this.$refs['authors_select'][maxIndex].focus(); // 追加された入力ボックスにフォーカスする
@@ -20266,6 +20279,18 @@ __webpack_require__.r(__webpack_exports__);
         _this.books = res.data;
         _this.msg = '登録されている書籍は以下のとおりです';
       });
+    },
+    changeUnscrollable: function changeUnscrollable() {
+      window.scrollTo({
+        top: 0,
+        //上からの位置
+        left: 0,
+        //左からの位置
+        behavior: 'smooth' //smoothでスクロールしながら移動
+
+      });
+      var element = document.querySelector('body');
+      element.style.overflow = 'hidden';
     }
   },
   mounted: function mounted() {
@@ -20814,7 +20839,11 @@ var _hoisted_1 = {
   "class": "modal"
 };
 var _hoisted_2 = {
-  "class": "modal-wrapper"
+  "class": "modal-wrapper",
+  style: {
+    "margin-top": "20px",
+    "margin-bottom": "15px"
+  }
 };
 
 var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
@@ -21158,7 +21187,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return $options.addAuthorsNew(_ctx.index), $data.authorsNewOpen = true;
     })
-  }, "新規登録者を追加する")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" divを使うとstyleが適用されるのでやむをえずtableを使用する "), $data.authorsNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("table", _hoisted_19, [_hoisted_20, _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規著者名入力欄 "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors_new, function (author_new, index) {
+  }, " 新規登録者を追加する ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" divを使うとstyleが適用されるのでやむをえずtableを使用する "), $data.authorsNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("table", _hoisted_19, [_hoisted_20, _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規著者名入力欄 "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors_new, function (author_new, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("table", {
       key: index
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -21188,7 +21217,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return $options.removeAuthorsNew(_ctx.index), $data.authorsNewOpen = $options.checkAuthorsNew($data.authorsNewOpen);
     })
-  }, "削除 "), _hoisted_27])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 出版社 "), _hoisted_29, !$data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", _hoisted_31, [_hoisted_32, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.publishers, function (publisher) {
+  }, " 削除 "), _hoisted_27])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 出版社 "), _hoisted_29, !$data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", _hoisted_31, [_hoisted_32, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.publishers, function (publisher) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       value: publisher.id,
       key: publisher.id
@@ -21219,7 +21248,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["modelValue", "config"]), _hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 表紙 "), _hoisted_43, _hoisted_44, _hoisted_45, _hoisted_46, _hoisted_47, _hoisted_48])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     "class": "close-text",
     onClick: _cache[9] || (_cache[9] = function ($event) {
-      return $data.modalOpen = false;
+      return $data.modalOpen = false, $options.changeScrollable();
     })
   }, "閉じる")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]))]);
 }
@@ -22592,7 +22621,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("main", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 検索部分 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.msg), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BookRegisterModal, {
-    "class": "link-box-end"
+    "class": "link-box-end",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.changeUnscrollable();
+    })
   })])]), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 書籍一覧部分 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_9, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.books, function (book, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       "class": "book-area",
@@ -23384,7 +23416,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n    /* モーダル */\n.modal[data-v-39b1fe26] {\n        position: absolute;\n        top: 0; right: 0; bottom: 0; left: 0;\n        background-color: rgba(0,0,0,.5);\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n}\n.modal div[data-v-39b1fe26] {\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        background-color: white;\n        width: 480px;\n        /* height: 275px; */\n        padding: 15px;\n        padding-bottom: 25px;\n}\n.publusher_input_area[data-v-39b1fe26] {\n        /* display: flex;\n        flex-direction: column; */\n        align-items: start !important;\n        justify-content: start !important;\n        width: auto !important;\n        height: auto !important;\n        padding: 0 !important;\n}\n.form-container[data-v-39b1fe26] {\n        padding-top: 0;\n        width: 80%;\n}\n.title[data-v-39b1fe26] {\n        margin-top: 10px;\n        margin-bottom: 0;\n}\n.label[data-v-39b1fe26] {\n        font-size: 24px;\n        margin-bottom: 10px;\n}\n.input_text[data-v-39b1fe26] {\n        width: 250px;\n        font-size: 16px;\n        /* margin-bottom: 20px; */\n}\n.submit-button[data-v-39b1fe26] {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        margin: 0 auto;\n        margin-bottom: 10px;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        border: none;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer\n}\n.close-text[data-v-39b1fe26] {\n        color:#0c2e8f;\n        text-decoration: underline;\n        cursor:pointer\n}\n\n    /* モーダル表示ボタン */\nbutton[data-v-39b1fe26]{\n        background-color: transparent;\n        border: none;\n        cursor: pointer;\n        outline: none;\n        padding: 0;\n        -webkit-appearance: none;\n           -moz-appearance: none;\n                appearance: none;\n}\n.register-button[data-v-39b1fe26] {\n        width: 100%;\n        height: 100%;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n    /* モーダル */\n.modal[data-v-39b1fe26] {\n        position: absolute;\n        top: 0; right: 0; bottom: 0; left: 0;\n        background-color: rgba(0,0,0,.5);\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        height: auto;\n        overflow: auto;\n}\n.modal div[data-v-39b1fe26] {\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        background-color: white;\n        width: 480px;\n        /* height: 275px; */\n        padding: 15px;\n        padding-bottom: 25px;\n}\n.publusher_input_area[data-v-39b1fe26] {\n        /* display: flex;\n        flex-direction: column; */\n        align-items: start !important;\n        justify-content: start !important;\n        width: auto !important;\n        height: auto !important;\n        padding: 0 !important;\n}\n.form-container[data-v-39b1fe26] {\n        padding-top: 0;\n        width: 80%;\n}\n.title[data-v-39b1fe26] {\n        margin-top: 10px;\n}\n.label[data-v-39b1fe26] {\n        font-size: 24px;\n        margin-bottom: 10px;\n}\n.input_text[data-v-39b1fe26] {\n        width: 250px;\n        font-size: 16px;\n        /* margin-bottom: 20px; */\n}\n.submit-button[data-v-39b1fe26] {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        margin: 0 auto;\n        margin-bottom: 10px;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        border: none;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer\n}\n.close-text[data-v-39b1fe26] {\n        color:#0c2e8f;\n        text-decoration: underline;\n        cursor:pointer\n}\n\n    /* モーダル表示ボタン */\nbutton[data-v-39b1fe26]{\n        background-color: transparent;\n        border: none;\n        cursor: pointer;\n        outline: none;\n        padding: 0;\n        -webkit-appearance: none;\n           -moz-appearance: none;\n                appearance: none;\n}\n.register-button[data-v-39b1fe26] {\n        width: 100%;\n        height: 100%;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
