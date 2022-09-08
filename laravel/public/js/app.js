@@ -20281,13 +20281,11 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     changeUnscrollable: function changeUnscrollable() {
+      // 画面最上段にスクロールする
       window.scrollTo({
         top: 0,
-        //上からの位置
         left: 0,
-        //左からの位置
-        behavior: 'smooth' //smoothでスクロールしながら移動
-
+        behavior: 'smooth'
       });
       var element = document.querySelector('body');
       element.style.overflow = 'hidden';
@@ -20841,7 +20839,7 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "modal-wrapper",
   style: {
-    "margin-top": "20px",
+    "margin-top": "120px",
     "margin-bottom": "15px"
   }
 };
@@ -20869,26 +20867,28 @@ var _hoisted_5 = {
 var _hoisted_6 = ["value"];
 
 var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", {
+    "class": "title-area"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "label"
-  }, "書籍タイトル", -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_8 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_9 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, "書籍タイトル"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     name: "name",
     "class": "input_text",
     value: "イシューからはじめよ 知的生産の「シンプルな本質」"
-  }, null, -1
+  }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br")], -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_8 = {
+  "class": "author-select-area"
+};
+
+var _hoisted_9 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "class": "label"
+  }, "著者", -1
   /* HOISTED */
   );
 });
@@ -20899,23 +20899,9 @@ var _hoisted_10 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_11 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-    "class": "label"
-  }, "著者", -1
-  /* HOISTED */
-  );
-});
+var _hoisted_11 = ["name"];
 
 var _hoisted_12 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_13 = ["name"];
-
-var _hoisted_14 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
     disabled: "",
     value: "",
@@ -20925,7 +20911,19 @@ var _hoisted_14 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_15 = ["value"];
+var _hoisted_13 = ["value"];
+
+var _hoisted_14 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_15 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
 
 var _hoisted_16 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
@@ -20934,22 +20932,17 @@ var _hoisted_16 = /*#__PURE__*/_withScopeId(function () {
 });
 
 var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
   /* HOISTED */
   );
 });
 
-var _hoisted_18 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_19 = {
-  key: 1
+var _hoisted_18 = {
+  key: 1,
+  "class": "author-new-area"
 };
 
-var _hoisted_20 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_19 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "label"
   }, "新規著者", -1
@@ -20957,21 +20950,27 @@ var _hoisted_20 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_21 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_20 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
   /* HOISTED */
   );
 });
 
-var _hoisted_22 = ["name"];
+var _hoisted_21 = ["name"];
 
-var _hoisted_23 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_22 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
   /* HOISTED */
   );
 });
 
-var _hoisted_24 = ["name"];
+var _hoisted_23 = ["name"];
+
+var _hoisted_24 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
 
 var _hoisted_25 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
@@ -20985,19 +20984,11 @@ var _hoisted_26 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_27 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
-  /* HOISTED */
-  );
-});
+var _hoisted_27 = {
+  "class": "publisher-select-area"
+};
 
 var _hoisted_28 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_29 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "label"
   }, "出版社", -1
@@ -21005,15 +20996,16 @@ var _hoisted_29 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_30 = {
-  key: 2,
-  "class": "publusher_input_area"
+var _hoisted_29 = {
+  key: 0,
+  "class": "publisher_input_area"
 };
-var _hoisted_31 = {
+var _hoisted_30 = {
+  "class": "publisher-select",
   name: "publisher_id"
 };
 
-var _hoisted_32 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_31 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
     disabled: "",
     value: ""
@@ -21022,9 +21014,9 @@ var _hoisted_32 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_33 = ["value"];
+var _hoisted_32 = ["value"];
 
-var _hoisted_34 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_33 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
     name: "publisher_name",
@@ -21034,7 +21026,7 @@ var _hoisted_34 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_35 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_34 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
     name: "publisher_name_furigana",
@@ -21044,9 +21036,12 @@ var _hoisted_35 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
+var _hoisted_35 = {
+  "class": "publisher-new-area"
+};
 var _hoisted_36 = {
-  key: 3,
-  "class": "publusher_input_area"
+  key: 0,
+  "class": "publisher_input_area"
 };
 
 var _hoisted_37 = /*#__PURE__*/_withScopeId(function () {
@@ -21074,6 +21069,16 @@ var _hoisted_38 = /*#__PURE__*/_withScopeId(function () {
 var _hoisted_39 = [_hoisted_37, _hoisted_38];
 
 var _hoisted_40 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_41 = {
+  "class": "first_publish-area"
+};
+
+var _hoisted_42 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "label"
   }, "初出版", -1
@@ -21081,22 +21086,8 @@ var _hoisted_40 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_41 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_42 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
-  /* HOISTED */
-  );
-});
-
 var _hoisted_43 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-    "class": "label"
-  }, "表紙画像", -1
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
   /* HOISTED */
   );
 });
@@ -21108,27 +21099,20 @@ var _hoisted_44 = /*#__PURE__*/_withScopeId(function () {
 });
 
 var _hoisted_45 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", {
+    "class": "image-area"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "class": "label"
+  }, "表紙画像"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "image-btn",
     type: "file",
     name: "book_image"
-  }, null, -1
+  }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br")], -1
   /* HOISTED */
   );
 });
 
 var _hoisted_46 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_47 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_48 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "submit",
     "class": "submit-button"
@@ -21147,47 +21131,49 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, " 新規登録 "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Teleport, {
     to: "body"
-  }, [$data.modalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, [$data.modalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <span style=\"margin-top:100px;\" v-if=\"authorsNewOpen\"/> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
     name: "_token",
     value: $data.csrf
   }, null, 8
   /* PROPS */
-  , _hoisted_6), _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者 "), _hoisted_11, _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 各入力ボックス "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors_select, function (text, index) {
+  , _hoisted_6), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 既存の著者から選択 "), _hoisted_9, _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 各入力ボックス "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors_select, function (text, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("select", {
+      "class": "author-select",
       name: 'authors[' + index + ']',
       key: index
-    }, [_hoisted_14, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors, function (author) {
+    }, [_hoisted_12, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors, function (author) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
         value: author.id,
         key: author.id
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(author.name), 9
       /* TEXT, PROPS */
-      , _hoisted_15);
+      , _hoisted_13);
     }), 128
     /* KEYED_FRAGMENT */
     ))], 8
     /* PROPS */
-    , _hoisted_13);
+    , _hoisted_11);
   }), 128
   /* KEYED_FRAGMENT */
-  )), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者選択欄を追加するボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  )), _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者選択欄を追加するボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $options.addAuthorSelect();
     })
-  }, "追加する"), _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者選択欄の削除ボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, "追加する"), _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者選択欄の削除ボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return $options.removeAuthorSelect(_ctx.index);
     })
-  }, "削除"), _hoisted_18, !$data.authorsNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  }, "削除"), _hoisted_16, _hoisted_17, !$data.authorsNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", {
     key: 0,
+    "class": "switch-text",
     type: "button",
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return $options.addAuthorsNew(_ctx.index), $data.authorsNewOpen = true;
     })
-  }, " 新規登録者を追加する ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" divを使うとstyleが適用されるのでやむをえずtableを使用する "), $data.authorsNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("table", _hoisted_19, [_hoisted_20, _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規著者名入力欄 "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors_new, function (author_new, index) {
+  }, " または、新規登録者を追加する ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.authorsNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("table", _hoisted_18, [_hoisted_19, _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規著者名入力欄 "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors_new, function (author_new, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("table", {
       key: index
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -21197,14 +21183,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       placeholder: "新規著者名"
     }, null, 8
     /* PROPS */
-    , _hoisted_22), _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規著者名ふりがな入力欄 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    , _hoisted_21), _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規著者名ふりがな入力欄 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "text",
       name: 'author_new_name_furigana[' + index + ']',
       "class": "input_text",
       placeholder: "新規著者名（ふりがな）"
     }, null, 8
     /* PROPS */
-    , _hoisted_24), _hoisted_25]);
+    , _hoisted_23), _hoisted_24]);
   }), 128
   /* KEYED_FRAGMENT */
   )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 入力ボックスを追加するボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -21212,31 +21198,33 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[4] || (_cache[4] = function ($event) {
       return $options.addAuthorsNew();
     })
-  }, "追加する"), _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 入力ボックスの削除ボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, "追加する"), _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 入力ボックスの削除ボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return $options.removeAuthorsNew(_ctx.index), $data.authorsNewOpen = $options.checkAuthorsNew($data.authorsNewOpen);
     })
-  }, " 削除 "), _hoisted_27])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 出版社 "), _hoisted_29, !$data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", _hoisted_31, [_hoisted_32, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.publishers, function (publisher) {
+  }, " 削除 "), _hoisted_26])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" divを使うとstyleが適用されるのでやむをえずtableを使用する "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 出版社 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_27, [_hoisted_28, !$data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", _hoisted_30, [_hoisted_31, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.publishers, function (publisher) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       value: publisher.id,
       key: publisher.id
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(publisher.name), 9
     /* TEXT, PROPS */
-    , _hoisted_33);
+    , _hoisted_32);
   }), 128
   /* KEYED_FRAGMENT */
-  ))]), _hoisted_34, _hoisted_35])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_36, _hoisted_39)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", {
-    key: 4,
+  ))]), _hoisted_33, _hoisted_34])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_35, [$data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_36, _hoisted_39)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_40, $data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", {
+    key: 1,
+    "class": "switch-text",
     onClick: _cache[6] || (_cache[6] = function ($event) {
-      return $data.publisherNewOpen = true;
-    })
-  }, "または新規出版社を登録する")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", {
-    key: 5,
-    onClick: _cache[7] || (_cache[7] = function ($event) {
       return $data.publisherNewOpen = false;
     })
-  }, "登録済みの出版社を選択する")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 初版発行時期 "), _hoisted_40, _hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_flat_pickr, {
+  }, "登録済みの出版社を選択する")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", {
+    key: 2,
+    onClick: _cache[7] || (_cache[7] = function ($event) {
+      return $data.publisherNewOpen = true;
+    })
+  }, "または新規出版社を登録する")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 初版発行時期 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_41, [_hoisted_42, _hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_flat_pickr, {
+    "class": "first_publish-input",
     modelValue: $data.date,
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
       return $data.date = $event;
@@ -21245,7 +21233,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     config: $data.flatOption
   }, null, 8
   /* PROPS */
-  , ["modelValue", "config"]), _hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 表紙 "), _hoisted_43, _hoisted_44, _hoisted_45, _hoisted_46, _hoisted_47, _hoisted_48])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  , ["modelValue", "config"]), _hoisted_44]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 表紙 "), _hoisted_45, _hoisted_46])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     "class": "close-text",
     onClick: _cache[9] || (_cache[9] = function ($event) {
       return $data.modalOpen = false, $options.changeScrollable();
@@ -23416,7 +23404,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n    /* モーダル */\n.modal[data-v-39b1fe26] {\n        position: absolute;\n        top: 0; right: 0; bottom: 0; left: 0;\n        background-color: rgba(0,0,0,.5);\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        height: auto;\n        overflow: auto;\n}\n.modal div[data-v-39b1fe26] {\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        background-color: white;\n        width: 480px;\n        /* height: 275px; */\n        padding: 15px;\n        padding-bottom: 25px;\n}\n.publusher_input_area[data-v-39b1fe26] {\n        /* display: flex;\n        flex-direction: column; */\n        align-items: start !important;\n        justify-content: start !important;\n        width: auto !important;\n        height: auto !important;\n        padding: 0 !important;\n}\n.form-container[data-v-39b1fe26] {\n        padding-top: 0;\n        width: 80%;\n}\n.title[data-v-39b1fe26] {\n        margin-top: 10px;\n}\n.label[data-v-39b1fe26] {\n        font-size: 24px;\n        margin-bottom: 10px;\n}\n.input_text[data-v-39b1fe26] {\n        width: 250px;\n        font-size: 16px;\n        /* margin-bottom: 20px; */\n}\n.submit-button[data-v-39b1fe26] {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        margin: 0 auto;\n        margin-bottom: 10px;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        border: none;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer\n}\n.close-text[data-v-39b1fe26] {\n        color:#0c2e8f;\n        text-decoration: underline;\n        cursor:pointer\n}\n\n    /* モーダル表示ボタン */\nbutton[data-v-39b1fe26]{\n        background-color: transparent;\n        border: none;\n        cursor: pointer;\n        outline: none;\n        padding: 0;\n        -webkit-appearance: none;\n           -moz-appearance: none;\n                appearance: none;\n}\n.register-button[data-v-39b1fe26] {\n        width: 100%;\n        height: 100%;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n    /* モーダル */\n.modal[data-v-39b1fe26] {\n        position: absolute;\n        top: 0; right: 0; bottom: 0; left: 0;\n        background-color: rgba(0,0,0,.5);\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        height: auto;\n        overflow: auto;\n}\n.modal div[data-v-39b1fe26] {\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        background-color: white;\n        width: 480px;\n        /* height: 275px; */\n        padding: 15px;\n        padding-bottom: 25px;\n}\n.publisher_input_area[data-v-39b1fe26] {\n        /* display: flex;\n        flex-direction: column; */\n        align-items: start !important;\n        justify-content: start !important;\n        width: auto !important;\n        height: auto !important;\n        padding: 0 !important;\n}\n.form-container[data-v-39b1fe26] {\n        padding-top: 0;\n        width: 80%;\n}\n.title-area[data-v-39b1fe26],\n    .author-select-area[data-v-39b1fe26],\n    .author-new-area[data-v-39b1fe26],\n    .publisher-select-area[data-v-39b1fe26],\n    .publisher-new-area[data-v-39b1fe26],\n    .first_publish-area[data-v-39b1fe26],\n    .image-area[data-v-39b1fe26] {\n        margin-bottom: 10px;\n}\n.title[data-v-39b1fe26] {\n        margin-top: 10px;\n}\n.label[data-v-39b1fe26] {\n        font-size: 24px;\n        margin-bottom: 10px;\n}\n.input_text[data-v-39b1fe26] {\n        width: 250px;\n        font-size: 16px;\n        margin-top: 5px;\n}\n.switch-text[data-v-39b1fe26] {\n        font-size: 16px;\n        margin-top:5px;\n}\n.author-select[data-v-39b1fe26],\n    .publisher-select[data-v-39b1fe26],\n    .first_publish-input[data-v-39b1fe26],\n    .image-btn[data-v-39b1fe26]{\n        margin-top: 5px;\n}\n.submit-button[data-v-39b1fe26] {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        margin: 0 auto;\n        margin-bottom: 10px;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        border: none;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer\n}\n.close-text[data-v-39b1fe26] {\n        color:#0c2e8f;\n        text-decoration: underline;\n        cursor:pointer\n}\n\n    /* モーダル表示ボタン */\nbutton[data-v-39b1fe26]{\n        background-color: transparent;\n        border: none;\n        cursor: pointer;\n        outline: none;\n        padding: 0;\n        -webkit-appearance: none;\n           -moz-appearance: none;\n                appearance: none;\n}\n.register-button[data-v-39b1fe26] {\n        width: 100%;\n        height: 100%;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
