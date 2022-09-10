@@ -6,7 +6,9 @@
 
         <teleport to="body">
             <div v-if="modalOpen" class="modal">
-                <div class="modal-wrapper" style="margin-top:120px; margin-bottom:15px;">
+                <!-- タイトルが画面から切れないようmarginを入れる -->
+                <span style="margin-top:100px;" v-if="authorsNewOpen"/>
+                <div class="modal-wrapper" style="margin-top:20px; margin-bottom:15px;">
                     <h3 class="title">出版社登録フォーム</h3>
                     <div class="form-container" style="padding-top:0; padding-bottom:0;">
                         <form method="POST" action="/api/book/register" enctype="multipart/form-data">
