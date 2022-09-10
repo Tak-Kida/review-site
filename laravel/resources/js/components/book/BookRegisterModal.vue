@@ -288,7 +288,7 @@ export default {
     }
 
     .input_text {
-        width: 250px;
+        width: 400px;
         font-size: 16px;
         margin-top: 5px;
     }
