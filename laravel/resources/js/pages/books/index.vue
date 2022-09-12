@@ -15,14 +15,16 @@
                 <ul class="book-box-container">
                     <li class="book-area" v-for="(book, index) in books" :key="index">
                         <div class="book-box">
-                            <div class="book-image-area">
+                            <div class="book-image-area" href="book/detail/{{ book.id }}">
                                 <!-- 書籍のサムネイル -->
                                 <!-- 書籍の画像を表示する -->
                                 <img :src="'/storage/book_image/' + book.image_name" :alt= "book.name" class="book-image" />
                             </div>
                             <div class="book-detail-area">
                                 <h5 class="book-name">
-                                    {{ book.name }}
+                                    <a class="book-name-link" :href="'book/detail/' + book.id ">
+                                        {{ book.name }}
+                                    </a>
                                 </h5>
                                 <!-- 書籍説明文 -->
                                 <table class="book-detail">
@@ -206,6 +208,10 @@ export default {
         font-weight: bold;
         margin: auto;
         margin-bottom: 10px;
+    }
+
+    .book-name-link{
+        text-decoration: none;
     }
 
     .book-detail-header {
