@@ -1,39 +1,48 @@
 <template>
-    <div>
-        <h1>書籍情報詳細</h1>
-        <table>
-            <tr>
-                <th>ID</th>
-                <td scope="row">{{ book.id }}</td>
-            </tr>
-            <tr>
-                <th>書籍名</th>
-                <td>{{ book.name }}</td>
-            </tr>
-            <tr>
-                <th>著者名</th>
-                <td>
-                    <div v-for="author_info in book.book_authors" :key="author_info.id">
-                            {{ author_info.author.name }} （{{ author_info.author.name_furigana }}）
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th>出版社名</th>
-                <td v-if="book.publisher && book.publisher['name']">
-                    {{ book.publisher['name'] }}
-                </td>
-            </tr>
-            <tr>
-                <th>初版発行</th>
-                <td>{{ book.first_published }}</td>
-            </tr>
-        </table>
+    <main class="main">
+        <div class="content-wrapper">
+            <h3 class ="title">書籍情報詳細</h3>
+            <div class="book-information-area">
+                <div class="book-image-area" href="book/detail/{{ book.id }}">
+                    <!-- 書籍のサムネイル -->
+                    <!-- 書籍の画像を表示する -->
+                    <img :src="'/storage/book_image/' + book.image_name" :alt= "book.name" class="book-image" />
+                </div>
+                <table class="book-information">
+                    <tr>
+                        <th>ID</th>
+                        <td scope="row">{{ book.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>書籍名</th>
+                        <td>{{ book.name }}</td>
+                    </tr>
+                    <tr>
+                        <th class="authors_name_row">著者名</th>
+                        <td>
+                            <div v-for="author_info in book.book_authors" :key="author_info.id">
+                                    {{ author_info.author.name }} （{{ author_info.author.name_furigana }}）
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>出版社名</th>
+                        <td v-if="book.publisher && book.publisher['name']">
+                            {{ book.publisher['name'] }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>初版発行</th>
+                        <td>{{ book.first_published }}</td>
+                    </tr>
+                    <tr><a v-bind:href="'/book/edit/' + book.id ">編集・削除</a></tr>
+                </table>
+            </div>
+        </div>
+        <hr />
 
-        <a v-bind:href="'/book/edit/' + book.id ">編集・削除</a>
-        <div>---------------------</div>
-
-        <h3>チャプター</h3>
+        <!-- チャプター -->
+        <h3 class="title">チャプター</h3>
         <table>
             <tr v-for="chapter in chapters" :key="chapter.id">
                 <th>{{ chapter.id }}：</th>
@@ -44,7 +53,7 @@
             </tr>
         </table>
         <a v-bind:href="'/book/edit/' + book.id ">編集・削除</a>
-    </div>
+    </main>
 </template>
 
 <script>
@@ -82,3 +91,20 @@ export default {
 }
 </script>
 
+<style scoped>
+    .book-image {
+        margin: auto;
+        width: 300px;
+        height: 384px;
+    }
+
+    .book-information{
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .authors_name_row{
+        vertical-align: middle;
+    }
+
+</style>
