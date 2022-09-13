@@ -23,7 +23,7 @@ Route::post('/api/book/edit/{id}', 'App\Http\Controllers\BookController@update')
 Route::post('/api/book/delete/{id}', 'App\Http\Controllers\BookController@delete');
 
 // Chapter
-Route::get('/api/chapter/index-json', 'App\Http\Controllers\ChapterController@getIndex');
+Route::get('/api/chapter/index-json/{id}', 'App\Http\Controllers\ChapterController@getIndex');
 Route::post('api/chapter/register', 'App\Http\Controllers\ChapterController@create');
 Route::post('/api/chapter/edit/{id}', 'App\Http\Controllers\ChapterController@update');
 Route::post('/api/chapter/delete/{id}', 'App\Http\Controllers\ChapterController@delete');

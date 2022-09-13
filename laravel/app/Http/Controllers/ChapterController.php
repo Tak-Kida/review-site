@@ -9,9 +9,9 @@ use App\Models\Chapter;
 class ChapterController extends Controller
 {
     // 一覧をJSONで取得する
-    public function getIndex()
+    public function getIndex(Request $request)
     {
-        $chapters = Chapter::all();
+        $chapters = Chapter::where('book_id', $request->id)->get();
         return $chapters->toJson();
     }
 

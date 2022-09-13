@@ -44,13 +44,20 @@
         <!-- チャプター -->
         <h3 class="title">チャプター</h3>
         <table>
-            <tr v-for="chapter in chapters" :key="chapter.id">
-                <th>{{ chapter.id }}：</th>
-                <td>
-                    {{ chapter.title }}<br/>
-                    {{ chapter.summary }}
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>章タイトル</th>
+                    <th>内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="chapter in chapters" :key="chapter.id">
+                    <td>{{ chapter.title }}：</td>
+                    <td>
+                        {{ chapter.summary }}
+                    </td>
+                </tr>
+            </tbody>
         </table>
         <a v-bind:href="'/book/edit/' + book.id ">編集・削除</a>
     </main>
@@ -65,6 +72,7 @@ export default {
         return {
             msg:'wait...',
             book:[],
+            chapters:[],
 
         };
     },
@@ -77,7 +85,7 @@ export default {
                 });
         },
         getChapterIndex() {
-            axios.get('/api/chapter/index-json')
+            axios.get('/api/chapter/index-json/' + this.id)
                 .then((res) =>{
                     this.chapters = res.data;
                     this.msg = 'get chapters!';
