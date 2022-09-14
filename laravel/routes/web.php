@@ -22,6 +22,9 @@ Route::post('/api/book/register', 'App\Http\Controllers\BookController@create');
 Route::post('/api/book/edit/{id}', 'App\Http\Controllers\BookController@update');
 Route::post('/api/book/delete/{id}', 'App\Http\Controllers\BookController@delete');
 
+// BookAuthor
+Route::get('/api/book-author/index-json/{book_id}', 'App\Http\Controllers\BookAuthorController@getIndex');
+
 // Chapter
 Route::get('/api/chapter/index-json/{id}', 'App\Http\Controllers\ChapterController@getIndex');
 Route::post('api/chapter/register', 'App\Http\Controllers\ChapterController@create');

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="register-button" @click="modalOpen = true;">
+        <button class="register-button" @click="modalOpen = true; getBookAuthors(book_id)">
             編集
         </button>
 
@@ -105,8 +105,15 @@
                             <!-- 初版発行時期 -->
                             <table class="first_publish-area">
                                 <label class="label">初出版</label><br />
-                                <flat-pickr class="first_publish-input" v-model="date" name="first_published" :config="flatOption"/><br />
+                                <flat-pickr
+                                    class="first_publish-input"
+                                    name="first_published"
+                                    v-model="book_first_published"
+                                    :config="flatOption"
+                                />
+                                <br />
                             </table>
+
                             <!-- 表紙 -->
                             <table class="image-area">
                                 <label class="label">表紙画像</label><br />
@@ -116,6 +123,7 @@
 
                             <input type="submit" class="submit-button">
                         </form>
+                        <div>{{ book_authors }}</div>
                     </div>
                     <p class="close-text" @click="modalOpen=false, changeScrollable()">閉じる</p>
                 </div>
@@ -138,18 +146,16 @@ export default {
         },
         book_name: String,
         book_authors: Array,
-        book_publisher: Number,
+        book_publisher: Array,
         book_first_published: String,
         book_image_name: String
-    },
-    setup (book_publisher) {
-        console.log(book_publisher);
     },
     components: {
         flatPickr
     },
     data() {
         return {
+            book_authors: null,
             authors_select: [''],
             authors_new: [],
             modalOpen: false,
@@ -165,6 +171,21 @@ export default {
         }
     },
     methods:{
+        // 書籍に紐づく著者情報を取得する
+        getBookAuthors(book_id) {
+            axios.get('/api/book-author/index-json/' + book_id)
+                .then((res) =>{
+                    this.book_authors = res.data;
+                    console.log(this.book_authors.length);
+                    // authors_selectの数が登録著者数以下なら
+                    if (this.authors_select.length < this.book_authors.length) {
+                        // authors_selectの数を増やす
+                        for(let i = 1; i < this.book_authors.length; i++) {
+                            this.authors_select.push('');
+                        }
+                    }
+                });
+        },
         // スクロールができるようにもどす
         changeScrollable() {
             window.scrollTo({
