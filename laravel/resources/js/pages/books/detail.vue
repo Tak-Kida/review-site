@@ -35,8 +35,16 @@
                         <th>初版発行</th>
                         <td>{{ book.first_published }}</td>
                     </tr>
-                    <tr><a v-bind:href="'/book/edit/' + book.id ">編集・削除</a></tr>
+                    <!-- <tr><a v-bind:href="'/book/edit/' + book.id ">編集・削除</a></tr> -->
                 </table>
+                <BookEditModal class="link-box-end"
+                    :book_name="book.name"
+                    :book_authors="book.authors"
+                    :book_publisher="book.publisher"
+                    :book_first_published="book.first_published"
+                    :book_image_name="book.image_name"
+                />
+                <div>{{ book }}</div>
             </div>
         </div>
         <hr />
@@ -64,7 +72,12 @@
 </template>
 
 <script>
+import BookEditModal from "../../components/book/BookEditModal";
+
 export default {
+    components: {
+        BookEditModal,
+    },
     props: {
         id: {type: Number},
     },
@@ -90,6 +103,16 @@ export default {
                     this.chapters = res.data;
                     this.msg = 'get chapters!';
                 });
+        },
+        changeUnscrollable() {
+            // 画面最上段にスクロールする
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+            let element = document.querySelector('body');
+            element.style.overflow = 'hidden';
         }
     },
     mounted () {

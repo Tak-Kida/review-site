@@ -19717,6 +19717,153 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookEditModal.vue?vue&type=script&lang=js":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookEditModal.vue?vue&type=script&lang=js ***!
+  \************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-flatpickr-component */ "./node_modules/vue-flatpickr-component/dist/vue-flatpickr.min.js");
+/* harmony import */ var vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flatpickr/dist/flatpickr.css */ "./node_modules/flatpickr/dist/flatpickr.css");
+/* harmony import */ var flatpickr_dist_l10n_ja_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! flatpickr/dist/l10n/ja.js */ "./node_modules/flatpickr/dist/l10n/ja.js");
+/* harmony import */ var flatpickr_dist_l10n_ja_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(flatpickr_dist_l10n_ja_js__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    msg: String,
+    'book_id': {
+      type: Number,
+      "default": null
+    },
+    book_name: String,
+    book_authors: Array,
+    book_publisher: Number,
+    book_first_published: String,
+    book_image_name: String
+  },
+  setup: function setup(book_publisher) {
+    console.log(book_publisher);
+  },
+  components: {
+    flatPickr: (vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_0___default())
+  },
+  data: function data() {
+    return {
+      selected_publisher_id: null,
+      authors_select: [''],
+      authors_new: [],
+      modalOpen: false,
+      publisherNewOpen: false,
+      authorsNewOpen: false,
+      date: null,
+      publishers: [],
+      authors: [],
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      flatOption: {
+        locale: flatpickr_dist_l10n_ja_js__WEBPACK_IMPORTED_MODULE_2__.Japanese
+      }
+    };
+  },
+  methods: {
+    // 書籍情報詳細取得
+    getBookDetail: function getBookDetail(book_id) {
+      var _this = this;
+
+      axios.get('/api/book/detail-json/' + book_id).then(function (res) {
+        _this.book = res.data;
+      });
+    },
+    // スクロールができるようにもどす
+    changeScrollable: function changeScrollable() {
+      window.scrollTo({
+        top: 0,
+        //上からの位置
+        left: 0,
+        //左からの位置
+        behavior: 'smooth' //smoothでスクロールしながら移動
+
+      });
+      var element = document.querySelector('body');
+      element.style.overflow = 'scroll';
+    },
+    // 著者選択欄の削除
+    removeAuthorSelect: function removeAuthorSelect(index) {
+      this.authors_select.splice(index, 1); // 該当するデータを削除
+    },
+    // 著者選択欄の追加
+    addAuthorSelect: function addAuthorSelect() {
+      if (this.isTextMax) {
+        return;
+      }
+
+      this.authors_select.push(''); // 配列に１つ空データを追加する
+      // Vue.nextTick(() => {
+      //     const maxIndex = this.authors_select.length - 1;
+      //     console.log(maxIndex)
+      //     this.$refs['authors_select'][maxIndex].focus(); // 追加された入力ボックスにフォーカスする
+      // });
+    },
+    // 新規著者入力欄の削除
+    removeAuthorsNew: function removeAuthorsNew(index) {
+      this.authors_new.splice(index, 1); // 該当するデータを削除
+    },
+    // 新規著者入力欄の追加
+    addAuthorsNew: function addAuthorsNew() {
+      if (this.isTextMax) {
+        return;
+      }
+
+      this.authors_new.push(''); // 配列に１つ空データを追加する
+      // Vue.nextTick(() => {
+      //     const maxIndex = this.authors_select.length - 1;
+      //     console.log(maxIndex)
+      //     this.$refs['authors_select'][maxIndex].focus(); // 追加された入力ボックスにフォーカスする
+      // });
+    },
+    checkAuthorsNew: function checkAuthorsNew(bool) {
+      // boolはtrueであることが前提
+      if (this.authors_new.length == 0) {
+        bool = !bool;
+        return bool;
+      }
+
+      ;
+      return bool;
+    },
+    // 出版社一覧を取得する
+    getPublisherIndex: function getPublisherIndex() {
+      var _this2 = this;
+
+      axios.get('/api/publisher/index-json').then(function (res) {
+        _this2.publishers = res.data;
+      });
+    },
+    // 著者一覧を取得する
+    getAuthorIndex: function getAuthorIndex() {
+      var _this3 = this;
+
+      axios.get('/api/author/index-json').then(function (res) {
+        _this3.authors = res.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    // this.getBookDetail();
+    this.getPublisherIndex();
+    this.getAuthorIndex();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookRegisterModal.vue?vue&type=script&lang=js":
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookRegisterModal.vue?vue&type=script&lang=js ***!
@@ -20144,7 +20291,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _components_book_BookEditModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/book/BookEditModal */ "./resources/js/components/book/BookEditModal.vue");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    BookEditModal: _components_book_BookEditModal__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: {
     id: {
       type: Number
@@ -20173,6 +20325,16 @@ __webpack_require__.r(__webpack_exports__);
         _this2.chapters = res.data;
         _this2.msg = 'get chapters!';
       });
+    },
+    changeUnscrollable: function changeUnscrollable() {
+      // 画面最上段にスクロールする
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+      var element = document.querySelector('body');
+      element.style.overflow = 'hidden';
     }
   },
   mounted: function mounted() {
@@ -20809,6 +20971,464 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "close-text",
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $data.modalOpen = false;
+    })
+  }, "閉じる")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]))]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookEditModal.vue?vue&type=template&id=6017b6c2&scoped=true":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookEditModal.vue?vue&type=template&id=6017b6c2&scoped=true ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _withScopeId = function _withScopeId(n) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-6017b6c2"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
+};
+
+var _hoisted_1 = {
+  key: 0,
+  "class": "modal"
+};
+var _hoisted_2 = {
+  key: 0,
+  style: {
+    "margin-top": "100px"
+  }
+};
+var _hoisted_3 = {
+  "class": "modal-wrapper",
+  style: {
+    "margin-top": "20px",
+    "margin-bottom": "15px"
+  }
+};
+
+var _hoisted_4 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+    "class": "title"
+  }, "出版社登録フォーム", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_5 = {
+  "class": "form-container",
+  style: {
+    "padding-top": "0",
+    "padding-bottom": "0"
+  }
+};
+var _hoisted_6 = {
+  method: "POST",
+  action: "/api/book/register",
+  enctype: "multipart/form-data"
+};
+var _hoisted_7 = ["value"];
+var _hoisted_8 = {
+  "class": "title-area"
+};
+
+var _hoisted_9 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "class": "label"
+  }, "書籍タイトル", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_10 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_11 = ["value"];
+
+var _hoisted_12 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_13 = {
+  "class": "author-select-area"
+};
+
+var _hoisted_14 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "class": "label"
+  }, "著者", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_15 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_16 = ["name"];
+
+var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+    disabled: "",
+    value: "",
+    selected: ""
+  }, "選択してください", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_18 = ["value"];
+
+var _hoisted_19 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_20 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_21 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_22 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_23 = {
+  key: 1,
+  "class": "author-new-area"
+};
+
+var _hoisted_24 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "class": "label"
+  }, "新規著者", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_25 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_26 = ["name"];
+
+var _hoisted_27 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_28 = ["name"];
+
+var _hoisted_29 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_30 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_31 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_32 = {
+  "class": "publisher-select-area"
+};
+
+var _hoisted_33 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "class": "label"
+  }, "出版社", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_34 = {
+  key: 0,
+  "class": "publisher_input_area"
+};
+
+var _hoisted_35 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+    disabled: "",
+    value: ""
+  }, "選択してください", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_36 = ["value"];
+
+var _hoisted_37 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "hidden",
+    name: "publisher_name",
+    "class": "input_text"
+  }, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_38 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "hidden",
+    name: "publisher_name_furigana",
+    "class": "input_text"
+  }, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_39 = {
+  "class": "publisher-new-area"
+};
+var _hoisted_40 = {
+  key: 0,
+  "class": "publisher_input_area"
+};
+
+var _hoisted_41 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    name: "publisher_name",
+    "class": "input_text",
+    placeholder: "新規出版社名"
+  }, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_42 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    name: "publisher_name_furigana",
+    "class": "input_text",
+    placeholder: "新規出版社名（ふりがな）"
+  }, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_43 = [_hoisted_41, _hoisted_42];
+
+var _hoisted_44 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_45 = {
+  "class": "first_publish-area"
+};
+
+var _hoisted_46 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "class": "label"
+  }, "初出版", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_47 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_48 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_49 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", {
+    "class": "image-area"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    "class": "label"
+  }, "表紙画像"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "image-btn",
+    type: "file",
+    name: "book_image"
+  }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br")], -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_50 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "submit",
+    "class": "submit-button"
+  }, null, -1
+  /* HOISTED */
+  );
+});
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_flat_pickr = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("flat-pickr");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "register-button",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      $data.modalOpen = true;
+    })
+  }, " 編集 "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Teleport, {
+    to: "body"
+  }, [$data.modalOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" タイトルが画面から切れないようmarginを入れる "), $data.authorsNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_2)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "hidden",
+    name: "_token",
+    value: $data.csrf
+  }, null, 8
+  /* PROPS */
+  , _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_8, [_hoisted_9, _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    name: "name",
+    "class": "input_text",
+    value: $props.book_name
+  }, null, 8
+  /* PROPS */
+  , _hoisted_11), _hoisted_12]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 既存の著者から選択 "), _hoisted_14, _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 各入力ボックス "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors_select, function (text, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("select", {
+      "class": "author-select",
+      name: 'authors[' + index + ']',
+      key: index
+    }, [_hoisted_17, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors, function (author) {
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+        value: author.id,
+        key: author.id
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(author.name), 9
+      /* TEXT, PROPS */
+      , _hoisted_18);
+    }), 128
+    /* KEYED_FRAGMENT */
+    ))], 8
+    /* PROPS */
+    , _hoisted_16);
+  }), 128
+  /* KEYED_FRAGMENT */
+  )), _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者選択欄を追加するボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $options.addAuthorSelect();
+    })
+  }, "追加する"), _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 著者選択欄の削除ボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    onClick: _cache[2] || (_cache[2] = function ($event) {
+      return $options.removeAuthorSelect(_ctx.index);
+    })
+  }, "削除"), _hoisted_21, _hoisted_22, !$data.authorsNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", {
+    key: 0,
+    "class": "switch-text",
+    type: "button",
+    onClick: _cache[3] || (_cache[3] = function ($event) {
+      return $options.addAuthorsNew(_ctx.index), $data.authorsNewOpen = true;
+    })
+  }, " または、新規登録者を追加する ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.authorsNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("table", _hoisted_23, [_hoisted_24, _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規著者名入力欄 "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.authors_new, function (author_new, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("table", {
+      key: index
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "text",
+      name: 'author_new_name[' + index + ']',
+      "class": "input_text",
+      placeholder: "新規著者名"
+    }, null, 8
+    /* PROPS */
+    , _hoisted_26), _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規著者名ふりがな入力欄 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "text",
+      name: 'author_new_name_furigana[' + index + ']',
+      "class": "input_text",
+      placeholder: "新規著者名（ふりがな）"
+    }, null, 8
+    /* PROPS */
+    , _hoisted_28), _hoisted_29]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 入力ボックスを追加するボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    onClick: _cache[4] || (_cache[4] = function ($event) {
+      return $options.addAuthorsNew();
+    })
+  }, "追加する"), _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 入力ボックスの削除ボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    onClick: _cache[5] || (_cache[5] = function ($event) {
+      return $options.removeAuthorsNew(_ctx.index), $data.authorsNewOpen = $options.checkAuthorsNew($data.authorsNewOpen);
+    })
+  }, " 削除 "), _hoisted_31])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 出版社 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_32, [_hoisted_33, !$data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    "class": "publisher-select",
+    name: "publisher_id",
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+      return $props.book_publisher['id'] = $event;
+    })
+  }, [_hoisted_35, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.publishers, function (publisher) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+      value: publisher.id,
+      key: publisher.id
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(publisher.name), 9
+    /* TEXT, PROPS */
+    , _hoisted_36);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))], 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $props.book_publisher['id']]]), _hoisted_37, _hoisted_38])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_39, [$data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_40, _hoisted_43)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_44, $data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", {
+    key: 1,
+    "class": "switch-text",
+    onClick: _cache[7] || (_cache[7] = function ($event) {
+      return $data.publisherNewOpen = false;
+    })
+  }, "登録済みの出版社を選択する")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$data.publisherNewOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", {
+    key: 2,
+    onClick: _cache[8] || (_cache[8] = function ($event) {
+      return $data.publisherNewOpen = true;
+    })
+  }, "または新規出版社を登録する")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 初版発行時期 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_45, [_hoisted_46, _hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_flat_pickr, {
+    "class": "first_publish-input",
+    modelValue: $data.date,
+    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+      return $data.date = $event;
+    }),
+    name: "first_published",
+    config: $data.flatOption
+  }, null, 8
+  /* PROPS */
+  , ["modelValue", "config"]), _hoisted_48]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 表紙 "), _hoisted_49, _hoisted_50])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.book_publisher['id']), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+    "class": "close-text",
+    onClick: _cache[10] || (_cache[10] = function ($event) {
+      return $data.modalOpen = false, $options.changeScrollable();
     })
   }, "閉じる")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]))]);
 }
@@ -22192,15 +22812,13 @@ var _hoisted_14 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_15 = ["href"];
-
-var _hoisted_16 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_15 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
   /* HOISTED */
   );
 });
 
-var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_16 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
     "class": "title"
   }, "チャプター", -1
@@ -22208,14 +22826,16 @@ var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_18 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "章タイトル"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "内容")])], -1
   /* HOISTED */
   );
 });
 
-var _hoisted_19 = ["href"];
+var _hoisted_18 = ["href"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_BookEditModal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BookEditModal");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("main", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 書籍のサムネイル "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 書籍の画像を表示する "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: '/storage/book_image/' + _ctx.book.image_name,
     alt: _ctx.book.name,
@@ -22238,11 +22858,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.book.first_published), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    href: '/book/edit/' + _ctx.book.id
-  }, "編集・削除", 8
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <tr><a v-bind:href=\"'/book/edit/' + book.id \">編集・削除</a></tr> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <BookEditModal class=\"link-box-end\" @click=\"changeUnscrollable()\" :book_id=\"book.id\"/> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BookEditModal, {
+    "class": "link-box-end",
+    book_name: _ctx.book.name,
+    book_authors: _ctx.book.authors,
+    book_publisher: _ctx.book.publisher,
+    book_first_published: _ctx.book.first_published,
+    book_image_name: _ctx.book.image_name
+  }, null, 8
   /* PROPS */
-  , _hoisted_15)])])])]), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" チャプター "), _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", null, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.chapters, function (chapter) {
+  , ["book_name", "book_authors", "book_publisher", "book_first_published", "book_image_name"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.book), 1
+  /* TEXT */
+  )])]), _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" チャプター "), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", null, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.chapters, function (chapter) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: chapter.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(chapter.title) + "：", 1
@@ -22256,7 +22883,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: '/book/edit/' + _ctx.book.id
   }, "編集・削除", 8
   /* PROPS */
-  , _hoisted_19)]);
+  , _hoisted_18)]);
 }
 
 /***/ }),
@@ -23444,6 +24071,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n    /* モーダル */\n.modal[data-v-23c58f34] {\n        position: absolute;\n        top: 0; right: 0; bottom: 0; left: 0;\n        background-color: rgba(0,0,0,.5);\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n}\n.modal div[data-v-23c58f34] {\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        background-color: white;\n        width: 480px;\n        height: 275px;\n        padding: 15px;\n        padding-bottom: 25px;\n}\n.form-container[data-v-23c58f34] {\n        padding-top: 0;\n        width: 80%;\n}\n.title[data-v-23c58f34] {\n        margin-top: 10px;\n        margin-bottom: 0;\n}\n.label[data-v-23c58f34] {\n        font-size: 24px;\n        margin-bottom: 10px;\n}\n.name-input[data-v-23c58f34], .name-furigana-input[data-v-23c58f34] {\n        width: 250px;\n        font-size: 16px;\n        margin-bottom: 20px;\n}\n.submit-button[data-v-23c58f34] {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        margin: 0 auto;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        border: none;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer\n}\n.close-text[data-v-23c58f34] {\n        color:#0c2e8f;\n        text-decoration: underline;\n        cursor:pointer\n}\n\n    /* モーダル表示ボタン */\nbutton[data-v-23c58f34]{\n        background-color: transparent;\n        border: none;\n        cursor: pointer;\n        outline: none;\n        padding: 0;\n        -webkit-appearance: none;\n           -moz-appearance: none;\n                appearance: none;\n}\n.register-button[data-v-23c58f34] {\n        width: 100%;\n        height: 100%;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n}\n\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookEditModal.vue?vue&type=style&index=0&id=6017b6c2&scoped=true&lang=css":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookEditModal.vue?vue&type=style&index=0&id=6017b6c2&scoped=true&lang=css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n    /* モーダル */\n.modal[data-v-6017b6c2] {\n        position: absolute;\n        top: 0; right: 0; bottom: 0; left: 0;\n        background-color: rgba(0,0,0,.5);\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        height: auto;\n        overflow: auto;\n}\n.modal div[data-v-6017b6c2] {\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        background-color: white;\n        width: 480px;\n        /* height: 275px; */\n        padding: 15px;\n        padding-bottom: 25px;\n}\n.publisher_input_area[data-v-6017b6c2] {\n        align-items: start !important;\n        justify-content: start !important;\n        width: auto !important;\n        height: auto !important;\n        padding: 0 !important;\n}\n.form-container[data-v-6017b6c2] {\n        padding-top: 0;\n        width: 80%;\n}\n.title-area[data-v-6017b6c2],\n    .author-select-area[data-v-6017b6c2],\n    .author-new-area[data-v-6017b6c2],\n    .publisher-select-area[data-v-6017b6c2],\n    .publisher-new-area[data-v-6017b6c2],\n    .first_publish-area[data-v-6017b6c2],\n    .image-area[data-v-6017b6c2] {\n        margin-bottom: 10px;\n}\n.title[data-v-6017b6c2] {\n        margin-top: 10px;\n}\n.label[data-v-6017b6c2] {\n        font-size: 24px;\n        margin-bottom: 10px;\n}\n.input_text[data-v-6017b6c2] {\n        width: 400px;\n        font-size: 16px;\n        margin-top: 5px;\n}\n.switch-text[data-v-6017b6c2] {\n        font-size: 16px;\n        margin-top:5px;\n}\n.author-select[data-v-6017b6c2],\n    .publisher-select[data-v-6017b6c2],\n    .first_publish-input[data-v-6017b6c2],\n    .image-btn[data-v-6017b6c2]{\n        margin-top: 5px;\n}\n.submit-button[data-v-6017b6c2] {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        margin: 0 auto;\n        margin-bottom: 10px;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        border: none;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer\n}\n.close-text[data-v-6017b6c2] {\n        color:#0c2e8f;\n        text-decoration: underline;\n        cursor:pointer\n}\n\n    /* モーダル表示ボタン */\nbutton[data-v-6017b6c2]{\n        background-color: transparent;\n        border: none;\n        cursor: pointer;\n        outline: none;\n        padding: 0;\n        -webkit-appearance: none;\n           -moz-appearance: none;\n                appearance: none;\n}\n.register-button[data-v-6017b6c2] {\n        width: 100%;\n        height: 100%;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -44141,6 +44792,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookEditModal.vue?vue&type=style&index=0&id=6017b6c2&scoped=true&lang=css":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookEditModal.vue?vue&type=style&index=0&id=6017b6c2&scoped=true&lang=css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookEditModal_vue_vue_type_style_index_0_id_6017b6c2_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookEditModal.vue?vue&type=style&index=0&id=6017b6c2&scoped=true&lang=css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookEditModal.vue?vue&type=style&index=0&id=6017b6c2&scoped=true&lang=css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookEditModal_vue_vue_type_style_index_0_id_6017b6c2_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookEditModal_vue_vue_type_style_index_0_id_6017b6c2_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookRegisterModal.vue?vue&type=style&index=0&id=39b1fe26&scoped=true&lang=css":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookRegisterModal.vue?vue&type=style&index=0&id=39b1fe26&scoped=true&lang=css ***!
@@ -44873,6 +45554,37 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/components/book/BookEditModal.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/book/BookEditModal.vue ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _BookEditModal_vue_vue_type_template_id_6017b6c2_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookEditModal.vue?vue&type=template&id=6017b6c2&scoped=true */ "./resources/js/components/book/BookEditModal.vue?vue&type=template&id=6017b6c2&scoped=true");
+/* harmony import */ var _BookEditModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookEditModal.vue?vue&type=script&lang=js */ "./resources/js/components/book/BookEditModal.vue?vue&type=script&lang=js");
+/* harmony import */ var _BookEditModal_vue_vue_type_style_index_0_id_6017b6c2_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BookEditModal.vue?vue&type=style&index=0&id=6017b6c2&scoped=true&lang=css */ "./resources/js/components/book/BookEditModal.vue?vue&type=style&index=0&id=6017b6c2&scoped=true&lang=css");
+/* harmony import */ var _var_www_html_laravel_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+
+
+const __exports__ = /*#__PURE__*/(0,_var_www_html_laravel_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_BookEditModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_BookEditModal_vue_vue_type_template_id_6017b6c2_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-6017b6c2"],['__file',"resources/js/components/book/BookEditModal.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/components/book/BookRegisterModal.vue":
 /*!************************************************************!*\
   !*** ./resources/js/components/book/BookRegisterModal.vue ***!
@@ -45422,6 +46134,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/book/BookEditModal.vue?vue&type=script&lang=js":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/book/BookEditModal.vue?vue&type=script&lang=js ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookEditModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookEditModal_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookEditModal.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookEditModal.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/book/BookRegisterModal.vue?vue&type=script&lang=js":
 /*!************************************************************************************!*\
   !*** ./resources/js/components/book/BookRegisterModal.vue?vue&type=script&lang=js ***!
@@ -45754,6 +46482,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AuthorRegisterModal_vue_vue_type_template_id_23c58f34_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AuthorRegisterModal_vue_vue_type_template_id_23c58f34_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AuthorRegisterModal.vue?vue&type=template&id=23c58f34&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/author/AuthorRegisterModal.vue?vue&type=template&id=23c58f34&scoped=true");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/book/BookEditModal.vue?vue&type=template&id=6017b6c2&scoped=true":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/book/BookEditModal.vue?vue&type=template&id=6017b6c2&scoped=true ***!
+  \**************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookEditModal_vue_vue_type_template_id_6017b6c2_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookEditModal_vue_vue_type_template_id_6017b6c2_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookEditModal.vue?vue&type=template&id=6017b6c2&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookEditModal.vue?vue&type=template&id=6017b6c2&scoped=true");
 
 
 /***/ }),
@@ -46091,6 +46835,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AuthorRegisterModal_vue_vue_type_style_index_0_id_23c58f34_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AuthorRegisterModal.vue?vue&type=style&index=0&id=23c58f34&scoped=true&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/author/AuthorRegisterModal.vue?vue&type=style&index=0&id=23c58f34&scoped=true&lang=css");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/book/BookEditModal.vue?vue&type=style&index=0&id=6017b6c2&scoped=true&lang=css":
+/*!****************************************************************************************************************!*\
+  !*** ./resources/js/components/book/BookEditModal.vue?vue&type=style&index=0&id=6017b6c2&scoped=true&lang=css ***!
+  \****************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_BookEditModal_vue_vue_type_style_index_0_id_6017b6c2_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./BookEditModal.vue?vue&type=style&index=0&id=6017b6c2&scoped=true&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/book/BookEditModal.vue?vue&type=style&index=0&id=6017b6c2&scoped=true&lang=css");
 
 
 /***/ }),
