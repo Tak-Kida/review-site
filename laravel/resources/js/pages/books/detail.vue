@@ -37,14 +37,7 @@
                     </tr>
                     <!-- <tr><a v-bind:href="'/book/edit/' + book.id ">編集・削除</a></tr> -->
                 </table>
-                <BookEditModal class="link-box-end"
-                    :book_id="book.id"
-                    :book_name="book.name"
-                    :book_authors="book.book_authors"
-                    :book_publisher="book.publisher"
-                    :book_first_published="book.first_published"
-                    :book_image_name="book.image_name"
-                />
+                <BookEditModal class="link-box-end"/>
                 <div>{{ book }}</div>
             </div>
         </div>
