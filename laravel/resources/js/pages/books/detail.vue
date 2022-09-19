@@ -35,16 +35,13 @@
                         <th>初版発行</th>
                         <td>{{ book.first_published }}</td>
                     </tr>
-                    <!-- <tr><a v-bind:href="'/book/edit/' + book.id ">編集・削除</a></tr> -->
                     <tr>
                         <th class="edit-btn-th"></th>
-                        <!-- <td><BookEditModal class="link-box"/></td> -->
                         <td><button class="link-box">
                             <a class="btn-link" v-bind:href="'/book/edit/' + book.id ">編集・削除</a>
                         </button></td>
                     </tr>
                 </table>
-                <!-- <BookEditModal class="link-box"/> -->
             </div>
         </div>
         <hr />
