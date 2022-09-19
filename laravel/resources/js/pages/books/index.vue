@@ -204,6 +204,8 @@ export default {
     }
 
     .book-name {
+        width: 100%;
+        text-align: center;
         font-size: 18px;
         font-weight: bold;
         margin: auto;
