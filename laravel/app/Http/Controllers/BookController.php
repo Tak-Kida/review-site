@@ -111,18 +111,10 @@ class BookController extends Controller
         return redirect('/book');
     }
 
-    // 編集画面
-    public function edit(Request $request)
-    {
-        // $book = Book::where('id', $request->id)->first();
-        // $data = ['book' => $book];
-        // // return view('books.edit', $data);
-        // return view('app', $data);
-    }
-
     // 更新を行う
     public function update(Request $request)
     {
+        // dd($request);
         $form = $request->all();
 
         // 新規の出版社が入力されていたら登録する
@@ -154,12 +146,25 @@ class BookController extends Controller
         // 書籍をまず更新する
         $this->validate($request, Book::$rules);
         $book = Book::where('id', $request->id)->first();
+        if($request->file('book_image')) {
+            $image_name =  time() . (string)mt_rand(0, 99999) . '.png';
+            $form['image_name'] = $image_name;
+        }
         unset($form['_token']);
         $book->fill($form)->save();
+
+        // 書籍画像の保存
+        $dir = 'book_image'; // ディレクトリ名
+        // 画像を保存する
+        if($request->file('book_image')) {
+            $image_file = $request->file('book_image');
+            $image_file->storeAs('public/' . $dir, $image_name);
+        }
+
         // 書籍の著者情報を更新する
         $book_author = app()->make('App\Http\Controllers\BookAuthorController');
         $book_author->update($book->id, $form['authors']);
-        return redirect('/book');
+        return redirect('/book/detail/' . $book->id);
     }
 
     // 削除を行う

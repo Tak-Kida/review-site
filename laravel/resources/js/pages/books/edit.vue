@@ -1,10 +1,10 @@
 <template>
     <main class="main">
         <div class="content-wrapper">
-            <h3 class="title">出版社登録フォーム</h3>
+            <h3 class="title">書籍情報編集</h3>
             <div class="publisher-container">
                 <div class="form-container" style="padding-top:0; padding-bottom:0;">
-                    <form method="POST" action="/api/book/register" enctype="multipart/form-data">
+                    <form method="POST" :action="'/api/book/edit/' + this.id" enctype="multipart/form-data">
                         <input type="hidden" name="_token" :value="csrf" />
                         <!-- 書籍タイトル -->
                         <div class="title-area input-container">
@@ -23,9 +23,17 @@
                                 v-model="author_info.author.id">
                                 <option v-for="author in authors"
                                     :key="author.id"
+                                    v-bind:value="author.id">
+                                    {{ author.name + '（' + author.name_furigana + '）'  }}
+                                </option>
+                            </select>
+                            <select class="author-select select-container" :name="'authors['+ (6+index) + ']'"
+                                    v-for="(text,index) in authors_select" :key="index">
+                                <option disabled value="" selected>選択してください</option>
+                                <option v-for="author in authors"
                                     v-bind:value="author.id"
-                                    >
-                                {{ author.name + '（' + author.name_furigana + '）'  }}
+                                    v-bind:key="author.id">
+                                    {{ author.name }}
                                 </option>
                             </select>
                             <br />
@@ -82,8 +90,7 @@
                                     <option disabled value="">選択してください</option>
                                     <option v-for="publisher in publishers"
                                         v-bind:value="publisher.id"
-                                        v-bind:key="publisher.id"
-                                        >
+                                        v-bind:key="publisher.id">
                                         {{ publisher.name }}
                                     </option>
                                 </select>
@@ -256,7 +263,7 @@ export default {
         return {
             msg:'wait...',
             book:[],
-            authors_select: [''],
+            authors_select: [],
             authors_new: [],
             authorsNewOpen: false,
             publisherNewOpen: false,
@@ -273,7 +280,18 @@ export default {
                 .then((res) =>{
                     this.book = res.data;
                     this.msg = 'get data!';
+
+                    let authors_select = [];
+                    this.book.book_authors.forEach(element => {
+                        authors_select.push(element);
+                    });
                 });
+            // console.log(this.authors_select);
+        },
+        prepareBookAuthorsSelect(array1, array2) {
+            array2.forEach(element => {
+                array1.push(element);
+            });
         },
         getAuthorIndex() {
             axios.get('/api/author/index-json')
@@ -296,15 +314,23 @@ export default {
         },
         // 著者選択欄の削除
         removeAuthorSelect(index) {
-            this.authors_select.splice(index, 1); // 該当するデータを削除
+            // this.authors_select.splice(index, 1); // 該当するデータを削除
+            if(this.book.book_authors.length == 0) {
+                this.authors_select.splice(index, 1); // 該当するデータを削除
+            } else {
+                this.book.book_authors.splice(index, 1); // 該当するデータを削除
+            }
+            // console.log(this.authors_select);
 
         },
         // 著者選択欄の追加
         addAuthorSelect() {
-            if(this.isTextMax) {
-                return;
-            }
+            // if(this.isTextMax) {
+            //     return;
+            // }
+            // this.authors_select.push(''); // 配列に１つ空データを追加する
             this.authors_select.push(''); // 配列に１つ空データを追加する
+            // console.log(this.authors_select);
             // Vue.nextTick(() => {
             //     const maxIndex = this.authors_select.length - 1;
             //     console.log(maxIndex)
@@ -343,6 +369,9 @@ export default {
         this.getAuthorIndex();
         this.getPublisherIndex();
         this.getChapterIndex();
+        // console.log(this.authors_select);
+        console.log(this.book);
+        // this.hoge(this.);
     },
 }
 </script>
