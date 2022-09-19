@@ -38,7 +38,6 @@
                     <!-- <tr><a v-bind:href="'/book/edit/' + book.id ">編集・削除</a></tr> -->
                 </table>
                 <BookEditModal class="link-box-end"/>
-                <div>{{ book }}</div>
             </div>
         </div>
         <hr />
