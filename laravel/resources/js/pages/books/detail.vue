@@ -37,34 +37,37 @@
                     </tr>
                     <tr>
                         <th class="edit-btn-th"></th>
-                        <td><button class="link-box">
-                            <a class="btn-link" v-bind:href="'/book/edit/' + book.id ">編集・削除</a>
-                        </button></td>
+                        <td>
+                            <a class="btn-link link-box" v-bind:href="'/book/edit/' + book.id ">編集・削除</a>
+                        </td>
                     </tr>
                 </table>
             </div>
-        </div>
-        <hr />
 
-        <!-- チャプター -->
-        <h3 class="title">チャプター</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>章タイトル</th>
-                    <th>内容</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="chapter in chapters" :key="chapter.id">
-                    <td>{{ chapter.title }}：</td>
-                    <td>
-                        {{ chapter.summary }}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <a v-bind:href="'/book/edit/' + book.id ">編集・削除</a>
+            <hr />
+
+            <!-- チャプター -->
+            <h3 class="title">チャプター</h3>
+            <div class="chapter-table-area">
+                <table class="chapter-table">
+                    <thead>
+                        <tr>
+                            <th>章タイトル</th>
+                            <th>内容</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="chapter in chapters" :key="chapter.id">
+                            <td>{{ chapter.title }}：</td>
+                            <td>
+                                {{ chapter.summary }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a class="btn-link link-box" v-bind:href="'/book/edit/' + book.id ">編集・削除</a>
+            </div>
+        </div>
     </main>
 </template>
 
@@ -126,8 +129,13 @@ export default {
         height: 384px;
     }
 
-    .book-information{
+    .book-information {
         margin: 0 auto;
+        min-width: 50%;
+    }
+
+    .chapter-table{
+        margin: 0 auto 20px;
         min-width: 50%;
     }
 
@@ -146,6 +154,11 @@ export default {
     .btn-link {
         color: #fafafa;
         text-decoration: none;
+        font-size: 16px;
+    }
+
+    .chapter-edit-link {
+        display: flex;
     }
 
 </style>
