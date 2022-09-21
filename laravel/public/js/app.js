@@ -20489,9 +20489,7 @@ __webpack_require__.r(__webpack_exports__);
     this.getBookDetail();
     this.getAuthorIndex();
     this.getPublisherIndex();
-    this.getChapterIndex(); // console.log(this.authors_select);
-
-    console.log(this.book); // this.hoge(this.);
+    this.getChapterIndex();
   }
 });
 
@@ -23004,22 +23002,18 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "content-wrapper"
 };
+var _hoisted_3 = {
+  "class": "book-detail-container"
+};
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
   "class": "title"
 }, "書籍情報編集", -1
 /* HOISTED */
 );
 
-var _hoisted_4 = {
-  "class": "publisher-container"
-};
 var _hoisted_5 = {
-  "class": "form-container",
-  style: {
-    "padding-top": "0",
-    "padding-bottom": "0"
-  }
+  "class": "form-container"
 };
 var _hoisted_6 = ["action"];
 var _hoisted_7 = ["value"];
@@ -23255,78 +23249,85 @@ var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, "---------------------", -1
+var _hoisted_59 = {
+  "class": "chapter-container"
+};
+
+var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+  "class": "title"
+}, "チャプター", -1
 /* HOISTED */
 );
 
-var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "チャプター", -1
-/* HOISTED */
-);
-
-var _hoisted_61 = ["action"];
-var _hoisted_62 = ["value"];
+var _hoisted_61 = {
+  "class": "form-container"
+};
+var _hoisted_62 = ["action"];
 var _hoisted_63 = ["value"];
+var _hoisted_64 = ["value"];
+var _hoisted_65 = {
+  "class": "chapter_title_area"
+};
 
-var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "チャプタータイトル", -1
-/* HOISTED */
-);
-
-var _hoisted_65 = ["value"];
-
-var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "チャプター内容", -1
+var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "チャプタータイトル", -1
 /* HOISTED */
 );
 
 var _hoisted_67 = ["value"];
+var _hoisted_68 = {
+  "class": "chapter_content_area"
+};
 
-var _hoisted_68 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+var _hoisted_69 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "チャプター内容", -1
+/* HOISTED */
+);
+
+var _hoisted_70 = ["value"];
+
+var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  "class": "chapters-submit-button",
   type: "submit"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_69 = ["action"];
-var _hoisted_70 = ["value"];
-var _hoisted_71 = ["value"];
+var _hoisted_72 = ["action"];
+var _hoisted_73 = ["value"];
+var _hoisted_74 = ["value"];
 
-var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
   type: "submit",
+  "class": "chapters-delete-button",
   value: "削除"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_73 = {
+var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, " ＊： ", -1
+/* HOISTED */
+);
+
+var _hoisted_77 = {
+  "class": "new_chapter"
+};
+
+var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "新規チャプター", -1
+/* HOISTED */
+);
+
+var _hoisted_79 = {
   method: "POST",
   action: '/api/chapter/register'
 };
-var _hoisted_74 = ["value"];
-var _hoisted_75 = ["value"];
+var _hoisted_80 = ["value"];
+var _hoisted_81 = ["value"];
 
-var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "チャプタータイトル"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "text",
-  name: "new_chapter_title"
-})])], -1
-/* HOISTED */
-);
-
-var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "チャプター内容"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "text",
-  name: "new_chapter_summary"
-})])], -1
-/* HOISTED */
-);
-
-var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "submit"
-}, null, -1
-/* HOISTED */
-);
+var _hoisted_82 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"chapter_title_area\"><label>チャプタータイトル</label><div><input class=\"input_text\" type=\"text\" name=\"new_chapter_title\" placeholder=\"新規チャプターのタイトル\"></div></div><div class=\"chapter_content_area\"><label>チャプター内容</label><div><textarea class=\"chapter_input\" name=\"new_chapter_summary\" placeholder=\"新規チャプターの内容\"></textarea></div></div><input class=\"chapters-submit-button\" type=\"submit\">", 3);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_flat_pickr = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("flat-pickr");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("main", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("main", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     method: "POST",
     action: '/api/book/edit/' + this.id,
     enctype: "multipart/form-data"
@@ -23466,7 +23467,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["modelValue", "config"]), _hoisted_53]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 表紙 "), _hoisted_54, _hoisted_55], 8
   /* PROPS */
-  , _hoisted_6)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 削除ボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+  , _hoisted_6)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 削除ボタン "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     method: "POST",
     action: '/api/book/delete/' + _ctx.book.id
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -23477,12 +23478,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , _hoisted_57), _hoisted_58], 8
   /* PROPS */
-  , _hoisted_56), _hoisted_59, _hoisted_60, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <table>\n            <tr v-for=\"chapter in chapters\" :key=\"chapter.id\">\n                <th>{{ chapter.id }}：</th>\n                <td>\n                    {{ chapter.title }}<br/>\n                    {{ chapter.summary }}\n                </td>\n            </tr>\n        </table> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 既存チャプター "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.chapters, function (chapter, index) {
+  , _hoisted_56)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [_hoisted_60, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 既存チャプター "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.chapters, function (chapter, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: chapter.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(index + 1) + "：", 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+      "class": "chapter_form",
       method: "POST",
       action: '/api/chapter/edit/' + _ctx.book.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -23491,27 +23493,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       value: _ctx.csrf
     }, null, 8
     /* PROPS */
-    , _hoisted_62), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    , _hoisted_63), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "hidden",
       name: "id",
       value: chapter.id
     }, null, 8
     /* PROPS */
-    , _hoisted_63), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_64, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    , _hoisted_64), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_65, [_hoisted_66, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "text",
+      "class": "input_text",
       name: "chapter_title",
       value: chapter.title
     }, null, 8
     /* PROPS */
-    , _hoisted_65)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_66, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-      type: "text",
+    , _hoisted_67)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_68, [_hoisted_69, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+      "class": "chapter_input",
       name: "chapter_summary",
       value: chapter.summary
     }, null, 8
     /* PROPS */
-    , _hoisted_67)])]), _hoisted_68], 8
+    , _hoisted_70)])]), _hoisted_71], 8
     /* PROPS */
-    , _hoisted_61), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    , _hoisted_62), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+      "class": "chapter_form",
       method: "POST",
       action: '/api/chapter/delete/' + chapter.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -23520,30 +23524,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       value: _ctx.csrf
     }, null, 8
     /* PROPS */
-    , _hoisted_70), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    , _hoisted_73), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       type: "hidden",
       name: "id",
       value: chapter.id
     }, null, 8
     /* PROPS */
-    , _hoisted_71), _hoisted_72], 8
+    , _hoisted_74), _hoisted_75], 8
     /* PROPS */
-    , _hoisted_69)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <form method=\"POST\" v-bind:action=\"'/api/chapter/edit/' + book.id\">\n                    <input type=\"hidden\" name=\"_token\" :value=\"csrf\">\n                    <input type=\"hidden\" name=\"book_id\" v-bind:value=\"book.id\" />\n                    <div>\n                        <label>チャプタータイトル</label>\n                        <div>\n                            <input type=\"text\" name=\"chapter_title\" v-bind:value=\"chapter.title\">\n                        </div>\n                    </div>\n                    <div>\n                        <label>チャプター内容</label>\n                        <div>\n                            <input type=\"text\" name=\"chapter_summary\" v-bind:value=\"chapter.summary\">\n                        </div>\n                    </div>\n\n                    <input type=\"submit\">\n                </form> ")]);
+    , _hoisted_72)])]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 既存チャプター "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <form method=\"POST\" v-bind:action=\"'/api/chapter/edit/' + book.id\">\n            <input type=\"hidden\" name=\"_token\" :value=\"csrf\">\n            <input type=\"hidden\" name=\"book_id\" v-bind:value=\"book.id\" />\n            <div>\n                <label>チャプタータイトル</label>\n                <div>\n                    <input type=\"text\" name=\"new_chapter_title\" v-bind:value=\"chapter.title\">\n                </div>\n            </div>\n            <div>\n                <label>チャプター内容</label>\n                <div>\n                    <input type=\"text\" name=\"new_chapter_summary\" v-bind:value=\"chapter.summary\">\n                </div>\n            </div>\n\n            <input type=\"submit\">\n        </form> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規チャプター "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_73, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 新規チャプター "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_76, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_77, [_hoisted_78, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_79, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
     name: "_token",
     value: _ctx.csrf
   }, null, 8
   /* PROPS */
-  , _hoisted_74), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  , _hoisted_80), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
     name: "book_id",
     value: _ctx.book.id
   }, null, 8
   /* PROPS */
-  , _hoisted_75), _hoisted_76, _hoisted_77, _hoisted_78])]);
+  , _hoisted_81), _hoisted_82])])])])])])])]);
 }
 
 /***/ }),
@@ -24642,7 +24646,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.publisher-container {\n        display: flex;\n        width: 100%;\n}\n.form-container {\n        margin: 0 auto;\n        width: 80%;\n}\n.label {\n        font-size: 20px;\n}\n.input-container {\n        margin-bottom: 15px;\n}\n.input_text {\n        width: 420px;\n        font-size: 16px;\n}\n.select-container {\n        width: 420px;\n        font-size: 16px;\n        margin-bottom: 5px;\n}\n.button-container {\n        display: flex;\n}\n.addButton {\n        margin-right: 10px;\n}\n.submit-button {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        margin: 0 auto;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        border: none;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer;\n        margin-bottom: 10px;\n}\n.delete-button {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        margin: 0 auto;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        background-color: #da1648;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer;\n        margin-bottom: 10px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.publisher-container {\n        display: flex;\n        width: 100%;\n}\n.form-container {\n        margin: 0 auto;\n        width: 80%;\n}\n.label {\n        font-size: 20px;\n}\n.input-container {\n        margin-bottom: 15px;\n}\n.input_text {\n        width: 420px;\n        font-size: 16px;\n}\n.chapter_input {\n        width: 420px;\n        height: 200px;\n        font-size: 16px;\n}\n.select-container {\n        width: 420px;\n        font-size: 16px;\n        margin-bottom: 5px;\n}\n.button-container {\n        display: flex;\n}\n.addButton {\n        margin-right: 10px;\n}\n.submit-button {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        margin: 0 auto;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        border: none;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer;\n        margin-bottom: 10px;\n}\n.delete-button {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        margin: 0 auto;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        background-color: #da1648;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer;\n        margin-bottom: 10px;\n}\n.new_chapter {\n        text-align: left;\n}\n.new_chapter > h5 {\n        margin-bottom: 10px;\n        border-bottom: 3px solid #0c2e8f;\n        font-weight: bold;\n        font-size: 20px;\n}\n.chapter_form {\n        text-align: left;\n}\n.chapter_title_area {\n        text-align: left;\n        margin-bottom: 15px;\n}\n.chapter_content_area {\n        text-align: left;\n        margin-bottom: 10px;\n}\n.chapters-submit-button {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        border: none;\n        background-color: #0c2e8f;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer;\n        margin: 0;\n        margin-bottom: 5px;\n}\n.chapters-delete-button {\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        width:144px;\n        height:40px;\n        border-radius: 5%;\n        background-color: #da1648;\n        color: #fafafa;\n        text-decoration:none;\n        font-weight: 800;\n        font-size: 16px;\n        cursor:pointer;\n        margin: 0;\n        margin-bottom: 10px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

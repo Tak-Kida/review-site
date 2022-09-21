@@ -1,9 +1,9 @@
 <template>
     <main class="main">
         <div class="content-wrapper">
-            <h3 class="title">書籍情報編集</h3>
-            <div class="publisher-container">
-                <div class="form-container" style="padding-top:0; padding-bottom:0;">
+            <div class="book-detail-container">
+                <h3 class="title">書籍情報編集</h3>
+                <div class="form-container">
                     <form method="POST" :action="'/api/book/edit/' + this.id" enctype="multipart/form-data">
                         <input type="hidden" name="_token" :value="csrf" />
                         <!-- 書籍タイトル -->
@@ -131,119 +131,88 @@
                         <input type="submit" class="submit-button" value="保存">
                     </form>
                 </div>
+
+                <!-- 削除ボタン -->
+                <form method="POST" v-bind:action="'/api/book/delete/' + book.id">
+                    <input type="hidden" name="_token" :value="csrf">
+                    <input class="delete-button" type="submit" value="削除">
+                </form>
+            </div>
+
+            <div class="chapter-container">
+                <h3 class="title">チャプター</h3>
+                <div class="form-container">
+                    <table>
+                        <!-- 既存チャプター -->
+                        <tr v-for="(chapter, index) in chapters" :key="chapter.id">
+                            <th>{{ index + 1 }}：</th>
+                            <td>
+                                <form class="chapter_form" method="POST" v-bind:action="'/api/chapter/edit/' + book.id">
+                                    <input type="hidden" name="_token" :value="csrf">
+                                    <input type="hidden" name="id" v-bind:value="chapter.id" />
+
+                                    <div class="chapter_title_area">
+                                        <label>チャプタータイトル</label>
+                                        <div>
+                                            <input type="text" class="input_text" name="chapter_title"
+                                                v-bind:value="chapter.title">
+                                        </div>
+                                    </div>
+                                    <div class="chapter_content_area">
+                                        <label>チャプター内容</label>
+                                        <div>
+                                            <textarea class="chapter_input" name="chapter_summary"
+                                                v-bind:value="chapter.summary" />
+                                        </div>
+                                    </div>
+
+                                    <input class="chapters-submit-button" type="submit" />
+                                </form>
+                                <form class="chapter_form" method="POST" v-bind:action="'/api/chapter/delete/' + chapter.id">
+                                    <input type="hidden" name="_token" :value="csrf">
+                                    <input type="hidden" name="id" v-bind:value="chapter.id" />
+                                    <input type="submit" class="chapters-delete-button" value="削除" />
+                                </form>
+                            </td>
+
+                        </tr>
+                        <!-- 新規チャプター -->
+                        <tr>
+                            <th>
+                                ＊：
+                            </th>
+                            <td class="new_chapter">
+                                <h5>新規チャプター</h5>
+                                <form method="POST" v-bind:action="'/api/chapter/register'">
+                                    <input type="hidden" name="_token" :value="csrf">
+                                    <input type="hidden" name="book_id" v-bind:value="book.id" />
+                                    <div class="chapter_title_area">
+                                        <label>チャプタータイトル</label>
+                                        <div>
+                                            <input class="input_text" type="text" name="new_chapter_title"
+                                                placeholder="新規チャプターのタイトル">
+                                        </div>
+                                    </div>
+                                    <div class="chapter_content_area">
+                                        <label>チャプター内容</label>
+                                        <div>
+                                            <textarea class="chapter_input" name="new_chapter_summary"
+                                                placeholder="新規チャプターの内容"/>
+                                        </div>
+                                    </div>
+
+                                    <input class="chapters-submit-button" type="submit" />
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+
+                </div>
             </div>
         </div>
-
-        <!-- 削除ボタン -->
-        <form method="POST" v-bind:action="'/api/book/delete/' + book.id">
-            <input type="hidden" name="_token" :value="csrf">
-            <input class="delete-button" type="submit" value="削除">
-        </form>
-
-        <div>---------------------</div>
-
-        <h3>チャプター</h3>
-        <!-- <table>
-            <tr v-for="chapter in chapters" :key="chapter.id">
-                <th>{{ chapter.id }}：</th>
-                <td>
-                    {{ chapter.title }}<br/>
-                    {{ chapter.summary }}
-                </td>
-            </tr>
-        </table> -->
-
-        <!-- 既存チャプター -->
-        <table>
-            <tr v-for="(chapter, index) in chapters" :key="chapter.id">
-                <th>{{ index + 1 }}：</th>
-                <td>
-                    <form method="POST" v-bind:action="'/api/chapter/edit/' + book.id">
-                        <input type="hidden" name="_token" :value="csrf">
-                        <input type="hidden" name="id" v-bind:value="chapter.id" />
-
-                        <div>
-                            <label>チャプタータイトル</label>
-                            <div>
-                                <input type="text" name="chapter_title" v-bind:value="chapter.title">
-                            </div>
-                        </div>
-                        <div>
-                            <label>チャプター内容</label>
-                            <div>
-                                <input type="text" name="chapter_summary" v-bind:value="chapter.summary">
-                            </div>
-                        </div>
-
-                        <input type="submit" />
-                    </form>
-                    <form method="POST" v-bind:action="'/api/chapter/delete/' + chapter.id">
-                        <input type="hidden" name="_token" :value="csrf">
-                        <input type="hidden" name="id" v-bind:value="chapter.id" />
-                        <input type="submit" value="削除" />
-                    </form>
-                </td>
-                <!-- <form method="POST" v-bind:action="'/api/chapter/edit/' + book.id">
-                    <input type="hidden" name="_token" :value="csrf">
-                    <input type="hidden" name="book_id" v-bind:value="book.id" />
-                    <div>
-                        <label>チャプタータイトル</label>
-                        <div>
-                            <input type="text" name="chapter_title" v-bind:value="chapter.title">
-                        </div>
-                    </div>
-                    <div>
-                        <label>チャプター内容</label>
-                        <div>
-                            <input type="text" name="chapter_summary" v-bind:value="chapter.summary">
-                        </div>
-                    </div>
-
-                    <input type="submit">
-                </form> -->
-            </tr>
-        </table>
-
-
-        <!-- 既存チャプター -->
-        <!-- <form method="POST" v-bind:action="'/api/chapter/edit/' + book.id">
-            <input type="hidden" name="_token" :value="csrf">
-            <input type="hidden" name="book_id" v-bind:value="book.id" />
-            <div>
-                <label>チャプタータイトル</label>
-                <div>
-                    <input type="text" name="new_chapter_title" v-bind:value="chapter.title">
-                </div>
-            </div>
-            <div>
-                <label>チャプター内容</label>
-                <div>
-                    <input type="text" name="new_chapter_summary" v-bind:value="chapter.summary">
-                </div>
-            </div>
-
-            <input type="submit">
-        </form> -->
-
-        <!-- 新規チャプター -->
-        <form method="POST" v-bind:action="'/api/chapter/register'">
-            <input type="hidden" name="_token" :value="csrf">
-            <input type="hidden" name="book_id" v-bind:value="book.id" />
-            <div>
-                <label>チャプタータイトル</label>
-                <div>
-                    <input type="text" name="new_chapter_title">
-                </div>
-            </div>
-            <div>
-                <label>チャプター内容</label>
-                <div>
-                    <input type="text" name="new_chapter_summary">
-                </div>
-            </div>
-
-            <input type="submit">
-        </form>
     </main>
 </template>
 
@@ -369,9 +338,6 @@ export default {
         this.getAuthorIndex();
         this.getPublisherIndex();
         this.getChapterIndex();
-        // console.log(this.authors_select);
-        console.log(this.book);
-        // this.hoge(this.);
     },
 }
 </script>
@@ -397,6 +363,12 @@ export default {
 
     .input_text {
         width: 420px;
+        font-size: 16px;
+    }
+
+    .chapter_input {
+        width: 420px;
+        height: 200px;
         font-size: 16px;
     }
 
@@ -446,6 +418,65 @@ export default {
         font-weight: 800;
         font-size: 16px;
         cursor:pointer;
+        margin-bottom: 10px;
+    }
+
+    .new_chapter {
+        text-align: left;
+    }
+
+    .new_chapter > h5 {
+        margin-bottom: 10px;
+        border-bottom: 3px solid #0c2e8f;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .chapter_form {
+        text-align: left;
+    }
+
+    .chapter_title_area {
+        text-align: left;
+        margin-bottom: 15px;
+    }
+    .chapter_content_area {
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+    .chapters-submit-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:144px;
+        height:40px;
+        border-radius: 5%;
+        border: none;
+        background-color: #0c2e8f;
+        color: #fafafa;
+        text-decoration:none;
+        font-weight: 800;
+        font-size: 16px;
+        cursor:pointer;
+        margin: 0;
+        margin-bottom: 5px;
+    }
+
+    .chapters-delete-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:144px;
+        height:40px;
+        border-radius: 5%;
+        background-color: #da1648;
+        color: #fafafa;
+        text-decoration:none;
+        font-weight: 800;
+        font-size: 16px;
+        cursor:pointer;
+        margin: 0;
         margin-bottom: 10px;
     }
 </style>
