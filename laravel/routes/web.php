@@ -17,6 +17,7 @@ use App\Http\Controllers\BookController;
 
 // Book
 Route::get('/api/book/index-json', 'App\Http\Controllers\BookController@getIndex');
+Route::get('/api/book/latest-json', 'App\Http\Controllers\BookController@getLatest');
 Route::get('/api/book/detail-json/{id}', 'App\Http\Controllers\BookController@getDetail');
 Route::post('/api/book/register', 'App\Http\Controllers\BookController@create');
 Route::post('/api/book/edit/{id}', 'App\Http\Controllers\BookController@update');

@@ -17,6 +17,17 @@ class BookController extends Controller
         return $books->toJson();
     }
 
+    // 新しく登録された順に５冊の書籍情報をJSONで取得する
+    public function getLatest()
+    {
+        $books = Book::with('publisher', 'book_authors.author')
+                    ->where('deleted_flg', '0')
+                    ->orderBy('id', 'desc')
+                    ->take(5)
+                    ->get();
+        return $books->toJson();
+    }
+
     // 詳細をJSONで取得する
     public function getDetail(Request $request)
     {
