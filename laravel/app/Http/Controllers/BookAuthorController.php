@@ -10,7 +10,9 @@ class BookAuthorController extends Controller
     // 書籍に紐づく著者一覧をJSONで取得する
     public function getIndex(Request $request)
     {
-        $book_authors = BookAuthor::where('book_id', $request->book_id)->get();
+        $book_authors = BookAuthor::where('deleted_flg', '0')
+                            ->where('book_id', $request->book_id)
+                            ->get();
         return $book_authors->toJson();
     }
 

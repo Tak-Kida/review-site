@@ -10,24 +10,18 @@ class PublisherController extends Controller
     // 一覧をJSONで取得する
     public function getIndex()
     {
-        $publishers = Publisher::all();
+        $publishers = Publisher::where('deleted_flg', '0')->get();
+
         return $publishers->toJson();
     }
 
     // 詳細をJSONで取得する
     public function getDetail(Request $request)
     {
-        $publisher = Publisher::where('id', $request->id)->first();
+        $publisher = Publisher::where('deleted_flg', '0')
+                        ->where('id', $request->id)
+                        ->first();
         return $publisher->toJson();
-    }
-
-    // 一覧画面
-    public function index()
-    {
-        return view('app');
-        // $publishers = Publisher::all();
-        // $data = ['publishers' => $publishers];
-        // return view('publishers.index', $data);
     }
 
     // 新規登録の実行
@@ -49,15 +43,6 @@ class PublisherController extends Controller
         $this->register($form['name'], $form['name_furigana']);
         unset($form['_token']);
         return redirect('/publisher');
-    }
-
-    // 編集画面
-    public function edit(Request $request)
-    {
-        return view('app');
-        // $publisher = Publisher::where('id', $request->id)->first();
-        // $data = ['publisher' => $publisher];
-        // return view('publishers.edit', $data);
     }
 
     // 更新を行う

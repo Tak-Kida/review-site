@@ -20,8 +20,8 @@ class BookController extends Controller
     // 新しく登録された順に５冊の書籍情報をJSONで取得する
     public function getLatest()
     {
-        $books = Book::with('publisher', 'book_authors.author')
-                    ->where('deleted_flg', '0')
+        $books = Book::where('deleted_flg', '0')
+                    ->with('publisher', 'book_authors.author')
                     ->orderBy('id', 'desc')
                     ->take(5)
                     ->get();
@@ -31,42 +31,11 @@ class BookController extends Controller
     // 詳細をJSONで取得する
     public function getDetail(Request $request)
     {
-        $book = Book::where('id', $request->id)
-            ->with('publisher', 'book_authors.author')->first();
+        $book = Book::where('deleted_flg', '0')
+                    ->where('id', $request->id)
+                    ->with('publisher', 'book_authors.author')->first();
         return $book->toJson();
     }
-
-    // 一覧画面
-    // public function index()
-    // {
-    //     $books = Book::all();
-    //     $data = ['books' => $books];
-    //     // return view('books.index', $data);
-    //     return view('app', $data);
-    // }
-
-    // 詳細画面
-    // public function detail(Request $request)
-    // {
-    //     $book = Book::where('id', $request->id)->first();
-    //     $chapters = Chapter::where('book_id', $request->id)->get();
-    //     $author = Author::where('id', $book->author_id)->first();
-    //     $data = [
-    //         'book' => $book,
-    //         'chapters' => $chapters,
-    //         'author' => $author,
-    //         'publisher' => $publisher,
-    //     ];
-    //     // return view('books.detail', $data);
-    //     return view('app', $data);
-    // }
-
-    // 新規登録画面の表示
-    // public function register()
-    // {
-    //     $data = [];
-    //     return view('books.register', $data);
-    // }
 
     // 新規登録を行う
     public function create(Request $request)
