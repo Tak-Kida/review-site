@@ -84,8 +84,13 @@ export default {
         display: flex;
     }
 
-    .carousel__prev, .carousel__next {
+    .carousel__prev,
+    .carousel__next {
         background-color: #0c2e8f;
         color: #fafafa;
+    }
+
+    .carousel__pagination-button--active {
+        background-color: #0c2e8f;
     }
 </style>

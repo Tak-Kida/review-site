@@ -20132,21 +20132,21 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       msg: 'wait...',
-      books: []
+      chapters: []
     };
   },
   methods: {
-    getBookIndex: function getBookIndex() {
+    getChaptersLatest: function getChaptersLatest() {
       var _this = this;
 
-      axios.get('/api/book/index-json').then(function (res) {
-        _this.books = res.data;
+      axios.get('/api/chapter/latest-json').then(function (res) {
+        _this.chapters = res.data;
         _this.msg = 'get data!';
       });
     }
   },
   mounted: function mounted() {
-    this.getBookIndex();
+    this.getChaptersLatest();
   }
 });
 
@@ -22369,20 +22369,53 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "new-summary"
 };
-
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_2 = {
   "class": "container-box"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "title-box"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
   "class": "title"
-}, "最近追加された要約")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <tr v-for=\"(book, index) in books\" :key=\"index\">\n                    <th scope=\"row\">{{ book.id }}</th>\n            +       <td>{{ book.name }}</td>\n                    <td><a v-bind:href=\"'/book/detail/' + book.id \">詳細</a></td>\n                </tr> ")])], -1
+}, "最近追加された要約", -1
 /* HOISTED */
 );
 
-var _hoisted_3 = [_hoisted_2];
+var _hoisted_4 = {
+  "class": "chapter-latest-container"
+};
+var _hoisted_5 = {
+  scope: "row"
+};
+var _hoisted_6 = {
+  "class": "book-title"
+};
+var _hoisted_7 = ["href"];
+var _hoisted_8 = {
+  "class": "chapter-title"
+};
+var _hoisted_9 = {
+  "class": "page-link-title"
+};
+var _hoisted_10 = {
+  "class": "chapter-summary"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.chapters, function (chapter, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
+      "class": "chapter-latest-one",
+      key: index
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+      "class": "book-link",
+      href: '/book/detail/' + chapter.book.id
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(chapter.book.name), 9
+    /* TEXT, PROPS */
+    , _hoisted_7)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_9, "「" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(chapter.title) + "」", 1
+    /* TEXT */
+    )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(chapter.summary), 1
+    /* TEXT */
+    )])])])]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])])])]);
 }
 
 /***/ }),
@@ -24610,7 +24643,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.book-latest {\n        width:100%;\n        background-color: #fafafa;\n}\n.book-latest-container {\n        width: 80%;\n        padding: 20px;\n        margin: 0 auto;\n}\n.slide-page {\n        display: flex;\n}\n.carousel__prev, .carousel__next {\n        background-color: #0c2e8f;\n        color: #fafafa;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.book-latest {\n        width:100%;\n        background-color: #fafafa;\n}\n.book-latest-container {\n        width: 80%;\n        padding: 20px;\n        margin: 0 auto;\n}\n.slide-page {\n        display: flex;\n}\n.carousel__prev,\n    .carousel__next {\n        background-color: #0c2e8f;\n        color: #fafafa;\n}\n.carousel__pagination-button--active {\n        background-color: #0c2e8f;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -24634,7 +24667,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.new-summary {\n    width:100%;\n    height:150px;\n    padding: 10px;\n    background-color: #fafafa;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.new-summary {\n        width:100%;\n        /* height:150px; */\n        padding: 10px;\n        background-color: #fafafa;\n}\n.chapter-latest-container {\n        width: 80%;\n        padding: 20px;\n        margin: 0 auto;\n}\n.chapter-latest-one {\n        /* display: flex; */\n        width: 100%;\n        padding: 15px;\n        border: solid black;\n        border-radius: 3%;\n        margin-bottom: 10px;\n}\n.book-title,\n    .chapter-title,\n    .chapter-summary {\n        text-align: left;\n}\n.book-link {\n        text-decoration:none;\n        color: #fafafa;\n        text-align: left;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

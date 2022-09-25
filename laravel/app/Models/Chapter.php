@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Book;
 
 class Chapter extends Model
 {
@@ -14,4 +15,9 @@ class Chapter extends Model
     public static $rules = array(
         // バリデーション
     );
+
+    // チャプターと書籍
+    public function book() {
+        return $this->hasOne('App\Models\Book', 'id', 'book_id');
+    }
 }

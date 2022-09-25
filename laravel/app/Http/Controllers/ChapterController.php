@@ -11,7 +11,21 @@ class ChapterController extends Controller
     // 一覧をJSONで取得する
     public function getIndex(Request $request)
     {
-        $chapters = Chapter::where('book_id', $request->id)->get();
+        $chapters = Chapter::where('book_id', $request->id)
+                        ->where('deleted_flg', '0')
+                        ->get();
+        return $chapters->toJson();
+    }
+
+    // 新しく登録された順に3件の要約をJSONで取得する
+    public function getLatest()
+    {
+        $chapters = Chapter::with('book')
+                    ->where('deleted_flg', '0')
+                    ->orderBy('id', 'desc')
+                    ->take(3)
+                    ->get();
+        // dd($chapters);
         return $chapters->toJson();
     }
 

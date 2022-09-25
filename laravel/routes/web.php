@@ -28,6 +28,7 @@ Route::get('/api/book-author/index-json/{book_id}', 'App\Http\Controllers\BookAu
 
 // Chapter
 Route::get('/api/chapter/index-json/{id}', 'App\Http\Controllers\ChapterController@getIndex');
+Route::get('/api/chapter/latest-json', 'App\Http\Controllers\ChapterController@getLatest');
 Route::post('api/chapter/register', 'App\Http\Controllers\ChapterController@create');
 Route::post('/api/chapter/edit/{id}', 'App\Http\Controllers\ChapterController@update');
 Route::post('/api/chapter/delete/{id}', 'App\Http\Controllers\ChapterController@delete');

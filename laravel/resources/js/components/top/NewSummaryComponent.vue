@@ -1,15 +1,33 @@
 <template>
     <div class="new-summary">
         <div class="container-box">
-            <div class="title-box">
-                <h3 class="title">最近追加された要約</h3>
-            </div>
-            <div>
-                <!-- <tr v-for="(book, index) in books" :key="index">
-                    <th scope="row">{{ book.id }}</th>
-            +       <td>{{ book.name }}</td>
-                    <td><a v-bind:href="'/book/detail/' + book.id ">詳細</a></td>
-                </tr> -->
+            <h3 class="title">最近追加された要約</h3>
+            <div class="chapter-latest-container">
+                <ul>
+                    <li class="chapter-latest-one"
+                        v-for="(chapter, index) in chapters" :key="index">
+                        <table>
+                            <tr scope="row">
+                                <th class="book-title">
+                                    <a class="book-link"
+                                        v-bind:href="'/book/detail/' + chapter.book.id ">
+                                        {{ chapter.book.name }}
+                                    </a>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td class="chapter-title">
+                                    <h5 class="page-link-title">「{{ chapter.title }}」</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="chapter-summary">
+                                    <p>{{ chapter.summary }}</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -20,29 +38,56 @@ export default {
     data:function(){
         return {
             msg:'wait...',
-            books:[],
+            chapters:[],
         };
     },
     methods:{
-        getBookIndex() {
-            axios.get('/api/book/index-json')
+        getChaptersLatest() {
+            axios.get('/api/chapter/latest-json')
                 .then((res) =>{
-                    this.books = res.data;
+                    this.chapters = res.data;
                     this.msg = 'get data!';
                 });
         }
     },
     mounted () {
-        this.getBookIndex();
+        this.getChaptersLatest();
     },
 }
 </script>
 
 <style>
-.new-summary {
-    width:100%;
-    height:150px;
-    padding: 10px;
-    background-color: #fafafa;
-}
+    .new-summary {
+        width:100%;
+        /* height:150px; */
+        padding: 10px;
+        background-color: #fafafa;
+    }
+
+    .chapter-latest-container {
+        width: 80%;
+        padding: 20px;
+        margin: 0 auto;
+    }
+
+    .chapter-latest-one {
+        /* display: flex; */
+        width: 100%;
+        padding: 15px;
+        border: solid black;
+        border-radius: 3%;
+        margin-bottom: 10px;
+    }
+
+    .book-title,
+    .chapter-title,
+    .chapter-summary {
+        text-align: left;
+    }
+
+    .book-link {
+        text-decoration:none;
+        color: #fafafa;
+        text-align: left;
+    }
 </style>
