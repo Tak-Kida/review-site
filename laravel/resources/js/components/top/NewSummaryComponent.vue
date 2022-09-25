@@ -5,11 +5,11 @@
                 <h3 class="title">最近追加された要約</h3>
             </div>
             <div>
-                <tr v-for="(book, index) in books" :key="index">
+                <!-- <tr v-for="(book, index) in books" :key="index">
                     <th scope="row">{{ book.id }}</th>
             +       <td>{{ book.name }}</td>
                     <td><a v-bind:href="'/book/detail/' + book.id ">詳細</a></td>
-                </tr>
+                </tr> -->
             </div>
         </div>
     </div>

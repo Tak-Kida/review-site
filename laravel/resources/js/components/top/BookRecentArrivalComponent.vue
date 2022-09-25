@@ -1,12 +1,10 @@
 <template>
-    <div class="book-recent-arrival">
+    <div class="book-latest">
         <div class="container-box">
-            <div class="title-box">
-                <h3 class="title">最新のまとめ</h3>
-            </div>
-            <div>
+            <h3 class="title">最新のまとめ</h3>
+            <div class="book-latest-container">
                 <tr v-for="(book, index) in books" :key="index">
-                    <th scope="row">{{ book.id }}</th>
+                    <th scope="row">{{ index }}</th>
             +       <td>{{ book.name }}</td>
                     <td><a v-bind:href="'/book/detail/' + book.id ">詳細</a></td>
                 </tr>
@@ -24,8 +22,8 @@ export default {
         };
     },
     methods:{
-        getBookIndex() {
-            axios.get('/api/book/index-json')
+        getBookLatest() {
+            axios.get('/api/book/latest-json')
                 .then((res) =>{
                     this.books = res.data;
                     this.msg = 'get data!';
@@ -33,15 +31,19 @@ export default {
         }
     },
     mounted () {
-        this.getBookIndex();
+        this.getBookLatest();
     },
 }
 </script>
 
 <style>
-.book-recent-arrival {
-    width:100%;
-    height:150px;
-    background-color: #fafafa;
-}
+    .book-latest {
+        width:100%;
+        height:300px;
+        background-color: #fafafa;
+    }
+
+    .book-latest-container {
+        display: flex;
+    }
 </style>
