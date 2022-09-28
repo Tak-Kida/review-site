@@ -2,7 +2,7 @@
 # FROM : ここではPHPの公式イメージである「php:7.4-apache」というあらかじめPHPとApacheがインストールされているイメージを、Docker Hubというサイトからダウンロードしてくるようになっている。
 FROM php:7.4-apache
 
-# デプロイのための調整
+# デプロイのための調整1
 WORKDIR /usr/local
 RUN pwd
 RUN ls -l
