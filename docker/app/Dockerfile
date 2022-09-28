@@ -3,7 +3,7 @@
 FROM php:7.4-apache
 
 # デプロイのための調整
-WORKDIR /usr
+WORKDIR /usr/local
 RUN pwd
 RUN ls -l
 
