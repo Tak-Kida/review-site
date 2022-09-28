@@ -4,8 +4,8 @@ FROM php:7.4-apache
 
 # デプロイのための調整
 WORKDIR /usr/local/etc/php
-RUN pwd
 RUN ls -l
+RUN pwd
 
 # 設定ファイルをdockerコンテナ内のPHP、Apacheに読み込ませる
 # ADD：ローカルのファイルをDockerコンテナ内にコピーする
