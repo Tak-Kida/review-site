@@ -4,8 +4,22 @@ FROM php:7.4-apache
 
 # デプロイのための調整
 WORKDIR /usr/local/etc/php
-RUN ls -l
 RUN pwd
+
+RUN rm php.ini
+RUN touch php.ini
+RUN cat << EOF >> php.ini \
+    [Date] \
+    date.timezone = "Asia/Tokyo" \
+    [mbstring] \
+    mbstring.internal_encoding = "UTF-8" \
+    mbstring.language = "Japanese" \
+    EOF
+
+RUN ls -l
+
+
+# デプロイのための調整 end
 
 # 設定ファイルをdockerコンテナ内のPHP、Apacheに読み込ませる
 # ADD：ローカルのファイルをDockerコンテナ内にコピーする
