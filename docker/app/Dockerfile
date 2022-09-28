@@ -7,13 +7,12 @@ WORKDIR /usr/local/etc/php
 RUN pwd
 
 RUN touch php.ini
-RUN cat << EOF >> php.ini \
-    [Date] \
-    date.timezone = "Asia/Tokyo" \
-    [mbstring] \
-    mbstring.internal_encoding = "UTF-8" \
-    mbstring.language = "Japanese" \
-    EOF
+RUN echo "[Date] \n\
+    date.timezone = "Asia/Tokyo" \n\
+    [mbstring] \n\
+    mbstring.internal_encoding = "UTF-8" \n\
+    mbstring.language = "Japanese" \n\
+    EOF" >> php.ini
 
 RUN ls -l
 
