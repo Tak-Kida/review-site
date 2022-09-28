@@ -6,7 +6,6 @@ FROM php:7.4-apache
 WORKDIR /usr/local/etc/php
 RUN pwd
 
-RUN rm php.ini
 RUN touch php.ini
 RUN cat << EOF >> php.ini \
     [Date] \
