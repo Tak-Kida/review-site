@@ -2,11 +2,15 @@
 # FROM : ここではPHPの公式イメージである「php:7.4-apache」というあらかじめPHPとApacheがインストールされているイメージを、Docker Hubというサイトからダウンロードしてくるようになっている。
 FROM php:7.4-apache
 
+# デプロイのための調整
+WORKDIR /usr
+RUN pwd
+RUN ls -l
+
 # 設定ファイルをdockerコンテナ内のPHP、Apacheに読み込ませる
 # ADD：ローカルのファイルをDockerコンテナ内にコピーする
 # ADD php.ini /usr/local/etc/php/
-RUN pwd
-RUN ls
+
 # ADD 000-default.conf /etc/apache2/sites-enabled/
 
 # Composerのインストール
