@@ -14,6 +14,7 @@ RUN echo "[Date] \n\
     EOF" >> /usr/local/etc/php/php.ini
 
 # ADD 000-default.conf /etc/apache2/sites-enabled/
+RUN rm -f /etc/apache2/sites-enabled/000-default.conf
 RUN touch /etc/apache2/sites-enabled/000-default.conf
 RUN echo "<VirtualHost *:80>\n\
     ServerAdmin webmaster@localhost\n\
