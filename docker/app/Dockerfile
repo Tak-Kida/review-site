@@ -15,9 +15,9 @@ RUN echo "[Date] \n\
 
 # ADD 000-default.conf /etc/apache2/sites-enabled/
 RUN touch /etc/apache2/sites-enabled/000-default.conf
-RUN echo "<VirtualHost *:443>\n\
+RUN echo "<VirtualHost *:80>\n\
     ServerAdmin webmaster@localhost\n\
-    DocumentRoot /var/www/html\n\
+    DocumentRoot /var/www/html/laravel/public\n\
     ErrorLog ${APACHE_LOG_DIR}/error.log\n\
     CustomLog ${APACHE_LOG_DIR}/access.log combined\n\
     <Directory /var/www/html/laravel/public>\n\
