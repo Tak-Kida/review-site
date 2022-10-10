@@ -3,7 +3,7 @@
         <div class="content-wrapper">
             <!-- 検索部分 -->
             <div class="top-container">
-                <h3 class ="title">登録済み出版社名一覧</h3>
+                <h3 class ="title">登録済み書籍一覧</h3>
                 <div class="search-container">
                     <p class="loading-message">{{ msg }}</p>
                     <BookRegisterModal class="link-box-end" @click="changeUnscrollable()"/>
