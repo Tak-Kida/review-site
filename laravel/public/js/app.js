@@ -23661,7 +23661,7 @@ var _hoisted_3 = {
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
   "class": "title"
-}, "登録済み出版社名一覧", -1
+}, "登録済み書籍一覧", -1
 /* HOISTED */
 );
 
